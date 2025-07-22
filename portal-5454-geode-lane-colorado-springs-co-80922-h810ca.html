@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Portal - 5454 Geode Lane Colorado Springs CO 80922</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+    .container { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+    .address { font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px; }
+    .subtitle { font-size: 16px; color: #666; }
+    
+    /* Client List Styles */
+    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+    .client-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
+    .client-name { font-size: 18px; font-weight: bold; }
+    .client-docs { font-size: 14px; opacity: 0.9; }
+    
+    /* Modal Styles */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    
+    .modal-content { background: white; border-radius: 20px; padding: 30px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; transform: translateY(-50px); transition: all 0.3s ease; }
+    .modal-overlay.active .modal-content { transform: translateY(0); }
+    
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0; }
+    .modal-title { font-size: 24px; font-weight: bold; color: #333; }
+    .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #999; }
+    .close-btn:hover { color: #333; }
+    
+    .document-item { background: #f8f9fa; border-radius: 4px; padding: 4px 6px; margin: 2px 0; border-left: 3px solid #667eea; }
+    .doc-info h4 { color: #333; margin-bottom: 0; font-size: 12px; font-weight: 600; line-height: 1.1; }
+    .doc-meta { font-size: 9px; color: #666; margin-bottom: 2px; line-height: 1; }
+    .doc-controls { display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
+    .doc-status { font-size: 8px; padding: 1px 4px; border-radius: 8px; font-weight: bold; text-transform: uppercase; line-height: 1; }
+    .status-signed { background: #d4edda; color: #155724; }
+    .status-pending { background: #f8d7da; color: #721c24; }
+    .doc-actions { display: flex; gap: 3px; }
+    .btn-small { padding: 2px 6px; border: none; border-radius: 3px; cursor: pointer; font-size: 9px; font-weight: bold; line-height: 1; }
+    .btn-primary { background: #667eea; color: white; }
+    .btn-secondary { background: #e2e8f0; color: #4a5568; }
+    
+    .modal-footer { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #f0f0f0; color: #666; font-size: 14px; }
+    
+    /* Document Category Styles */
+    .doc-category { margin-bottom: 25px; }
+    .doc-category-header { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      padding: 12px 20px; 
+      border-radius: 10px; 
+      margin-bottom: 15px; 
+      font-weight: 600; 
+      font-size: 16px; 
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+    }
+    
+    /* FAQ Styles */
+    .faq-container { max-width: 100%; margin-top: 30px; }
+    .faq-section-title { 
+      text-align: center; 
+      color: #333; 
+      margin-bottom: 15px; 
+      font-size: 20px; 
+      font-weight: 600;
+    }
+    .faq-category { 
+      border: 1px solid #e2e8f0; 
+      border-radius: 6px; 
+      margin-bottom: 4px; 
+      overflow: hidden; 
+    }
+    .faq-header { 
+      background: #f8f9fa; 
+      padding: 10px 14px; 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      font-weight: 500; 
+      color: #333; 
+      transition: background 0.2s ease; 
+      font-size: 13px; 
+    }
+    .faq-header:hover { background: #e9ecef; }
+    .faq-arrow { 
+      transition: transform 0.2s ease; 
+      font-size: 10px; 
+      color: #667eea;
+    }
+    .faq-arrow.rotated { transform: rotate(180deg); }
+    .faq-content { 
+      padding: 0 14px; 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: all 0.2s ease; 
+      background: white; 
+    }
+    .faq-content.expanded { 
+      padding: 12px 14px; 
+      max-height: 200px; 
+    }
+    .faq-content p { 
+      font-size: 12px; 
+      color: #666; 
+      margin: 0 0 8px 0; 
+      line-height: 1.4;
+    }
+    .faq-content p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="address">5454 Geode Lane Colorado Springs CO 80922</div>
+      <div class="subtitle">Document Portal</div>
+    </div>
+    
+    <div style="font-size: 18px; text-align: center; margin-bottom: 20px;">
+      Please select your name to access your documents:
+    </div>
+    
+    
+    <button class="client-btn" onclick="openModal('Kyle Dingler', 13, 13, 0)">
+      <div>
+        <div class="client-name">Kyle Dingler</div>
+        <div class="client-docs">13 documents • 0 pending • 13 signed</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Alexis Dingler', 13, 13, 0)">
+      <div>
+        <div class="client-name">Alexis Dingler</div>
+        <div class="client-docs">13 documents • 0 pending • 13 signed</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    
+    <!-- Contact Information -->
+    <div style="background: #f8f9fa; border: 2px solid #667eea; border-radius: 12px; padding: 15px; margin: 30px 0 20px 0; text-align: center;">
+      <div style="font-size: 14px; color: #495057; font-weight: 500;">💬 Questions about the documents? Reach out in the group text or check out the FAQs below!</div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="faq-container">
+      <h3 class="faq-section-title">Document Types & Information</h3>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('team-disclosures')">
+          <span>Team Disclosures</span>
+          <span class="faq-arrow" id="team-disclosures-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="team-disclosures-content">
+          <p><strong>What are these?</strong> These are disclosures from your real estate team explaining their role, compensation, and any potential conflicts of interest.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges that you've received and reviewed these important disclosures about your team's representation.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('contract-documents')">
+          <span>Contract Documents</span>
+          <span class="faq-arrow" id="contract-documents-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="contract-documents-content">
+          <p><strong>What are these?</strong> The Purchase Contract is the main legal agreement between you and the buyer. Amendments are changes or additions to the original contract terms that both parties agree to during the transaction.</p>
+          <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the contract terms and any modifications outlined in amendments.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('seller-disclosures')">
+          <span>Seller Disclosures</span>
+          <span class="faq-arrow" id="seller-disclosures-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="seller-disclosures-content">
+          <p><strong>What are these?</strong> Legal disclosures completed by the seller about the property's condition, square footage, and any known issues or defects.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges that you've received and reviewed the disclosure information.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('inspection-objection')">
+          <span>Inspection Objection and Resolution</span>
+          <span class="faq-arrow" id="inspection-objection-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="inspection-objection-content">
+          <p><strong>What are these?</strong> The Inspection Objection is a buyer's opportunity to request repairs after they have done their home inspection. The Resolution is what the seller responds with and what repairs they agree to. Both parties must come to an agreement and sign the IR.</p>
+          <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the specific terms, changes, or resolutions outlined in these documents.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('inspection-reports')">
+          <span>Inspection Reports and Tests</span>
+          <span class="faq-arrow" id="inspection-reports-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="inspection-reports-content">
+          <p><strong>What are these?</strong> Professional inspection reports and test results conducted on your property, including general home inspection, radon, septic, well water, or other specialized inspections.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of the inspection findings.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('hoa')">
+          <span>HOA</span>
+          <span class="faq-arrow" id="hoa-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="hoa-content">
+          <p><strong>What are these?</strong> Homeowners Association documents including bylaws, covenants, financial statements, and any pending assessments.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of HOA documents that must be provided to the buyer.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('title-document')">
+          <span>Title Document</span>
+          <span class="faq-arrow" id="title-document-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="title-document-content">
+          <p><strong>What are these?</strong> Title commitment and related documents showing ownership history, liens, and any title issues that need resolution.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of title conditions affecting your property.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('repairs-ddd')">
+          <span>Repairs and DDD</span>
+          <span class="faq-arrow" id="repairs-ddd-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="repairs-ddd-content">
+          <p><strong>What are these?</strong> The repair receipts will show the work completed from the Inspection Resolution. Due Diligence Documents can range from previous repairs to the property, utility bills, or warranties and other paperwork.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt of repair documentation.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('closing-documents')">
+          <span>Closing Documents</span>
+          <span class="faq-arrow" id="closing-documents-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="closing-documents-content">
+          <p><strong>What are these?</strong> Final documents needed to complete the sale, including settlement statements and deed transfer paperwork.</p>
+          <p><strong>Why am I signing these?</strong> These documents won't be signed until your actual closing appointment, where your signature completes the legal transfer of your property.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="documentModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Client Documents</div>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      
+      <div id="documentList" style="margin-top: 20px;">
+        <!-- Documents will be populated here -->
+      </div>
+      
+      <div class="modal-footer">
+        Questions about these documents? Contact your agent
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const clientDocuments = {
+  "Kyle Dingler": [
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/d946d13c-ef4d-45dd-ae10-effda78e6838.pdf",
+      "name": "Sellers Property Disclosure",
+      "driveLink": "https://drive.google.com/file/d/1hdBNfOeJ0ye_LEbVKoSNy_IJeVz5PODl/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1hdBNfOeJ0ye_LEbVKoSNy_IJeVz5PODl&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\",\"Jeffrey Weir\",\"Taylor Weir\"]",
+      "displayLink": "https://drive.google.com/uc?id=1hdBNfOeJ0ye_LEbVKoSNy_IJeVz5PODl&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/7f2f4be7-364b-4eb9-b5dc-a2b9f96c4dcf.pdf",
+      "name": "Colorado Real Estate Seller Advisory",
+      "driveLink": "https://drive.google.com/file/d/1CPxp4Wy_7d9itRqG5hj_tJOYc2PjV7to/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1CPxp4Wy_7d9itRqG5hj_tJOYc2PjV7to&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1CPxp4Wy_7d9itRqG5hj_tJOYc2PjV7to&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/229fd6c0-1e0d-47a4-a206-3c1013accd39.pdf",
+      "name": "contract_amend_misc",
+      "driveLink": "https://drive.google.com/file/d/1NdVacP2j4jXkxwHB8d7Q6mrxcTtUYeQY/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1NdVacP2j4jXkxwHB8d7Q6mrxcTtUYeQY&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Jeffrey Weir\",\"Taylor Weir\",\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "displayLink": "https://drive.google.com/uc?id=1NdVacP2j4jXkxwHB8d7Q6mrxcTtUYeQY&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/9278c61f-3ff2-4e0c-a3bd-f929de7101f6.pdf",
+      "name": "HIR_radon",
+      "driveLink": "https://drive.google.com/file/d/1fU6sSxwoCQeoOKhlrLJBESUaGxxXI0A2/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1fU6sSxwoCQeoOKhlrLJBESUaGxxXI0A2&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1fU6sSxwoCQeoOKhlrLJBESUaGxxXI0A2&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/5413429b-f195-4305-b7ae-f4200aea7083.pdf",
+      "name": "Unknown Doc",
+      "driveLink": "https://drive.google.com/file/d/12VugNTDCOrixvZnfHL3UXZhlAxhWeUOz/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=12VugNTDCOrixvZnfHL3UXZhlAxhWeUOz&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=12VugNTDCOrixvZnfHL3UXZhlAxhWeUOz&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/767141aa-edfe-4397-9150-f2640e98bbb8.pdf",
+      "name": "Inspection Resolution",
+      "driveLink": "https://drive.google.com/file/d/1h6EDmlD_WjFmtHNjpHAX2Lqt8J1ySopn/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1h6EDmlD_WjFmtHNjpHAX2Lqt8J1ySopn&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\",\"Jeffrey Weir\",\"Taylor Weir\"]",
+      "displayLink": "https://drive.google.com/uc?id=1h6EDmlD_WjFmtHNjpHAX2Lqt8J1ySopn&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d6f9fc3a-508f-400b-ad5e-ad20298fb477.pdf",
+      "name": "title_plat",
+      "driveLink": "https://drive.google.com/file/d/1owqnBOpD8FhGl_GVp2yipNXLF9ORpUTc/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1owqnBOpD8FhGl_GVp2yipNXLF9ORpUTc&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1owqnBOpD8FhGl_GVp2yipNXLF9ORpUTc&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/fec94031-8ff7-40f6-af69-e55232c55c9f.pdf",
+      "name": "Inspection Objection",
+      "driveLink": "https://drive.google.com/file/d/1JjJe65U80w1z_FkjccfEJ1us7iiiL9dF/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1JjJe65U80w1z_FkjccfEJ1us7iiiL9dF&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "displayLink": "https://drive.google.com/uc?id=1JjJe65U80w1z_FkjccfEJ1us7iiiL9dF&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/6fd35421-cd93-4eba-a518-7a99751de894.pdf",
+      "name": "Unknown Doc",
+      "driveLink": "https://drive.google.com/file/d/1tfhXP092o37igWfHvwLZUl-RgK4-thmK/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1tfhXP092o37igWfHvwLZUl-RgK4-thmK&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1tfhXP092o37igWfHvwLZUl-RgK4-thmK&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/9507a047-8a78-4bb6-b499-27bd68e0ea83.pdf",
+      "name": "title_taxcert",
+      "driveLink": "https://drive.google.com/file/d/18Tfg2fBjELH4SpPbqGlgNm6_HNBILRd6/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=18Tfg2fBjELH4SpPbqGlgNm6_HNBILRd6&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=18Tfg2fBjELH4SpPbqGlgNm6_HNBILRd6&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/aa9a30c4-58d8-4228-a67a-f50b3004fc38.pdf",
+      "name": "HIR",
+      "driveLink": "https://drive.google.com/file/d/14J_s9wLluZgFRnrDI8xs6iZhKTpYyOXJ/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=14J_s9wLluZgFRnrDI8xs6iZhKTpYyOXJ&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"KYLE DINGLER\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=14J_s9wLluZgFRnrDI8xs6iZhKTpYyOXJ&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/a3186001-fda8-4df4-b457-9fbaf07af82e.pdf",
+      "name": "EXP ABA",
+      "driveLink": "https://drive.google.com/file/d/1acOn1sTTxobE8t3ZPDXTcKs412Bf0MOz/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1acOn1sTTxobE8t3ZPDXTcKs412Bf0MOz&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"KYLE DINGLER\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1acOn1sTTxobE8t3ZPDXTcKs412Bf0MOz&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/505b9bed-ed0a-481a-804c-8e8180d2ae95.pdf",
+      "name": "Mikes ABA",
+      "driveLink": "https://drive.google.com/file/d/1UBZXdkkkKhRM-UbmALH3h864C2QckZu9/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1UBZXdkkkKhRM-UbmALH3h864C2QckZu9&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1UBZXdkkkKhRM-UbmALH3h864C2QckZu9&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    }
+  ],
+  "Alexis Dingler": [
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/d946d13c-ef4d-45dd-ae10-effda78e6838.pdf",
+      "name": "Sellers Property Disclosure",
+      "driveLink": "https://drive.google.com/file/d/1hdBNfOeJ0ye_LEbVKoSNy_IJeVz5PODl/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1hdBNfOeJ0ye_LEbVKoSNy_IJeVz5PODl&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\",\"Jeffrey Weir\",\"Taylor Weir\"]",
+      "displayLink": "https://drive.google.com/uc?id=1hdBNfOeJ0ye_LEbVKoSNy_IJeVz5PODl&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/7f2f4be7-364b-4eb9-b5dc-a2b9f96c4dcf.pdf",
+      "name": "Colorado Real Estate Seller Advisory",
+      "driveLink": "https://drive.google.com/file/d/1CPxp4Wy_7d9itRqG5hj_tJOYc2PjV7to/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1CPxp4Wy_7d9itRqG5hj_tJOYc2PjV7to&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1CPxp4Wy_7d9itRqG5hj_tJOYc2PjV7to&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/229fd6c0-1e0d-47a4-a206-3c1013accd39.pdf",
+      "name": "contract_amend_misc",
+      "driveLink": "https://drive.google.com/file/d/1NdVacP2j4jXkxwHB8d7Q6mrxcTtUYeQY/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1NdVacP2j4jXkxwHB8d7Q6mrxcTtUYeQY&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Jeffrey Weir\",\"Taylor Weir\",\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "displayLink": "https://drive.google.com/uc?id=1NdVacP2j4jXkxwHB8d7Q6mrxcTtUYeQY&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/9278c61f-3ff2-4e0c-a3bd-f929de7101f6.pdf",
+      "name": "HIR_radon",
+      "driveLink": "https://drive.google.com/file/d/1fU6sSxwoCQeoOKhlrLJBESUaGxxXI0A2/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1fU6sSxwoCQeoOKhlrLJBESUaGxxXI0A2&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1fU6sSxwoCQeoOKhlrLJBESUaGxxXI0A2&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/5413429b-f195-4305-b7ae-f4200aea7083.pdf",
+      "name": "Unknown Doc",
+      "driveLink": "https://drive.google.com/file/d/12VugNTDCOrixvZnfHL3UXZhlAxhWeUOz/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=12VugNTDCOrixvZnfHL3UXZhlAxhWeUOz&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=12VugNTDCOrixvZnfHL3UXZhlAxhWeUOz&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/767141aa-edfe-4397-9150-f2640e98bbb8.pdf",
+      "name": "Inspection Resolution",
+      "driveLink": "https://drive.google.com/file/d/1h6EDmlD_WjFmtHNjpHAX2Lqt8J1ySopn/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1h6EDmlD_WjFmtHNjpHAX2Lqt8J1ySopn&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\",\"Jeffrey Weir\",\"Taylor Weir\"]",
+      "displayLink": "https://drive.google.com/uc?id=1h6EDmlD_WjFmtHNjpHAX2Lqt8J1ySopn&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d6f9fc3a-508f-400b-ad5e-ad20298fb477.pdf",
+      "name": "title_plat",
+      "driveLink": "https://drive.google.com/file/d/1owqnBOpD8FhGl_GVp2yipNXLF9ORpUTc/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1owqnBOpD8FhGl_GVp2yipNXLF9ORpUTc&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1owqnBOpD8FhGl_GVp2yipNXLF9ORpUTc&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/files/PDFConvert/fec94031-8ff7-40f6-af69-e55232c55c9f.pdf",
+      "name": "Inspection Objection",
+      "driveLink": "https://drive.google.com/file/d/1JjJe65U80w1z_FkjccfEJ1us7iiiL9dF/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1JjJe65U80w1z_FkjccfEJ1us7iiiL9dF&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "displayLink": "https://drive.google.com/uc?id=1JjJe65U80w1z_FkjccfEJ1us7iiiL9dF&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/6fd35421-cd93-4eba-a518-7a99751de894.pdf",
+      "name": "Unknown Doc",
+      "driveLink": "https://drive.google.com/file/d/1tfhXP092o37igWfHvwLZUl-RgK4-thmK/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1tfhXP092o37igWfHvwLZUl-RgK4-thmK&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1tfhXP092o37igWfHvwLZUl-RgK4-thmK&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/9507a047-8a78-4bb6-b499-27bd68e0ea83.pdf",
+      "name": "title_taxcert",
+      "driveLink": "https://drive.google.com/file/d/18Tfg2fBjELH4SpPbqGlgNm6_HNBILRd6/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=18Tfg2fBjELH4SpPbqGlgNm6_HNBILRd6&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=18Tfg2fBjELH4SpPbqGlgNm6_HNBILRd6&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/aa9a30c4-58d8-4228-a67a-f50b3004fc38.pdf",
+      "name": "HIR",
+      "driveLink": "https://drive.google.com/file/d/14J_s9wLluZgFRnrDI8xs6iZhKTpYyOXJ/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=14J_s9wLluZgFRnrDI8xs6iZhKTpYyOXJ&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"KYLE DINGLER\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=14J_s9wLluZgFRnrDI8xs6iZhKTpYyOXJ&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/a3186001-fda8-4df4-b457-9fbaf07af82e.pdf",
+      "name": "EXP ABA",
+      "driveLink": "https://drive.google.com/file/d/1acOn1sTTxobE8t3ZPDXTcKs412Bf0MOz/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1acOn1sTTxobE8t3ZPDXTcKs412Bf0MOz&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"KYLE DINGLER\",\"ALEXIS DINGLER\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1acOn1sTTxobE8t3ZPDXTcKs412Bf0MOz&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    },
+    {
+      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/505b9bed-ed0a-481a-804c-8e8180d2ae95.pdf",
+      "name": "Mikes ABA",
+      "driveLink": "https://drive.google.com/file/d/1UBZXdkkkKhRM-UbmALH3h864C2QckZu9/view?usp=drivesdk",
+      "webContentLink": "https://drive.google.com/uc?id=1UBZXdkkkKhRM-UbmALH3h864C2QckZu9&export=download",
+      "signingLink": null,
+      "status": "signed",
+      "completionStatus": "Complete",
+      "signedParties": "[\"Kyle Dingler\",\"Alexis Dingler\"]",
+      "recordId": "recyveS1UpxHJaLWr",
+      "displayLink": "https://drive.google.com/uc?id=1UBZXdkkkKhRM-UbmALH3h864C2QckZu9&export=download",
+      "ourClient1Name": "Kyle Dingler",
+      "ourClient1Status": "Complete",
+      "ourClient2Name": "Alexis Dingler",
+      "ourClient2Status": "Complete"
+    }
+  ]
+};
+    
+    function openModal(clientName, total, signed, pending) {
+      const modal = document.getElementById('documentModal');
+      const title = document.getElementById('modalTitle');
+      const docList = document.getElementById('documentList');
+      
+      title.textContent = clientName + "'s Documents";
+      
+      const docs = clientDocuments[clientName] || [];
+      
+      // Group documents by basic categories based on document name
+      const categorizeDocument = (docName) => {
+        const name = docName.toLowerCase();
+        if (name.includes('disclosure') && !name.includes('square footage')) return 'Team Disclosures';
+        if (name.includes('square footage') || name.includes('seller disclosure')) return 'Seller Disclosures';
+        if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
+        if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+        if (name.includes('inspection') && (name.includes('objection') || name.includes('resolution'))) return 'Inspection Objection and Resolution';
+        if (name.includes('inspection') || name.includes('report') || name.includes('test')) return 'Inspection Reports and Tests';
+        if (name.includes('hoa') || name.includes('homeowner')) return 'HOA';
+        if (name.includes('title')) return 'Title Document';
+        if (name.includes('repair') || name.includes('ddd') || name.includes('due diligence')) return 'Repairs and DDD';
+        if (name.includes('closing') || name.includes('settlement')) return 'Closing Documents';
+        return 'Other Documents';
+      };
+      
+      // Group documents by category
+      const groupedDocs = docs.reduce((groups, doc) => {
+        const category = categorizeDocument(doc.name);
+        if (!groups[category]) {
+          groups[category] = [];
+        }
+        groups[category].push(doc);
+        return groups;
+      }, {});
+      
+      // Generate HTML for each category using string concatenation
+      const categoriesHTML = Object.keys(groupedDocs).map(category => {
+        const categoryDocs = groupedDocs[category];
+        const docsHTML = categoryDocs.map(doc => {
+          // Use driveLink for viewing (avoid webContentLink and displayLink due to 404 errors)
+          const viewLink = doc.driveLink || '#';
+          
+          // For pending docs: use signingLink or docId, for signed docs: use driveLink
+          const actionLink = doc.status === 'pending' ? 
+            (doc.signingLink || doc.docId || '#') : 
+            (doc.driveLink || '#');
+            
+          const actionText = doc.status === 'pending' ? 'Sign' : 'View';
+          const actionClass = doc.status === 'pending' ? 'btn-primary' : 'btn-secondary';
+          
+          return '<div class="document-item">' +
+            '<div class="doc-info">' +
+              '<h4>' + doc.name + '</h4>' +
+              '<div class="doc-meta">' + (doc.date || 'Recent') + '</div>' +
+            '</div>' +
+            '<div class="doc-controls">' +
+              '<span class="doc-status status-' + doc.status + '">' + doc.status + '</span>' +
+              '<div class="doc-actions">' +
+                '<button class="btn-small btn-primary" onclick="handleDocAction(' + "'" + 'view' + "', '" + doc.name + "', '" + viewLink + "'" + ')">View</button>' +
+                '<button class="btn-small ' + actionClass + '" onclick="handleDocAction(' + "'" + actionText.toLowerCase() + "', '" + doc.name + "', '" + actionLink + "'" + ')">' + actionText + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+        
+        return '<div class="doc-category">' +
+          '<div class="doc-category-header">' + category + '</div>' +
+          docsHTML +
+        '</div>';
+      }).join('');
+      
+      docList.innerHTML = categoriesHTML;
+      modal.classList.add('active');
+    }
+    
+    function closeModal(event) {
+      if (!event || event.target === document.getElementById('documentModal')) {
+        document.getElementById('documentModal').classList.remove('active');
+      }
+    }
+    
+    function handleDocAction(action, docName, link) {
+      if (link && link !== '#') {
+        if (action === 'sign' || action === 'view') {
+          window.open(link, '_blank');
+        } else if (action === 'download') {
+          window.open(link, '_blank');
+        }
+      } else {
+        alert('Document link not available for: ' + docName);
+      }
+    }
+    
+    function toggleFAQ(categoryId) {
+      const content = document.getElementById(categoryId + '-content');
+      const arrow = document.getElementById(categoryId + '-arrow');
+      
+      if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        arrow.classList.remove('rotated');
+      } else {
+        // Close all other open FAQs
+        document.querySelectorAll('.faq-content.expanded').forEach(el => {
+          el.classList.remove('expanded');
+        });
+        document.querySelectorAll('.faq-arrow.rotated').forEach(el => {
+          el.classList.remove('rotated');
+        });
+        
+        // Open this FAQ
+        content.classList.add('expanded');
+        arrow.classList.add('rotated');
+      }
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    console.log('Portal loaded for:', '5454 Geode Lane Colorado Springs CO 80922');
+    console.log('Client documents:', clientDocuments);
+  </script>
+</body>
+</html>
