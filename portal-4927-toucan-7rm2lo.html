@@ -687,8 +687,7 @@
           if (signedInCategory > 0) {
             // Determine who we're waiting on based on client role, not representation
             const sampleDoc = categoryDocs[0];
-            const clientRole = sampleDoc.originalDoc?.ourClients?.[0]?.role || 
-                              categoryDocs[0]?.ourClients?.[0]?.role || 'unknown';
+            const clientRole = sampleDoc.ourClients?.[0]?.role || 'unknown';
             let waitingOnText = '';
             
             console.log('Checking client role for category summary:', clientRole); // Debug log
