@@ -403,7 +403,6 @@
       "status": "pending",
       "completionStatus": "Complete",
       "signedParties": "[\"Edwin Acevedo Molinary\",\"IVELISSE LOPEZ HIDALGO\"]",
-      "recordId": "rec1Q0SePRwCHWDfN",
       "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=76ab65cc-0ec2-412e-827e-5e8b632f4ba1&isCTMOne=false",
       "ourClient1Name": "Ivelisse Hidalgo Lopez",
       "ourClient1Status": "Complete",
@@ -411,7 +410,8 @@
       "ourClient2Status": "Complete",
       "createdTime": "2025-07-16T18:41:26.000Z",
       "updatedTime": "2025-07-16T23:01:48.000Z",
-      "originalIndex": 3
+      "originalIndex": 3,
+      "recordId": "rec1Q0SePRwCHWDfN"
     },
     {
       "docId": "https://www.ctmecontracts.com/api/eSignature/Print/a26c8d8c-f451-42f0-9e4f-276079c3d007.pdf",
@@ -421,7 +421,6 @@
       "status": "pending",
       "completionStatus": "Complete",
       "signedParties": "[\"EDWIN ACEVEDO MOLINARY\",\"Ivelisse Lopez Hidalgo\"]",
-      "recordId": "rec1Q0SePRwCHWDfN",
       "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=a26c8d8c-f451-42f0-9e4f-276079c3d007&isCTMOne=false",
       "ourClient1Name": "Ivelisse Hidalgo Lopez",
       "ourClient1Status": "Complete",
@@ -429,7 +428,8 @@
       "ourClient2Status": "Complete",
       "createdTime": "2025-07-16T18:41:27.000Z",
       "updatedTime": "2025-07-16T23:01:47.000Z",
-      "originalIndex": 1
+      "originalIndex": 1,
+      "recordId": "rec1Q0SePRwCHWDfN"
     }
   ],
   "Edwin Acevedo Molinary": [
@@ -509,7 +509,6 @@
       "status": "pending",
       "completionStatus": "Complete",
       "signedParties": "[\"Edwin Acevedo Molinary\",\"IVELISSE LOPEZ HIDALGO\"]",
-      "recordId": "rec1Q0SePRwCHWDfN",
       "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=76ab65cc-0ec2-412e-827e-5e8b632f4ba1&isCTMOne=false",
       "ourClient1Name": "Ivelisse Hidalgo Lopez",
       "ourClient1Status": "Complete",
@@ -517,7 +516,8 @@
       "ourClient2Status": "Complete",
       "createdTime": "2025-07-16T18:41:26.000Z",
       "updatedTime": "2025-07-16T23:01:48.000Z",
-      "originalIndex": 3
+      "originalIndex": 3,
+      "recordId": "rec1Q0SePRwCHWDfN"
     },
     {
       "docId": "https://www.ctmecontracts.com/api/eSignature/Print/a26c8d8c-f451-42f0-9e4f-276079c3d007.pdf",
@@ -527,7 +527,6 @@
       "status": "pending",
       "completionStatus": "Complete",
       "signedParties": "[\"EDWIN ACEVEDO MOLINARY\",\"Ivelisse Lopez Hidalgo\"]",
-      "recordId": "rec1Q0SePRwCHWDfN",
       "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=a26c8d8c-f451-42f0-9e4f-276079c3d007&isCTMOne=false",
       "ourClient1Name": "Ivelisse Hidalgo Lopez",
       "ourClient1Status": "Complete",
@@ -535,7 +534,8 @@
       "ourClient2Status": "Complete",
       "createdTime": "2025-07-16T18:41:27.000Z",
       "updatedTime": "2025-07-16T23:01:47.000Z",
-      "originalIndex": 1
+      "originalIndex": 1,
+      "recordId": "rec1Q0SePRwCHWDfN"
     }
   ]
 };
@@ -685,22 +685,19 @@
           
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           if (signedInCategory > 0) {
-            // Determine who we're waiting on based on client role, not representation
+            // Get the client role from the first document in this category
             const sampleDoc = categoryDocs[0];
             const clientRole = sampleDoc.ourClients?.[0]?.role || 'unknown';
             let waitingOnText = '';
             
-            console.log('Checking client role for category summary:', clientRole); // Debug log
+            console.log('Category client role detected:', clientRole); // Debug log
             
-            // If our clients are sellers, when they sign we're waiting for buyers
-            // If our clients are buyers, when they sign we're waiting for sellers
             if (clientRole === 'seller') {
               waitingOnText = 'pending buyer signatures';
             } else if (clientRole === 'buyer') {
               waitingOnText = 'pending seller signatures';
             } else {
               waitingOnText = 'pending other signatures'; // fallback
-              console.log('Using fallback - client role was:', clientRole); // Debug log
             }
             
             parts.push(signedInCategory + ' signed, ' + waitingOnText);
