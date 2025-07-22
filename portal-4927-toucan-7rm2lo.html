@@ -182,7 +182,7 @@
     <button class="client-btn" onclick="openModal('Ivelisse Hidalgo Lopez', 6, 1, 0)">
       <div>
         <div class="client-name">Ivelisse Hidalgo Lopez</div>
-        <div class="client-docs">6 documents • 1 signed • 5 complete</div>
+        <div class="client-docs">6 documents • 1 signed, pending others • 5 complete</div>
       </div>
       <div>→</div>
     </button>
@@ -190,7 +190,7 @@
     <button class="client-btn" onclick="openModal('Edwin Acevedo Molinary', 6, 1, 0)">
       <div>
         <div class="client-name">Edwin Acevedo Molinary</div>
-        <div class="client-docs">6 documents • 1 signed • 5 complete</div>
+        <div class="client-docs">6 documents • 1 signed, pending others • 5 complete</div>
       </div>
       <div>→</div>
     </button>
@@ -691,11 +691,26 @@
           const isExpanded = hasSignatures ? 'expanded' : '';
           const arrowRotated = hasSignatures ? 'rotated' : '';
           
-          // Create status summary
+          // Create status summary with specific other party language
           let statusSummary = '';
           const parts = [];
           if (pendingInCategory > 0) parts.push(pendingInCategory + ' need signatures');
-          if (signedInCategory > 0) parts.push(signedInCategory + ' signed, waiting');
+          if (signedInCategory > 0) {
+            // Determine who we're waiting on based on representation
+            const sampleDoc = categoryDocs[0]; // Use first doc to determine representation
+            const ourRepresentation = sampleDoc.originalDoc?.Our_Representation || 'Unknown';
+            let waitingOnText = '';
+            
+            if (ourRepresentation === 'Seller' || ourRepresentation === 'seller') {
+              waitingOnText = 'pending buyer signatures';
+            } else if (ourRepresentation === 'Buyer' || ourRepresentation === 'buyer') {
+              waitingOnText = 'pending seller signatures';
+            } else {
+              waitingOnText = 'pending other signatures'; // fallback
+            }
+            
+            parts.push(signedInCategory + ' signed, ' + waitingOnText);
+          }
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           statusSummary = parts.join(' • ') || 'No documents';
           
