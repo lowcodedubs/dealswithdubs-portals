@@ -58,6 +58,58 @@
       box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
     }
     
+    .collapsible-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+    
+    .collapsible-header:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .category-info {
+      flex: 1;
+    }
+    
+    .category-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .category-summary {
+      font-size: 12px;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    
+    .category-arrow {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    
+    .category-arrow.rotated {
+      transform: rotate(180deg);
+    }
+    
+    .doc-category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 0;
+    }
+    
+    .doc-category-content.expanded {
+      max-height: 1000px;
+      margin-bottom: 15px;
+    }
+    
     /* FAQ Styles */
     .faq-container { max-width: 100%; margin-top: 30px; }
     .faq-section-title { 
@@ -723,8 +775,28 @@
       }, {});
       
       // Generate HTML for each category using string concatenation
-      const categoriesHTML = Object.keys(groupedDocs).map(category => {
+      const categoriesHTML = Object.keys(groupedDocs).map((category, index) => {
         const categoryDocs = groupedDocs[category];
+        const pendingInCategory = categoryDocs.filter(doc => doc.status === 'pending').length;
+        const signedInCategory = categoryDocs.filter(doc => doc.status === 'signed').length;
+        const totalInCategory = categoryDocs.length;
+        
+        // Determine if category should be open by default (open if has pending docs)
+        const hasSignatures = pendingInCategory > 0;
+        const categoryId = category.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        const isExpanded = hasSignatures ? 'expanded' : '';
+        const arrowRotated = hasSignatures ? 'rotated' : '';
+        
+        // Create status summary
+        let statusSummary = '';
+        if (pendingInCategory > 0 && signedInCategory > 0) {
+          statusSummary = pendingInCategory + ' need signatures • ' + signedInCategory + ' signed';
+        } else if (pendingInCategory > 0) {
+          statusSummary = pendingInCategory + ' need signatures';
+        } else {
+          statusSummary = 'All signed (' + totalInCategory + ')';
+        }
+        
         const docsHTML = categoryDocs.map(doc => {
           // Use driveLink for viewing (avoid webContentLink and displayLink due to 404 errors)
           const viewLink = doc.driveLink || '#';
@@ -753,8 +825,16 @@
         }).join('');
         
         return '<div class="doc-category">' +
-          '<div class="doc-category-header">' + category + '</div>' +
-          docsHTML +
+          '<div class="doc-category-header collapsible-header" onclick="toggleCategory(' + "'" + categoryId + "'" + ')">' +
+            '<div class="category-info">' +
+              '<div class="category-title">' + category + '</div>' +
+              '<div class="category-summary">' + statusSummary + '</div>' +
+            '</div>' +
+            '<span class="category-arrow ' + arrowRotated + '" id="' + categoryId + '-arrow">▼</span>' +
+          '</div>' +
+          '<div class="doc-category-content ' + isExpanded + '" id="' + categoryId + '-content">' +
+            docsHTML +
+          '</div>' +
         '</div>';
       }).join('');
       
@@ -777,6 +857,19 @@
         }
       } else {
         alert('Document link not available for: ' + docName);
+      }
+    }
+    
+    function toggleCategory(categoryId) {
+      const content = document.getElementById(categoryId + '-content');
+      const arrow = document.getElementById(categoryId + '-arrow');
+      
+      if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        arrow.classList.remove('rotated');
+      } else {
+        content.classList.add('expanded');
+        arrow.classList.add('rotated');
       }
     }
     
