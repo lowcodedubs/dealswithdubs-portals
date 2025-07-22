@@ -380,9 +380,15 @@
       const categoriesHTML = Object.keys(groupedDocs).map(category => {
         const categoryDocs = groupedDocs[category];
         const docsHTML = categoryDocs.map(doc => {
-          const viewLink = doc.displayLink || doc.driveLink || '#';
-          const actionLink = doc.status === 'pending' ? (doc.signingLink || doc.displayLink || '#') : (doc.displayLink || doc.driveLink || '#');
-          const actionText = doc.status === 'pending' ? 'Sign' : 'Download';
+          // Use driveLink for viewing (avoid webContentLink and displayLink due to 404 errors)
+          const viewLink = doc.driveLink || '#';
+          
+          // For pending docs: use signingLink or docId, for signed docs: use driveLink
+          const actionLink = doc.status === 'pending' ? 
+            (doc.signingLink || doc.docId || '#') : 
+            (doc.driveLink || '#');
+            
+          const actionText = doc.status === 'pending' ? 'Sign' : 'View';
           const actionClass = doc.status === 'pending' ? 'btn-primary' : 'btn-secondary';
           
           return '<div class="document-item">' +
