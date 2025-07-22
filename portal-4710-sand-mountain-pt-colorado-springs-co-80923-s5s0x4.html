@@ -587,11 +587,26 @@
           const isExpanded = hasSignatures ? 'expanded' : '';
           const arrowRotated = hasSignatures ? 'rotated' : '';
           
-          // Create status summary
+          // Create status summary with specific other party language
           let statusSummary = '';
           const parts = [];
           if (pendingInCategory > 0) parts.push(pendingInCategory + ' need signatures');
-          if (signedInCategory > 0) parts.push(signedInCategory + ' signed, waiting');
+          if (signedInCategory > 0) {
+            // Determine who we're waiting on based on representation
+            const sampleDoc = categoryDocs[0]; // Use first doc to determine representation
+            const ourRepresentation = sampleDoc.originalDoc?.Our_Representation || 'Unknown';
+            let waitingOnText = '';
+            
+            if (ourRepresentation === 'Seller' || ourRepresentation === 'seller') {
+              waitingOnText = 'pending buyer signatures';
+            } else if (ourRepresentation === 'Buyer' || ourRepresentation === 'buyer') {
+              waitingOnText = 'pending seller signatures';
+            } else {
+              waitingOnText = 'pending other signatures'; // fallback
+            }
+            
+            parts.push(signedInCategory + ' signed, ' + waitingOnText);
+          }
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           statusSummary = parts.join(' • ') || 'No documents';
           
@@ -639,6 +654,16 @@
             // Create unique ID for this document
             const docId = 'doc-' + index + '-' + docIndex;
             
+            let buttonHtml;
+            if (documentStatus === 'needs-signature') {
+              // Needs signature: Show both View and Sign buttons
+              buttonHtml = '<button class="btn-small btn-secondary" data-action="view" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(viewLink) + '" onclick="handleDocAction(this)">View</button>' +
+                          '<button class="btn-small ' + actionClass + '" data-action="' + actionText.toLowerCase() + '" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(primaryLink) + '" onclick="handleDocAction(this)">' + actionText + '</button>';
+            } else {
+              // Signed or Complete: Show only one View button
+              buttonHtml = '<button class="btn-small btn-secondary" data-action="view" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(viewLink) + '" onclick="handleDocAction(this)">View</button>';
+            }
+            
             return '<div class="document-item" id="' + docId + '">' +
               '<div class="doc-info">' +
                 '<h4>' + escapeHtml(doc.name || 'Unknown Document') + '</h4>' +
@@ -647,8 +672,7 @@
               '<div class="doc-controls">' +
                 '<span class="doc-status ' + statusClass + '">' + statusDisplay + '</span>' +
                 '<div class="doc-actions">' +
-                  '<button class="btn-small btn-secondary" data-action="view" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(viewLink) + '" onclick="handleDocAction(this)">View</button>' +
-                  '<button class="btn-small ' + actionClass + '" data-action="' + actionText.toLowerCase() + '" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(primaryLink) + '" onclick="handleDocAction(this)">' + actionText + '</button>' +
+                  buttonHtml +
                 '</div>' +
               '</div>' +
             '</div>';
@@ -701,7 +725,7 @@
         return;
       }
       
-      if (action === 'sign' || action === 'view') {
+      if (action === 'sign' || action === 'view' || action === 'download') {
         window.open(link, '_blank');
       }
     }
