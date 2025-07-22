@@ -783,7 +783,7 @@
         
         // Determine if category should be open by default (open if has pending docs)
         const hasSignatures = pendingInCategory > 0;
-        const categoryId = category.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        const categoryId = 'doc-category-' + category.toLowerCase().replace(/[^a-z0-9]/g, '-');
         const isExpanded = hasSignatures ? 'expanded' : '';
         const arrowRotated = hasSignatures ? 'rotated' : '';
         
