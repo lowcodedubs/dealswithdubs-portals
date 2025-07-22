@@ -35,8 +35,9 @@
     .doc-meta { font-size: 9px; color: #666; margin-bottom: 2px; line-height: 1; }
     .doc-controls { display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
     .doc-status { font-size: 8px; padding: 1px 4px; border-radius: 8px; font-weight: bold; text-transform: uppercase; line-height: 1; }
-    .status-signed { background: #d4edda; color: #155724; }
+    .status-signed { background: #fff3cd; color: #856404; }
     .status-pending { background: #f8d7da; color: #721c24; }
+    .status-complete { background: #d4edda; color: #155724; }
     .doc-actions { display: flex; gap: 3px; }
     .btn-small { padding: 2px 6px; border: none; border-radius: 3px; cursor: pointer; font-size: 9px; font-weight: bold; line-height: 1; }
     .btn-primary { background: #667eea; color: white; }
@@ -178,18 +179,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Ivelisse Hidalgo Lopez', 6, 4, 2)">
+    <button class="client-btn" onclick="openModal('Ivelisse Hidalgo Lopez', 6, 2, 0)">
       <div>
         <div class="client-name">Ivelisse Hidalgo Lopez</div>
-        <div class="client-docs">6 documents • 2 pending • 4 signed</div>
+        <div class="client-docs">6 documents • 2 signed • 4 complete</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Edwin Acevedo Molinary', 6, 4, 2)">
+    <button class="client-btn" onclick="openModal('Edwin Acevedo Molinary', 6, 2, 0)">
       <div>
         <div class="client-name">Edwin Acevedo Molinary</div>
-        <div class="client-docs">6 documents • 2 pending • 4 signed</div>
+        <div class="client-docs">6 documents • 2 signed • 4 complete</div>
       </div>
       <div>→</div>
     </button>
@@ -628,12 +629,60 @@
           return groups;
         }, {});
         
-        // Generate HTML for each category
-        const categoriesHTML = Object.keys(groupedDocs).map((category, index) => {
+        // Generate HTML for each category (Team Disclosures first)
+        const categoryOrder = ['Team Disclosures', 'Contract Documents', 'Seller Disclosures', 'Inspection Objection and Resolution', 'Inspection Reports and Tests', 'HOA', 'Title Document', 'Repairs and DDD', 'Closing Documents', 'Other Documents'];
+        
+        const sortedCategories = categoryOrder.filter(cat => groupedDocs[cat]).concat(
+          Object.keys(groupedDocs).filter(cat => !categoryOrder.includes(cat))
+        );
+        
+        const categoriesHTML = sortedCategories.map((category, index) => {
           const categoryDocs = groupedDocs[category];
-          // Fix: Use completionStatus instead of status
-          const pendingInCategory = categoryDocs.filter(doc => doc.completionStatus !== 'Complete').length;
-          const signedInCategory = categoryDocs.filter(doc => doc.completionStatus === 'Complete').length;
+          
+          // Fix: Check if OUR clients have completed their part of each document
+          const getDocumentStatus = (doc) => {
+            const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
+            const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
+            
+            // Determine if our clients have signed
+            let ourClientsComplete = false;
+            if (doc.ourClient1Name && !doc.ourClient2Name) {
+              ourClientsComplete = client1Complete;
+            } else if (!doc.ourClient1Name && doc.ourClient2Name) {
+              ourClientsComplete = client2Complete;  
+            } else if (doc.ourClient1Name && doc.ourClient2Name) {
+              ourClientsComplete = client1Complete && client2Complete;
+            } else {
+              // Fallback to overall completion status
+              ourClientsComplete = doc.completionStatus === 'Complete';
+            }
+            
+            // Determine overall document completion
+            const overallComplete = doc.completionStatus === 'Complete';
+            
+            if (!ourClientsComplete) {
+              return 'needs-signature'; // Clients need to sign
+            } else if (ourClientsComplete && !overallComplete) {
+              return 'signed'; // Clients signed, waiting for others
+            } else {
+              return 'complete'; // Everyone signed, document complete
+            }
+          };
+          
+          const statusCounts = {
+            'needs-signature': 0,
+            'signed': 0, 
+            'complete': 0
+          };
+          
+          categoryDocs.forEach(doc => {
+            const status = getDocumentStatus(doc);
+            statusCounts[status]++;
+          });
+          
+          const pendingInCategory = statusCounts['needs-signature'];
+          const signedInCategory = statusCounts['signed'];
+          const completeInCategory = statusCounts['complete'];
           const totalInCategory = categoryDocs.length;
           
           // Determine if category should be open by default (open if has pending docs)
@@ -644,24 +693,48 @@
           
           // Create status summary
           let statusSummary = '';
-          if (pendingInCategory > 0 && signedInCategory > 0) {
-            statusSummary = pendingInCategory + ' need signatures • ' + signedInCategory + ' signed';
-          } else if (pendingInCategory > 0) {
-            statusSummary = pendingInCategory + ' need signatures';
-          } else {
-            statusSummary = 'All signed (' + totalInCategory + ')';
-          }
+          const parts = [];
+          if (pendingInCategory > 0) parts.push(pendingInCategory + ' need signatures');
+          if (signedInCategory > 0) parts.push(signedInCategory + ' signed, waiting');
+          if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
+          statusSummary = parts.join(' • ') || 'No documents';
           
           const docsHTML = categoryDocs.map((doc, docIndex) => {
             // Fix: Use driveLink directly for viewing (most reliable)
             const viewLink = doc.driveLink || '#';
             
-            // Fix: Use displayLink for actions, but determine status correctly
+            // Get the 3-status system
+            const documentStatus = getDocumentStatus(doc);
+            
+            let statusDisplay, actionText, actionClass, statusClass;
+            
+            switch(documentStatus) {
+              case 'needs-signature':
+                statusDisplay = 'NEEDS SIGNATURE';
+                actionText = 'Sign';
+                actionClass = 'btn-primary';
+                statusClass = 'status-pending';
+                break;
+              case 'signed':
+                statusDisplay = 'SIGNED';
+                actionText = 'View';
+                actionClass = 'btn-secondary';
+                statusClass = 'status-signed';
+                break;
+              case 'complete':
+                statusDisplay = 'COMPLETE';
+                actionText = 'View';
+                actionClass = 'btn-secondary';  
+                statusClass = 'status-complete';
+                break;
+              default:
+                statusDisplay = 'UNKNOWN';
+                actionText = 'View';
+                actionClass = 'btn-secondary';
+                statusClass = 'status-pending';
+            }
+            
             const primaryLink = doc.displayLink || doc.driveLink || '#';
-            const isComplete = doc.completionStatus === 'Complete';
-            const actionText = isComplete ? 'View' : 'Sign';
-            const actionClass = isComplete ? 'btn-secondary' : 'btn-primary';
-            const statusText = isComplete ? 'signed' : 'pending';
             
             // Use document date fields properly
             const docDate = doc.updatedTime || doc.createdTime || 'Recent';
@@ -676,7 +749,7 @@
                 '<div class="doc-meta">' + formattedDate + '</div>' +
               '</div>' +
               '<div class="doc-controls">' +
-                '<span class="doc-status status-' + statusText + '">' + (isComplete ? 'Complete' : 'Pending') + '</span>' +
+                '<span class="doc-status ' + statusClass + '">' + statusDisplay + '</span>' +
                 '<div class="doc-actions">' +
                   '<button class="btn-small btn-secondary" data-action="view" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(viewLink) + '" onclick="handleDocAction(this)">View</button>' +
                   '<button class="btn-small ' + actionClass + '" data-action="' + actionText.toLowerCase() + '" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(primaryLink) + '" onclick="handleDocAction(this)">' + actionText + '</button>' +
