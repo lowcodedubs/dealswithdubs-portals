@@ -587,10 +587,11 @@
           const isExpanded = hasSignatures ? 'expanded' : '';
           const arrowRotated = hasSignatures ? 'rotated' : '';
           
-          // Create status summary with specific other party language
+          // Create status summary with specific order and other party language
           let statusSummary = '';
           const parts = [];
-          if (pendingInCategory > 0) parts.push(pendingInCategory + ' need signatures');
+          
+          if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           if (signedInCategory > 0) {
             // Determine who we're waiting on based on representation
             const sampleDoc = categoryDocs[0]; // Use first doc to determine representation
@@ -607,12 +608,20 @@
             
             parts.push(signedInCategory + ' signed, ' + waitingOnText);
           }
-          if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
+          if (pendingInCategory > 0) parts.push(pendingInCategory + ' need signatures');
+          
           statusSummary = parts.join(' • ') || 'No documents';
           
           const docsHTML = categoryDocs.map((doc, docIndex) => {
-            // Fix: Use driveLink directly for viewing (most reliable)
-            const viewLink = doc.driveLink || '#';
+            // Prioritize Google Drive links for viewing (more reliable for browser viewing)
+            let viewLink = '#';
+            if (doc.driveLink && doc.driveLink.includes('drive.google.com')) {
+              viewLink = doc.driveLink; // Google Drive link - will open in browser
+            } else if (doc.webContentLink && doc.webContentLink.includes('drive.google.com')) {
+              viewLink = doc.webContentLink; // Fallback to converted Google Drive link
+            } else if (doc.driveLink) {
+              viewLink = doc.driveLink; // Final fallback to any available link
+            }
             
             // Get the 3-status system
             const documentStatus = getDocumentStatus(doc);
