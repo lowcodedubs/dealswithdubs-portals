@@ -356,7 +356,7 @@
         if (name.includes('disclosure') && !name.includes('square footage')) return 'Team Disclosures';
         if (name.includes('square footage') || name.includes('seller disclosure')) return 'Seller Disclosures';
         if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
-        if (name.includes('amendment')) return 'Contract Documents';
+        if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
         if (name.includes('inspection') && (name.includes('objection') || name.includes('resolution'))) return 'Inspection Objection and Resolution';
         if (name.includes('inspection') || name.includes('report') || name.includes('test')) return 'Inspection Reports and Tests';
         if (name.includes('hoa') || name.includes('homeowner')) return 'HOA';
@@ -376,11 +376,10 @@
         return groups;
       }, {});
       
-      // Generate HTML for each category
+      // Generate HTML for each category using string concatenation
       const categoriesHTML = Object.keys(groupedDocs).map(category => {
         const categoryDocs = groupedDocs[category];
         const docsHTML = categoryDocs.map(doc => {
-          const escapedName = doc.name.replace(/'/g, "\'").replace(/"/g, '\"');
           const viewLink = doc.displayLink || doc.driveLink || '#';
           const actionLink = doc.status === 'pending' ? (doc.signingLink || doc.displayLink || '#') : (doc.displayLink || doc.driveLink || '#');
           const actionText = doc.status === 'pending' ? 'Sign' : 'Download';
@@ -394,8 +393,8 @@
             '<div class="doc-controls">' +
               '<span class="doc-status status-' + doc.status + '">' + doc.status + '</span>' +
               '<div class="doc-actions">' +
-                '<button class="btn-small btn-primary" onclick="handleDocAction('view', '' + escapedName + '', '' + viewLink + '')">View</button>' +
-                '<button class="btn-small ' + actionClass + '" onclick="handleDocAction('' + (doc.status === 'pending' ? 'sign' : 'download') + '', '' + escapedName + '', '' + actionLink + '')">' + actionText + '</button>' +
+                '<button class="btn-small btn-primary" onclick="handleDocAction(' + "'" + 'view' + "', '" + doc.name + "', '" + viewLink + "'" + ')">View</button>' +
+                '<button class="btn-small ' + actionClass + '" onclick="handleDocAction(' + "'" + actionText.toLowerCase() + "', '" + doc.name + "', '" + actionLink + "'" + ')">' + actionText + '</button>' +
               '</div>' +
             '</div>' +
           '</div>';
