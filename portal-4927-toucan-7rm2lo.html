@@ -685,20 +685,23 @@
           
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           if (signedInCategory > 0) {
-            // Determine who we're waiting on based on representation
-            const sampleDoc = categoryDocs[0]; // Use first doc to determine representation
-            const ourRepresentation = sampleDoc.originalDoc?.Our_Representation || 'Unknown';
+            // Determine who we're waiting on based on client role, not representation
+            const sampleDoc = categoryDocs[0];
+            const clientRole = sampleDoc.originalDoc?.ourClients?.[0]?.role || 
+                              categoryDocs[0]?.ourClients?.[0]?.role || 'unknown';
             let waitingOnText = '';
             
-            console.log('Checking representation for category summary:', ourRepresentation); // Debug log
+            console.log('Checking client role for category summary:', clientRole); // Debug log
             
-            if (ourRepresentation === 'Seller' || ourRepresentation === 'seller') {
+            // If our clients are sellers, when they sign we're waiting for buyers
+            // If our clients are buyers, when they sign we're waiting for sellers
+            if (clientRole === 'seller') {
               waitingOnText = 'pending buyer signatures';
-            } else if (ourRepresentation === 'Buyer' || ourRepresentation === 'buyer') {
+            } else if (clientRole === 'buyer') {
               waitingOnText = 'pending seller signatures';
             } else {
               waitingOnText = 'pending other signatures'; // fallback
-              console.log('Using fallback - representation was:', ourRepresentation); // Debug log
+              console.log('Using fallback - client role was:', clientRole); // Debug log
             }
             
             parts.push(signedInCategory + ' signed, ' + waitingOnText);
