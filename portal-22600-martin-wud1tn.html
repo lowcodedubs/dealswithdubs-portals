@@ -179,10 +179,10 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Gary DeJong', 3, 3, 0)">
+    <button class="client-btn" onclick="openModal('Gary DeJong', 4, 4, 0)">
       <div>
         <div class="client-name">Gary DeJong</div>
-        <div class="client-docs">3 documents • 3 signed, pending others</div>
+        <div class="client-docs">4 documents • 4 signed, pending buyers</div>
       </div>
       <div>→</div>
     </button>
@@ -318,62 +318,83 @@
   
   <script>
     const clientDocuments = {
-  "Gary DeJong": [
-    {
-      "docId": "https://www.ctmecontracts.com/files/PDFConvert/938a97ad-27b4-49ca-82b6-42cd68e66c55.pdf",
-      "name": "Sellers Property Disclosure",
-      "driveLink": "https://drive.google.com/file/d/1dJX8VIdwyNHUWzRw2dh63VqWG6CsSaFU/view?usp=drivesdk",
-      "signingLink": "https://www.ctmecontracts.com/files/aspredir/938a97ad-27b4-49ca-82b6-42cd68e66c55.asp",
-      "status": "pending",
-      "completionStatus": {
-        "error": "#ERROR!"
+  "Gary DeJong": {
+    "clientRole": "seller",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cb602055-266b-4738-b661-cb0e32297a16.pdf",
+        "name": "contract_amend_misc",
+        "driveLink": "https://drive.google.com/file/d/1VbI2sScJZ_Rc7IDMnCjSZvtc62j_o4Zv/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cb602055-266b-4738-b661-cb0e32297a16.asp",
+        "status": "pending",
+        "completionStatus": {
+          "error": "#ERROR!"
+        },
+        "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cb602055-266b-4738-b661-cb0e32297a16.asp",
+        "ourClient1Name": "Gary DeJong",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-23T03:20:57.000Z",
+        "updatedTime": "2025-07-23T18:01:30.000Z",
+        "originalIndex": 19
       },
-      "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\",\"Marisa Lindsay\",\"Debi Volk\",\"Susan Hughes\"]",
-      "displayLink": "https://www.ctmecontracts.com/files/aspredir/938a97ad-27b4-49ca-82b6-42cd68e66c55.asp",
-      "ourClient1Name": "Gary DeJong",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-11T21:01:53.000Z",
-      "updatedTime": "2025-07-11T21:02:11.000Z",
-      "originalIndex": 17
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/files/PDFConvert/2ad12c1c-9ff2-4f73-8f37-58d9155bafa3.pdf",
-      "name": "Square Footage Disclosure",
-      "driveLink": "https://drive.google.com/file/d/1Twt3o4FBtW2_fjPFGsbASAq23aOgeO_5/view?usp=drivesdk",
-      "signingLink": "https://www.ctmecontracts.com/files/aspredir/2ad12c1c-9ff2-4f73-8f37-58d9155bafa3.asp",
-      "status": "pending",
-      "completionStatus": {
-        "error": "#ERROR!"
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/938a97ad-27b4-49ca-82b6-42cd68e66c55.pdf",
+        "name": "Sellers Property Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1dJX8VIdwyNHUWzRw2dh63VqWG6CsSaFU/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/938a97ad-27b4-49ca-82b6-42cd68e66c55.asp",
+        "status": "pending",
+        "completionStatus": {
+          "error": "#ERROR!"
+        },
+        "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\",\"Marisa Lindsay\",\"Debi Volk\",\"Susan Hughes\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/938a97ad-27b4-49ca-82b6-42cd68e66c55.asp",
+        "ourClient1Name": "Gary DeJong",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-11T21:01:53.000Z",
+        "updatedTime": "2025-07-11T21:02:11.000Z",
+        "originalIndex": 17
       },
-      "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\",\"Marisa Lindsay\",\"Debi Volk\",\"Susan Hughes\"]",
-      "displayLink": "https://www.ctmecontracts.com/files/aspredir/2ad12c1c-9ff2-4f73-8f37-58d9155bafa3.asp",
-      "ourClient1Name": "Gary DeJong",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-11T21:01:52.000Z",
-      "updatedTime": "2025-07-11T21:02:10.000Z",
-      "originalIndex": 16
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/files/PDFConvert/da230ca5-21f9-430c-b22b-8bd4503af6b6.pdf",
-      "name": "Unknown",
-      "driveLink": "https://drive.google.com/file/d/1sUBW9iROq6yEqWCrjXG3A-2FX_rBVeC9/view?usp=drivesdk",
-      "signingLink": "https://www.ctmecontracts.com/files/aspredir/da230ca5-21f9-430c-b22b-8bd4503af6b6.asp",
-      "status": "pending",
-      "completionStatus": {
-        "error": "#ERROR!"
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2ad12c1c-9ff2-4f73-8f37-58d9155bafa3.pdf",
+        "name": "Square Footage Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1Twt3o4FBtW2_fjPFGsbASAq23aOgeO_5/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/2ad12c1c-9ff2-4f73-8f37-58d9155bafa3.asp",
+        "status": "pending",
+        "completionStatus": {
+          "error": "#ERROR!"
+        },
+        "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\",\"Marisa Lindsay\",\"Debi Volk\",\"Susan Hughes\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/2ad12c1c-9ff2-4f73-8f37-58d9155bafa3.asp",
+        "ourClient1Name": "Gary DeJong",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-11T21:01:52.000Z",
+        "updatedTime": "2025-07-11T21:02:10.000Z",
+        "originalIndex": 16
       },
-      "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\",\"Marisa Lindsay\",\"Debi Volk\",\"Susan Hughes\"]",
-      "displayLink": "https://www.ctmecontracts.com/files/aspredir/da230ca5-21f9-430c-b22b-8bd4503af6b6.asp",
-      "ourClient1Name": "Gary DeJong",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-11T19:01:18.000Z",
-      "updatedTime": "2025-07-11T21:02:10.000Z",
-      "originalIndex": 21
-    }
-  ]
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/da230ca5-21f9-430c-b22b-8bd4503af6b6.pdf",
+        "name": "Unknown",
+        "driveLink": "https://drive.google.com/file/d/1sUBW9iROq6yEqWCrjXG3A-2FX_rBVeC9/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/da230ca5-21f9-430c-b22b-8bd4503af6b6.asp",
+        "status": "pending",
+        "completionStatus": {
+          "error": "#ERROR!"
+        },
+        "signedParties": "[\"Craig Michael Nelson\",\"The Gary W Dejong Living Trust\",\"Marisa Lindsay\",\"Debi Volk\",\"Susan Hughes\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/da230ca5-21f9-430c-b22b-8bd4503af6b6.asp",
+        "ourClient1Name": "Gary DeJong",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-11T19:01:18.000Z",
+        "updatedTime": "2025-07-11T21:02:10.000Z",
+        "originalIndex": 22
+      }
+    ]
+  }
 };
     
     // Helper functions for safety
@@ -404,7 +425,8 @@
         
         title.textContent = clientName + "'s Documents";
         
-        const docs = clientDocuments[clientName] || [];
+        const clientData = clientDocuments[clientName];
+        const docs = clientData?.documents || [];
         
         if (docs.length === 0) {
           docList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No documents available</div>';
@@ -521,14 +543,15 @@
           
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           if (signedInCategory > 0) {
-            // Determine who we're waiting on based on representation
-            const sampleDoc = categoryDocs[0]; // Use first doc to determine representation
-            const ourRepresentation = sampleDoc.originalDoc?.Our_Representation || 'Unknown';
+            // FIXED: Get the client role from the client data, not the document
+            const clientRole = clientData?.clientRole || 'unknown';
             let waitingOnText = '';
             
-            if (ourRepresentation === 'Seller' || ourRepresentation === 'seller') {
+            console.log('Category client role detected:', clientRole); // Debug log
+            
+            if (clientRole === 'seller') {
               waitingOnText = 'pending buyer signatures';
-            } else if (ourRepresentation === 'Buyer' || ourRepresentation === 'buyer') {
+            } else if (clientRole === 'buyer') {
               waitingOnText = 'pending seller signatures';
             } else {
               waitingOnText = 'pending other signatures'; // fallback
