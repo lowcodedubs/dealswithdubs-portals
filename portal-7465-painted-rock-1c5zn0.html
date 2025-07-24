@@ -903,35 +903,35 @@
         const categoriesHTML = sortedCategories.map((category, index) => {
           const categoryDocs = groupedDocs[category];
           
-          // Fix: Check if OUR clients have completed their part of each document
-          const getDocumentStatus = (doc) => {
-            const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
-            const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
-            
-            // Determine if our clients have signed
-            let ourClientsComplete = false;
-            if (doc.ourClient1Name && !doc.ourClient2Name) {
-              ourClientsComplete = client1Complete;
-            } else if (!doc.ourClient1Name && doc.ourClient2Name) {
-              ourClientsComplete = client2Complete;  
-            } else if (doc.ourClient1Name && doc.ourClient2Name) {
-              ourClientsComplete = client1Complete && client2Complete;
-            } else {
-              // Fallback to overall completion status
-              ourClientsComplete = doc.completionStatus === 'Complete';
-            }
-            
-            // Determine overall document completion
-            const overallComplete = doc.completionStatus === 'Complete';
-            
-            if (!ourClientsComplete) {
-              return 'needs-signature'; // Clients need to sign
-            } else if (ourClientsComplete && !overallComplete) {
-              return 'signed'; // Clients signed, waiting for others
-            } else {
-              return 'complete'; // Everyone signed, document complete
-            }
-          };
+          // FIND this section in your JavaScript (around line 300-350) and REPLACE the getDocumentStatus function:
+
+// Inside the openModal function, replace the existing getDocumentStatus with:
+const getDocumentStatus = (doc) => {
+  const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
+  const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
+  
+ 
+  let currentClientComplete = false;
+  
+  if (clientName === doc.ourClient1Name) {
+    currentClientComplete = client1Complete;
+  } else if (clientName === doc.ourClient2Name) {
+    currentClientComplete = client2Complete;
+  } else {
+    // Fallback
+    currentClientComplete = doc.completionStatus === 'Complete';
+  }
+  
+  const overallComplete = doc.completionStatus === 'Complete';
+  
+  if (!currentClientComplete) {
+    return 'needs-signature'; // This client needs to sign
+  } else if (currentClientComplete && !overallComplete) {
+    return 'signed'; // This client signed, waiting for others
+  } else {
+    return 'complete'; // Everyone signed
+  }
+};
           
           const statusCounts = {
             'needs-signature': 0,
