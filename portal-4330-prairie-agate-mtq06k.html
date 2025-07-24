@@ -13,10 +13,10 @@
     .subtitle { font-size: 16px; color: #666; }
     
     /* Client List Styles */
-    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; text-align: left; }
     .client-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
-    .client-name { font-size: 18px; font-weight: bold; }
-    .client-docs { font-size: 14px; opacity: 0.9; }
+    .client-name { font-size: 18px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .client-docs { font-size: 14px; opacity: 0.9; margin-top: 4px; }
     
     /* Modal Styles */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
@@ -179,18 +179,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Phillip Jin Poundstone', 12, 0, 4)">
+    <button class="client-btn" onclick="openModal('Phillip Jin Poundstone', 12, 1, 2)">
       <div>
         <div class="client-name">Phillip Jin Poundstone</div>
-        <div class="client-docs">12 documents • 8 complete • 4 need signature</div>
+        <div class="client-docs">12 documents • 9 complete • 1 signed, pending other buyers • 2 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Jennifer Kimberly Poundstone', 12, 0, 4)">
+    <button class="client-btn" onclick="openModal('Jennifer Kimberly Poundstone', 12, 2, 1)">
       <div>
         <div class="client-name">Jennifer Kimberly Poundstone</div>
-        <div class="client-docs">12 documents • 8 complete • 4 need signature</div>
+        <div class="client-docs">12 documents • 9 complete • 2 signed, pending other buyers • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -327,8 +327,26 @@
   <script>
     const clientDocuments = {
   "Phillip Jin Poundstone": {
+    "clientName": "Phillip Jin Poundstone",
     "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cc024533-fb6b-4004-9992-50bacca899ef.pdf",
+        "name": "Inspection Resolution",
+        "driveLink": "https://drive.google.com/file/d/1Te4RKpVXPn8b1Bv8_f__a667qEEayP7l/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phillip Jin Poundstone\",\"Jennifer Kimberly Poundstone\",\"Werner Krutzler\",\"Neva J Krutzler\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
+        "ourClient1Name": "Phillip Jin Poundstone",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Jennifer Kimberly Poundstone",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-18T00:41:03.000Z",
+        "updatedTime": "2025-07-24T17:09:49.000Z",
+        "originalIndex": 11
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/b10e611b-2fc4-4603-b87b-49d3f46b43bc.pdf",
         "name": "Inspection Objection",
@@ -344,7 +362,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-16T16:01:45.000Z",
         "updatedTime": "2025-07-23T11:39:30.000Z",
-        "originalIndex": 14
+        "originalIndex": 15
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/211e36e5-3ca1-446a-948b-cfc81b4ab1dd.pdf",
@@ -361,7 +379,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-21T16:07:45.000Z",
         "updatedTime": "2025-07-23T04:01:17.000Z",
-        "originalIndex": 19,
+        "originalIndex": 20,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -379,7 +397,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-21T16:07:46.000Z",
         "updatedTime": "2025-07-21T21:21:32.000Z",
-        "originalIndex": 20,
+        "originalIndex": 22,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -397,25 +415,8 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-21T16:07:47.000Z",
         "updatedTime": "2025-07-21T21:21:31.000Z",
-        "originalIndex": 6,
+        "originalIndex": 7,
         "recordId": "recdD5FrJeCH3nPkk"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cc024533-fb6b-4004-9992-50bacca899ef.pdf",
-        "name": "Inspection Resolution",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "signedParties": "[\"Phillip Jin Poundstone\",\"Werner Krutzler\",\"Neva J Krutzler\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
-        "ourClient1Name": "Phillip Jin Poundstone",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Jennifer Kimberly Poundstone",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-18T00:41:03.000Z",
-        "updatedTime": "2025-07-18T14:29:05.000Z",
-        "originalIndex": 10
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/9dcdf6e1-a075-4242-a3d1-3f5a2011fab3.pdf",
@@ -449,7 +450,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-11T04:03:33.000Z",
         "updatedTime": "2025-07-11T18:46:59.000Z",
-        "originalIndex": 7,
+        "originalIndex": 8,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -467,7 +468,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-11T04:03:34.000Z",
         "updatedTime": "2025-07-11T18:46:58.000Z",
-        "originalIndex": 18,
+        "originalIndex": 19,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -485,7 +486,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-09T22:03:35.000Z",
         "updatedTime": "2025-07-11T11:58:28.000Z",
-        "originalIndex": 4,
+        "originalIndex": 5,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -503,7 +504,7 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-09T20:03:24.000Z",
         "updatedTime": "2025-07-10T23:38:39.000Z",
-        "originalIndex": 16,
+        "originalIndex": 17,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -521,7 +522,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-09T22:03:35.000Z",
         "updatedTime": "2025-07-10T23:38:06.000Z",
-        "originalIndex": 2,
+        "originalIndex": 3,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -539,14 +540,32 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-09T22:03:36.000Z",
         "updatedTime": "2025-07-10T23:38:04.000Z",
-        "originalIndex": 5,
+        "originalIndex": 6,
         "recordId": "recdD5FrJeCH3nPkk"
       }
     ]
   },
   "Jennifer Kimberly Poundstone": {
+    "clientName": "Jennifer Kimberly Poundstone",
     "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cc024533-fb6b-4004-9992-50bacca899ef.pdf",
+        "name": "Inspection Resolution",
+        "driveLink": "https://drive.google.com/file/d/1Te4RKpVXPn8b1Bv8_f__a667qEEayP7l/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phillip Jin Poundstone\",\"Jennifer Kimberly Poundstone\",\"Werner Krutzler\",\"Neva J Krutzler\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
+        "ourClient1Name": "Phillip Jin Poundstone",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Jennifer Kimberly Poundstone",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-18T00:41:03.000Z",
+        "updatedTime": "2025-07-24T17:09:49.000Z",
+        "originalIndex": 11
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/b10e611b-2fc4-4603-b87b-49d3f46b43bc.pdf",
         "name": "Inspection Objection",
@@ -562,7 +581,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-16T16:01:45.000Z",
         "updatedTime": "2025-07-23T11:39:30.000Z",
-        "originalIndex": 14
+        "originalIndex": 15
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/211e36e5-3ca1-446a-948b-cfc81b4ab1dd.pdf",
@@ -579,7 +598,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-21T16:07:45.000Z",
         "updatedTime": "2025-07-23T04:01:17.000Z",
-        "originalIndex": 19,
+        "originalIndex": 20,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -597,7 +616,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-21T16:07:46.000Z",
         "updatedTime": "2025-07-21T21:21:32.000Z",
-        "originalIndex": 20,
+        "originalIndex": 22,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -615,25 +634,8 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-21T16:07:47.000Z",
         "updatedTime": "2025-07-21T21:21:31.000Z",
-        "originalIndex": 6,
+        "originalIndex": 7,
         "recordId": "recdD5FrJeCH3nPkk"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cc024533-fb6b-4004-9992-50bacca899ef.pdf",
-        "name": "Inspection Resolution",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "signedParties": "[\"Phillip Jin Poundstone\",\"Werner Krutzler\",\"Neva J Krutzler\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cc024533-fb6b-4004-9992-50bacca899ef.asp",
-        "ourClient1Name": "Phillip Jin Poundstone",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Jennifer Kimberly Poundstone",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-18T00:41:03.000Z",
-        "updatedTime": "2025-07-18T14:29:05.000Z",
-        "originalIndex": 10
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/9dcdf6e1-a075-4242-a3d1-3f5a2011fab3.pdf",
@@ -667,7 +669,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-11T04:03:33.000Z",
         "updatedTime": "2025-07-11T18:46:59.000Z",
-        "originalIndex": 7,
+        "originalIndex": 8,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -685,7 +687,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-11T04:03:34.000Z",
         "updatedTime": "2025-07-11T18:46:58.000Z",
-        "originalIndex": 18,
+        "originalIndex": 19,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -703,7 +705,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-09T22:03:35.000Z",
         "updatedTime": "2025-07-11T11:58:28.000Z",
-        "originalIndex": 4,
+        "originalIndex": 5,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -721,7 +723,7 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-09T20:03:24.000Z",
         "updatedTime": "2025-07-10T23:38:39.000Z",
-        "originalIndex": 16,
+        "originalIndex": 17,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -739,7 +741,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-09T22:03:35.000Z",
         "updatedTime": "2025-07-10T23:38:06.000Z",
-        "originalIndex": 2,
+        "originalIndex": 3,
         "recordId": "recdD5FrJeCH3nPkk"
       },
       {
@@ -757,12 +759,58 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-09T22:03:36.000Z",
         "updatedTime": "2025-07-10T23:38:04.000Z",
-        "originalIndex": 5,
+        "originalIndex": 6,
         "recordId": "recdD5FrJeCH3nPkk"
       }
     ]
   }
 };
+    
+    // ADDED: Smart pending text function (JavaScript version)
+    function getSmartPendingText(doc, currentClientRole) {
+      // Check the status of both our client positions
+      const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
+      const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
+      
+      // Check if we have multiple clients on our side
+      const hasClient1 = doc.ourClient1Name && doc.ourClient1Name.trim();
+      const hasClient2 = doc.ourClient2Name && doc.ourClient2Name.trim();
+      const hasMultipleOurClients = hasClient1 && hasClient2;
+      
+      console.log('Smart pending check (modal):', {
+        doc: doc.name,
+        hasClient1, hasClient2, hasMultipleOurClients,
+        client1Complete, client2Complete,
+        currentClientRole
+      });
+      
+      // If we have multiple clients on our side, check if any still need to sign
+      if (hasMultipleOurClients) {
+        const ourSideStillPending = !client1Complete || !client2Complete;
+        
+        if (ourSideStillPending) {
+          // Someone on our side still needs to sign
+          console.log('Our side still pending, using same-side language');
+          if (currentClientRole === 'buyer') {
+            return 'pending other buyers';
+          } else if (currentClientRole === 'seller') {
+            return 'pending other sellers';
+          } else {
+            return 'pending other clients';
+          }
+        }
+      }
+      
+      // If we reach here, all our side clients have signed, so we're waiting on the other side
+      console.log('Our side complete, using other-side language');
+      if (currentClientRole === 'buyer') {
+        return 'pending sellers';
+      } else if (currentClientRole === 'seller') {
+        return 'pending buyers';
+      } else {
+        return 'pending others'; // fallback
+      }
+    }
     
     // Helper functions for safety
     function escapeHtml(text) {
@@ -781,6 +829,9 @@
     
     function openModal(clientName, total, signed, pending) {
       try {
+        // ADDED: Trim the client name to handle any whitespace issues
+        const trimmedClientName = clientName.toString().trim();
+        
         const modal = document.getElementById('documentModal');
         const title = document.getElementById('modalTitle');
         const docList = document.getElementById('documentList');
@@ -790,9 +841,9 @@
           return;
         }
         
-        title.textContent = clientName + "'s Documents";
+        title.textContent = trimmedClientName + "'s Documents";
         
-        const clientData = clientDocuments[clientName];
+        const clientData = clientDocuments[trimmedClientName] || clientDocuments[clientName]; // Fallback
         const docs = clientData?.documents || [];
         
         if (docs.length === 0) {
@@ -859,12 +910,10 @@
             
             // Determine if our clients have signed
             let ourClientsComplete = false;
-            if (doc.ourClient1Name && !doc.ourClient2Name) {
+            if (trimmedClientName === doc.ourClient1Name) {
               ourClientsComplete = client1Complete;
-            } else if (!doc.ourClient1Name && doc.ourClient2Name) {
-              ourClientsComplete = client2Complete;  
-            } else if (doc.ourClient1Name && doc.ourClient2Name) {
-              ourClientsComplete = client1Complete && client2Complete;
+            } else if (trimmedClientName === doc.ourClient2Name) {
+              ourClientsComplete = client2Complete;
             } else {
               // Fallback to overall completion status
               ourClientsComplete = doc.completionStatus === 'Complete';
@@ -904,24 +953,29 @@
           const isExpanded = hasSignatures ? 'expanded' : '';
           const arrowRotated = hasSignatures ? 'rotated' : '';
           
-          // Create status summary with specific order and other party language
+          // Create status summary with SMART pending logic
           let statusSummary = '';
           const parts = [];
           
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           if (signedInCategory > 0) {
-            // FIXED: Get the client role from the client data, not the document
-            const clientRole = clientData?.clientRole || 'unknown';
-            let waitingOnText = '';
+            // UPDATED: Use smart pending text that detects the actual situation
+            let waitingOnText = 'pending others'; // fallback
             
-            console.log('Category client role detected:', clientRole); // Debug log
-            
-            if (clientRole === 'seller') {
-              waitingOnText = 'pending buyer signatures';
-            } else if (clientRole === 'buyer') {
-              waitingOnText = 'pending seller signatures';
+            // For signed documents, check what we're actually waiting on
+            const signedDoc = categoryDocs.find(doc => getDocumentStatus(doc) === 'signed');
+            if (signedDoc) {
+              waitingOnText = getSmartPendingText(signedDoc, clientData?.clientRole);
             } else {
-              waitingOnText = 'pending other signatures'; // fallback
+              // Fallback to old logic if no signed docs found
+              const clientRole = clientData?.clientRole || 'unknown';
+              if (clientRole === 'seller') {
+                waitingOnText = 'pending buyers';
+              } else if (clientRole === 'buyer') {
+                waitingOnText = 'pending sellers';
+              } else {
+                waitingOnText = 'pending others';
+              }
             }
             
             parts.push(signedInCategory + ' signed, ' + waitingOnText);
