@@ -13,10 +13,10 @@
     .subtitle { font-size: 16px; color: #666; }
     
     /* Client List Styles */
-    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; text-align: left; }
     .client-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
-    .client-name { font-size: 18px; font-weight: bold; }
-    .client-docs { font-size: 14px; opacity: 0.9; }
+    .client-name { font-size: 18px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .client-docs { font-size: 14px; opacity: 0.9; margin-top: 4px; }
     
     /* Modal Styles */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
@@ -318,135 +318,178 @@
   
   <script>
     const clientDocuments = {
-  "Kathleen Prewett": [
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/8ff966f6-e579-4f1b-8b49-f6c67ea54d10.pdf",
-      "name": "HIR",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/8ff966f6-e579-4f1b-8b49-f6c67ea54d10.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/8ff966f6-e579-4f1b-8b49-f6c67ea54d10.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=8ff966f6-e579-4f1b-8b49-f6c67ea54d10&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=8ff966f6-e579-4f1b-8b49-f6c67ea54d10&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-22T16:20:58.000Z",
-      "updatedTime": "2025-07-22T17:01:32.000Z",
-      "originalIndex": 14
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/085fd71f-08dc-438a-84d9-b837151b8dde.pdf",
-      "name": "HOA_",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/085fd71f-08dc-438a-84d9-b837151b8dde.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/085fd71f-08dc-438a-84d9-b837151b8dde.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=085fd71f-08dc-438a-84d9-b837151b8dde&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=085fd71f-08dc-438a-84d9-b837151b8dde&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-22T16:20:59.000Z",
-      "updatedTime": "2025-07-22T17:01:31.000Z",
-      "originalIndex": 7
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d354ab0c-4dbb-4e41-9e26-81832301d176.pdf",
-      "name": "DDD_CONTROL_BOARD_INFORMATION",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/d354ab0c-4dbb-4e41-9e26-81832301d176.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/d354ab0c-4dbb-4e41-9e26-81832301d176.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=d354ab0c-4dbb-4e41-9e26-81832301d176&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=d354ab0c-4dbb-4e41-9e26-81832301d176&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-22T16:20:58.000Z",
-      "updatedTime": "2025-07-22T16:41:05.000Z",
-      "originalIndex": 3
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/91537651-b06b-4c24-8188-abff61a5ad86.pdf",
-      "name": "Colorado Real Estate Seller Advisory",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/91537651-b06b-4c24-8188-abff61a5ad86.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/91537651-b06b-4c24-8188-abff61a5ad86.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=91537651-b06b-4c24-8188-abff61a5ad86&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=91537651-b06b-4c24-8188-abff61a5ad86&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-16T23:01:14.000Z",
-      "updatedTime": "2025-07-16T23:01:27.000Z",
-      "originalIndex": 16
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/f89fcb0d-0736-40de-871b-8d4450f7e945.pdf",
-      "name": "EXP ABA",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/f89fcb0d-0736-40de-871b-8d4450f7e945.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/f89fcb0d-0736-40de-871b-8d4450f7e945.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=f89fcb0d-0736-40de-871b-8d4450f7e945&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=f89fcb0d-0736-40de-871b-8d4450f7e945&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-15T18:01:26.000Z",
-      "updatedTime": "2025-07-15T18:21:33.000Z",
-      "originalIndex": 8
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/44eb11b3-f9e8-49fc-b39e-64ef6a82647d.pdf",
-      "name": "Mikes ABA",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/44eb11b3-f9e8-49fc-b39e-64ef6a82647d.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/44eb11b3-f9e8-49fc-b39e-64ef6a82647d.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=44eb11b3-f9e8-49fc-b39e-64ef6a82647d&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=44eb11b3-f9e8-49fc-b39e-64ef6a82647d&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-15T18:01:28.000Z",
-      "updatedTime": "2025-07-15T18:21:32.000Z",
-      "originalIndex": 2
-    },
-    {
-      "docId": "https://www.ctmecontracts.com/api/eSignature/Print/202f38c3-72a7-410d-b627-266173508c59.pdf",
-      "name": "Dual Status Disclosure",
-      "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/202f38c3-72a7-410d-b627-266173508c59.pdf",
-      "webContentLink": "https://www.ctmecontracts.com/api/eSignature/Print/202f38c3-72a7-410d-b627-266173508c59.pdf",
-      "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=202f38c3-72a7-410d-b627-266173508c59&isCTMOne=false",
-      "status": "pending",
-      "completionStatus": "Complete",
-      "signedParties": "[\"Kathleen Ann Prewett\"]",
-      "recordId": "rec52htD2vV6Gg5yJ",
-      "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=202f38c3-72a7-410d-b627-266173508c59&isCTMOne=false",
-      "ourClient1Name": "Kathleen Prewett",
-      "ourClient1Status": "Complete",
-      "ourClient2Status": "N/A",
-      "createdTime": "2025-07-15T18:01:27.000Z",
-      "updatedTime": "2025-07-15T18:21:32.000Z",
-      "originalIndex": 5
-    }
-  ]
+  "Kathleen Prewett": {
+    "clientName": "Kathleen Prewett",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/8ff966f6-e579-4f1b-8b49-f6c67ea54d10.pdf",
+        "name": "HIR",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/8ff966f6-e579-4f1b-8b49-f6c67ea54d10.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=8ff966f6-e579-4f1b-8b49-f6c67ea54d10&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=8ff966f6-e579-4f1b-8b49-f6c67ea54d10&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-22T16:20:58.000Z",
+        "updatedTime": "2025-07-22T17:01:32.000Z",
+        "originalIndex": 15,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/085fd71f-08dc-438a-84d9-b837151b8dde.pdf",
+        "name": "HOA_",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/085fd71f-08dc-438a-84d9-b837151b8dde.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=085fd71f-08dc-438a-84d9-b837151b8dde&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=085fd71f-08dc-438a-84d9-b837151b8dde&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-22T16:20:59.000Z",
+        "updatedTime": "2025-07-22T17:01:31.000Z",
+        "originalIndex": 8,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d354ab0c-4dbb-4e41-9e26-81832301d176.pdf",
+        "name": "DDD_CONTROL_BOARD_INFORMATION",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/d354ab0c-4dbb-4e41-9e26-81832301d176.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=d354ab0c-4dbb-4e41-9e26-81832301d176&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=d354ab0c-4dbb-4e41-9e26-81832301d176&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-22T16:20:58.000Z",
+        "updatedTime": "2025-07-22T16:41:05.000Z",
+        "originalIndex": 4,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/91537651-b06b-4c24-8188-abff61a5ad86.pdf",
+        "name": "Colorado Real Estate Seller Advisory",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/91537651-b06b-4c24-8188-abff61a5ad86.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=91537651-b06b-4c24-8188-abff61a5ad86&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=91537651-b06b-4c24-8188-abff61a5ad86&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-16T23:01:14.000Z",
+        "updatedTime": "2025-07-16T23:01:27.000Z",
+        "originalIndex": 17,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/f89fcb0d-0736-40de-871b-8d4450f7e945.pdf",
+        "name": "EXP ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/f89fcb0d-0736-40de-871b-8d4450f7e945.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=f89fcb0d-0736-40de-871b-8d4450f7e945&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=f89fcb0d-0736-40de-871b-8d4450f7e945&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-15T18:01:26.000Z",
+        "updatedTime": "2025-07-15T18:21:33.000Z",
+        "originalIndex": 9,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/44eb11b3-f9e8-49fc-b39e-64ef6a82647d.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/44eb11b3-f9e8-49fc-b39e-64ef6a82647d.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=44eb11b3-f9e8-49fc-b39e-64ef6a82647d&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"KATHLEEN ANN PREWETT\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=44eb11b3-f9e8-49fc-b39e-64ef6a82647d&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-15T18:01:28.000Z",
+        "updatedTime": "2025-07-15T18:21:32.000Z",
+        "originalIndex": 3,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/202f38c3-72a7-410d-b627-266173508c59.pdf",
+        "name": "Dual Status Disclosure",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/202f38c3-72a7-410d-b627-266173508c59.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=202f38c3-72a7-410d-b627-266173508c59&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Kathleen Ann Prewett\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=202f38c3-72a7-410d-b627-266173508c59&isCTMOne=false",
+        "ourClient1Name": "Kathleen Prewett",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-07-15T18:01:27.000Z",
+        "updatedTime": "2025-07-15T18:21:32.000Z",
+        "originalIndex": 6,
+        "recordId": "rec52htD2vV6Gg5yJ"
+      }
+    ]
+  }
 };
+    
+    // ADDED: Smart pending text function (JavaScript version)
+    function getSmartPendingText(doc, currentClientRole) {
+      // Check the status of both our client positions
+      const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
+      const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
+      
+      // Check if we have multiple clients on our side
+      const hasClient1 = doc.ourClient1Name && doc.ourClient1Name.trim();
+      const hasClient2 = doc.ourClient2Name && doc.ourClient2Name.trim();
+      const hasMultipleOurClients = hasClient1 && hasClient2;
+      
+      console.log('Smart pending check (modal):', {
+        doc: doc.name,
+        hasClient1, hasClient2, hasMultipleOurClients,
+        client1Complete, client2Complete,
+        currentClientRole
+      });
+      
+      // If we have multiple clients on our side, check if any still need to sign
+      if (hasMultipleOurClients) {
+        const ourSideStillPending = !client1Complete || !client2Complete;
+        
+        if (ourSideStillPending) {
+          // Someone on our side still needs to sign
+          console.log('Our side still pending, using same-side language');
+          if (currentClientRole === 'buyer') {
+            return 'pending other buyers';
+          } else if (currentClientRole === 'seller') {
+            return 'pending other sellers';
+          } else {
+            return 'pending other clients';
+          }
+        }
+      }
+      
+      // If we reach here, all our side clients have signed, so we're waiting on the other side
+      console.log('Our side complete, using other-side language');
+      if (currentClientRole === 'buyer') {
+        return 'pending sellers';
+      } else if (currentClientRole === 'seller') {
+        return 'pending buyers';
+      } else {
+        return 'pending others'; // fallback
+      }
+    }
     
     // Helper functions for safety
     function escapeHtml(text) {
@@ -465,6 +508,9 @@
     
     function openModal(clientName, total, signed, pending) {
       try {
+        // ADDED: Trim the client name to handle any whitespace issues
+        const trimmedClientName = clientName.toString().trim();
+        
         const modal = document.getElementById('documentModal');
         const title = document.getElementById('modalTitle');
         const docList = document.getElementById('documentList');
@@ -474,9 +520,10 @@
           return;
         }
         
-        title.textContent = clientName + "'s Documents";
+        title.textContent = trimmedClientName + "'s Documents";
         
-        const docs = clientDocuments[clientName] || [];
+        const clientData = clientDocuments[trimmedClientName] || clientDocuments[clientName]; // Fallback
+        const docs = clientData?.documents || [];
         
         if (docs.length === 0) {
           docList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No documents available</div>';
@@ -542,12 +589,10 @@
             
             // Determine if our clients have signed
             let ourClientsComplete = false;
-            if (doc.ourClient1Name && !doc.ourClient2Name) {
+            if (trimmedClientName === doc.ourClient1Name) {
               ourClientsComplete = client1Complete;
-            } else if (!doc.ourClient1Name && doc.ourClient2Name) {
-              ourClientsComplete = client2Complete;  
-            } else if (doc.ourClient1Name && doc.ourClient2Name) {
-              ourClientsComplete = client1Complete && client2Complete;
+            } else if (trimmedClientName === doc.ourClient2Name) {
+              ourClientsComplete = client2Complete;
             } else {
               // Fallback to overall completion status
               ourClientsComplete = doc.completionStatus === 'Complete';
@@ -587,23 +632,29 @@
           const isExpanded = hasSignatures ? 'expanded' : '';
           const arrowRotated = hasSignatures ? 'rotated' : '';
           
-          // Create status summary with specific order and other party language
+          // Create status summary with SMART pending logic
           let statusSummary = '';
           const parts = [];
           
           if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
           if (signedInCategory > 0) {
-            // Determine who we're waiting on based on representation
-            const sampleDoc = categoryDocs[0]; // Use first doc to determine representation
-            const ourRepresentation = sampleDoc.originalDoc?.Our_Representation || 'Unknown';
-            let waitingOnText = '';
+            // UPDATED: Use smart pending text that detects the actual situation
+            let waitingOnText = 'pending others'; // fallback
             
-            if (ourRepresentation === 'Seller' || ourRepresentation === 'seller') {
-              waitingOnText = 'pending buyer signatures';
-            } else if (ourRepresentation === 'Buyer' || ourRepresentation === 'buyer') {
-              waitingOnText = 'pending seller signatures';
+            // For signed documents, check what we're actually waiting on
+            const signedDoc = categoryDocs.find(doc => getDocumentStatus(doc) === 'signed');
+            if (signedDoc) {
+              waitingOnText = getSmartPendingText(signedDoc, clientData?.clientRole);
             } else {
-              waitingOnText = 'pending other signatures'; // fallback
+              // Fallback to old logic if no signed docs found
+              const clientRole = clientData?.clientRole || 'unknown';
+              if (clientRole === 'seller') {
+                waitingOnText = 'pending buyers';
+              } else if (clientRole === 'buyer') {
+                waitingOnText = 'pending sellers';
+              } else {
+                waitingOnText = 'pending others';
+              }
             }
             
             parts.push(signedInCategory + ' signed, ' + waitingOnText);
@@ -613,15 +664,8 @@
           statusSummary = parts.join(' • ') || 'No documents';
           
           const docsHTML = categoryDocs.map((doc, docIndex) => {
-            // Prioritize Google Drive links for viewing (more reliable for browser viewing)
-            let viewLink = '#';
-            if (doc.driveLink && doc.driveLink.includes('drive.google.com')) {
-              viewLink = doc.driveLink; // Google Drive link - will open in browser
-            } else if (doc.webContentLink && doc.webContentLink.includes('drive.google.com')) {
-              viewLink = doc.webContentLink; // Fallback to converted Google Drive link
-            } else if (doc.driveLink) {
-              viewLink = doc.driveLink; // Final fallback to any available link
-            }
+            // Use driveLink only (no more webContentLink since we removed conversion)
+            const viewLink = doc.driveLink || '#';
             
             // Get the 3-status system
             const documentStatus = getDocumentStatus(doc);
