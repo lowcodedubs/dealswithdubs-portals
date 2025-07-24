@@ -13,10 +13,10 @@
     .subtitle { font-size: 16px; color: #666; }
     
     /* Client List Styles */
-    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; text-align: left; }
     .client-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
-    .client-name { font-size: 18px; font-weight: bold; }
-    .client-docs { font-size: 14px; opacity: 0.9; }
+    .client-name { font-size: 18px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .client-docs { font-size: 14px; opacity: 0.9; margin-top: 4px; }
     
     /* Modal Styles */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
@@ -335,6 +335,7 @@
   <script>
     const clientDocuments = {
   "Kyle Allen Mohr": {
+    "clientName": "Kyle Allen Mohr",
     "clientRole": "buyer",
     "documents": [
       {
@@ -572,6 +573,7 @@
     ]
   },
   "Elena Petrova Mohr": {
+    "clientName": "Elena Petrova Mohr",
     "clientRole": "buyer",
     "documents": [
       {
@@ -775,6 +777,7 @@
     ]
   },
   "Elena": {
+    "clientName": "Elena",
     "clientRole": "buyer",
     "documents": [
       {
@@ -878,6 +881,9 @@
     
     function openModal(clientName, total, signed, pending) {
       try {
+        // ADDED: Trim the client name to handle any whitespace issues
+        const trimmedClientName = clientName.toString().trim();
+        
         const modal = document.getElementById('documentModal');
         const title = document.getElementById('modalTitle');
         const docList = document.getElementById('documentList');
@@ -887,9 +893,9 @@
           return;
         }
         
-        title.textContent = clientName + "'s Documents";
+        title.textContent = trimmedClientName + "'s Documents";
         
-        const clientData = clientDocuments[clientName];
+        const clientData = clientDocuments[trimmedClientName] || clientDocuments[clientName]; // Fallback
         const docs = clientData?.documents || [];
         
         if (docs.length === 0) {
@@ -956,9 +962,9 @@
             
             // Determine if our clients have signed
             let ourClientsComplete = false;
-            if (clientName === doc.ourClient1Name) {
+            if (trimmedClientName === doc.ourClient1Name) {
               ourClientsComplete = client1Complete;
-            } else if (clientName === doc.ourClient2Name) {
+            } else if (trimmedClientName === doc.ourClient2Name) {
               ourClientsComplete = client2Complete;
             } else {
               // Fallback to overall completion status
