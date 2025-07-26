@@ -244,9 +244,9 @@
       </div>
       
       <div class="faq-category">
-        <div class="faq-header" onclick="toggleFAQ('contract-documents')">
-          <span>Contract Documents</span>
-          <span class="faq-arrow" id="contract-documents-arrow">▼</span>
+        <div class="faq-header" onclick="toggleFAQ('contract-documents')" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white;" onmouseover="this.style.background='linear-gradient(135deg, #e74c3c 0%, #d73527 100%)'" onmouseout="this.style.background='linear-gradient(135deg, #dc3545 0%, #c82333 100%)'">
+          <span>Contract Documents <span style="font-size: 10px; margin-left: 8px;">***DANGER ZONE***</span></span>
+          <span class="faq-arrow" id="contract-documents-arrow" style="color: white;">▼</span>
         </div>
         <div class="faq-content" id="contract-documents-content">
           <p><strong>What are these?</strong> The Purchase Contract is the main legal agreement between buyers and sellers. Amendments are changes or additions to the original contract terms that both parties agree to during the transaction.</p>
@@ -268,9 +268,9 @@
       </div>
       
       <div class="faq-category">
-        <div class="faq-header" onclick="toggleFAQ('inspection-objection')">
-          <span>Inspection Objection and Resolution</span>
-          <span class="faq-arrow" id="inspection-objection-arrow">▼</span>
+        <div class="faq-header" onclick="toggleFAQ('inspection-objection')" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white;" onmouseover="this.style.background='linear-gradient(135deg, #e74c3c 0%, #d73527 100%)'" onmouseout="this.style.background='linear-gradient(135deg, #dc3545 0%, #c82333 100%)'">
+          <span>Inspection Objection and Resolution <span style="font-size: 10px; margin-left: 8px;">***DANGER ZONE***</span></span>
+          <span class="faq-arrow" id="inspection-objection-arrow" style="color: white;">▼</span>
         </div>
         <div class="faq-content" id="inspection-objection-content">
           <p><strong>What are these?</strong> The Inspection Objection is a buyer's opportunity to request repairs after they have done their home inspection. The Resolution is what the seller responds with and what repairs they agree to. Both parties must come to an agreement and sign the IR.</p>
@@ -751,6 +751,8 @@
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
+          if (name.includes('closing instructions')) return 'Seller Disclosures';
+          if (name.includes('closing instructions')) return 'Seller Disclosures';
           
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
