@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Portal - 4304 Gunbarrel Drive</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+    .container { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+    .address { font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px; }
+    .subtitle { font-size: 16px; color: #666; }
+    
+    /* Client List Styles */
+    .client-btn { width: 100%; padding: 20px; margin: 10px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; text-align: left; }
+    .client-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
+    .client-name { font-size: 18px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .client-docs { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+    
+    /* Modal Styles */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    
+    .modal-content { background: white; border-radius: 20px; padding: 30px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; transform: translateY(-50px); transition: all 0.3s ease; }
+    .modal-overlay.active .modal-content { transform: translateY(0); }
+    
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0; }
+    .modal-title { font-size: 24px; font-weight: bold; color: #333; }
+    .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #999; }
+    .close-btn:hover { color: #333; }
+    
+    .document-item { background: #f8f9fa; border-radius: 4px; padding: 4px 6px; margin: 2px 0; border-left: 3px solid #667eea; }
+    .doc-info h4 { color: #333; margin-bottom: 0; font-size: 12px; font-weight: 600; line-height: 1.1; }
+    .doc-meta { font-size: 9px; color: #666; margin-bottom: 2px; line-height: 1; }
+    .doc-controls { display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
+    .doc-status { font-size: 8px; padding: 1px 4px; border-radius: 8px; font-weight: bold; text-transform: uppercase; line-height: 1; }
+    .status-signed { background: #fff3cd; color: #856404; }
+    .status-pending { background: #f8d7da; color: #721c24; }
+    .status-complete { background: #d4edda; color: #155724; }
+    .doc-actions { display: flex; gap: 3px; }
+    .btn-small { padding: 2px 6px; border: none; border-radius: 3px; cursor: pointer; font-size: 9px; font-weight: bold; line-height: 1; }
+    .btn-primary { background: #667eea; color: white; }
+    .btn-secondary { background: #e2e8f0; color: #4a5568; }
+    
+    .modal-footer { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #f0f0f0; color: #666; font-size: 14px; }
+    
+    /* Document Category Styles */
+    .doc-category { margin-bottom: 25px; }
+    .doc-category-header { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      padding: 12px 20px; 
+      border-radius: 10px; 
+      margin-bottom: 15px; 
+      font-weight: 600; 
+      font-size: 16px; 
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+    }
+    
+    .collapsible-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+    
+    .collapsible-header:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .category-info {
+      flex: 1;
+    }
+    
+    .category-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .category-summary {
+      font-size: 12px;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    
+    .category-arrow {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    
+    .category-arrow.rotated {
+      transform: rotate(180deg);
+    }
+    
+    .doc-category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 0;
+    }
+    
+    .doc-category-content.expanded {
+      max-height: 1000px;
+      margin-bottom: 15px;
+    }
+    
+    /* FAQ Styles */
+    .faq-container { max-width: 100%; margin-top: 30px; }
+    .faq-section-title { 
+      text-align: center; 
+      color: #333; 
+      margin-bottom: 15px; 
+      font-size: 20px; 
+      font-weight: 600;
+    }
+    .faq-category { 
+      border: 1px solid #e2e8f0; 
+      border-radius: 6px; 
+      margin-bottom: 4px; 
+      overflow: hidden; 
+    }
+    .faq-header { 
+      background: #f8f9fa; 
+      padding: 10px 14px; 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      font-weight: 500; 
+      color: #333; 
+      transition: background 0.2s ease; 
+      font-size: 13px; 
+    }
+    .faq-header:hover { background: #e9ecef; }
+    .faq-arrow { 
+      transition: transform 0.2s ease; 
+      font-size: 10px; 
+      color: #667eea;
+    }
+    .faq-arrow.rotated { transform: rotate(180deg); }
+    .faq-content { 
+      padding: 0 14px; 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: all 0.2s ease; 
+      background: white; 
+    }
+    .faq-content.expanded { 
+      padding: 12px 14px; 
+      max-height: 200px; 
+    }
+    .faq-content p { 
+      font-size: 12px; 
+      color: #666; 
+      margin: 0 0 8px 0; 
+      line-height: 1.4;
+    }
+    .faq-content p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="address">4304 Gunbarrel Drive</div>
+      <div class="subtitle">Document Portal</div>
+    </div>
+    
+    <div style="font-size: 18px; text-align: center; margin-bottom: 20px;">
+      Please select your name to access your documents:
+    </div>
+    
+    
+    <button class="client-btn" onclick="openModal('Brayden Hendrix', 4, 0, 0)">
+      <div>
+        <div class="client-name">Brayden Hendrix</div>
+        <div class="client-docs">4 documents • 4 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Phoebe Vu', 6, 0, 1)">
+      <div>
+        <div class="client-name">Phoebe Vu</div>
+        <div class="client-docs">6 documents • 5 complete • 1 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    
+    <!-- Contact Information -->
+    <div style="background: #f8f9fa; border: 2px solid #667eea; border-radius: 12px; padding: 15px; margin: 30px 0 20px 0; text-align: center;">
+      <div style="font-size: 14px; color: #495057; font-weight: 500;">💬 Questions about the documents? Reach out in the group text or check out the FAQs below!</div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="faq-container">
+      <h3 class="faq-section-title">Document Types & Information</h3>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('team-disclosures')">
+          <span>Team Disclosures</span>
+          <span class="faq-arrow" id="team-disclosures-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="team-disclosures-content">
+          <p><strong>What are these?</strong> These are disclosures from your real estate team explaining their role, compensation, and any potential conflicts of interest.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges that you've received and reviewed these important disclosures about your team's representation.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('contract-documents')">
+          <span>Contract Documents</span>
+          <span class="faq-arrow" id="contract-documents-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="contract-documents-content">
+          <p><strong>What are these?</strong> The Purchase Contract is the main legal agreement between you and the buyer. Amendments are changes or additions to the original contract terms that both parties agree to during the transaction.</p>
+          <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the contract terms and any modifications outlined in amendments.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('seller-disclosures')">
+          <span>Seller Disclosures</span>
+          <span class="faq-arrow" id="seller-disclosures-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="seller-disclosures-content">
+          <p><strong>What are these?</strong> Legal disclosures completed by the seller about the property's condition, square footage, and any known issues or defects.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges that you've received and reviewed the disclosure information.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('inspection-objection')">
+          <span>Inspection Objection and Resolution</span>
+          <span class="faq-arrow" id="inspection-objection-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="inspection-objection-content">
+          <p><strong>What are these?</strong> The Inspection Objection is a buyer's opportunity to request repairs after they have done their home inspection. The Resolution is what the seller responds with and what repairs they agree to. Both parties must come to an agreement and sign the IR.</p>
+          <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the specific terms, changes, or resolutions outlined in these documents.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('inspection-reports')">
+          <span>Inspection Reports and Tests</span>
+          <span class="faq-arrow" id="inspection-reports-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="inspection-reports-content">
+          <p><strong>What are these?</strong> Professional inspection reports and test results conducted on your property, including general home inspection, radon, septic, well water, or other specialized inspections.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of the inspection findings.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('hoa')">
+          <span>HOA</span>
+          <span class="faq-arrow" id="hoa-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="hoa-content">
+          <p><strong>What are these?</strong> Homeowners Association documents including bylaws, covenants, financial statements, and any pending assessments.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of HOA documents that must be provided to the buyer.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('title-document')">
+          <span>Title Document</span>
+          <span class="faq-arrow" id="title-document-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="title-document-content">
+          <p><strong>What are these?</strong> Title commitment and related documents showing ownership history, liens, and any title issues that need resolution.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of title conditions affecting your property.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('repairs-ddd')">
+          <span>Repairs and DDD</span>
+          <span class="faq-arrow" id="repairs-ddd-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="repairs-ddd-content">
+          <p><strong>What are these?</strong> The repair receipts will show the work completed from the Inspection Resolution. Due Diligence Documents can range from previous repairs to the property, utility bills, or warranties and other paperwork.</p>
+          <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt of repair documentation.</p>
+        </div>
+      </div>
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('closing-documents')">
+          <span>Closing Documents</span>
+          <span class="faq-arrow" id="closing-documents-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="closing-documents-content">
+          <p><strong>What are these?</strong> Final documents needed to complete the sale, including settlement statements and deed transfer paperwork.</p>
+          <p><strong>Why am I signing these?</strong> These documents won't be signed until your actual closing appointment, where your signature completes the legal transfer of your property.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="documentModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Client Documents</div>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      
+      <div id="documentList" style="margin-top: 20px;">
+        <!-- Documents will be populated here -->
+      </div>
+      
+      <div class="modal-footer">
+        Questions about these documents? Contact your agent
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const clientDocuments = {
+  "Brayden Hendrix": {
+    "clientName": "Brayden Hendrix",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
+        "name": "EXP ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"PHOEBE VU\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-25T21:20:51.000Z",
+        "updatedTime": "2025-07-26T12:29:30.000Z",
+        "originalIndex": 5,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "name": "Dual Status Disclosure",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phoebe Vu\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:52.000Z",
+        "updatedTime": "2025-07-26T12:29:29.000Z",
+        "originalIndex": 0,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "name": "Colorado Real Estate Seller Advisory",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Brayden Hendrix\",\"Phoebe Vu\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:53.000Z",
+        "updatedTime": "2025-07-26T12:29:29.000Z",
+        "originalIndex": 4,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phoebe Vu\",\"Brayden Hendrix\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:52.000Z",
+        "updatedTime": "2025-07-26T12:29:28.000Z",
+        "originalIndex": 3,
+        "recordId": "recz6I5pLgfdbAoDp"
+      }
+    ]
+  },
+  "Phoebe Vu": {
+    "clientName": "Phoebe Vu",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
+        "name": "EXP ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"PHOEBE VU\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-25T21:20:51.000Z",
+        "updatedTime": "2025-07-26T12:29:30.000Z",
+        "originalIndex": 5,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "name": "Dual Status Disclosure",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phoebe Vu\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:52.000Z",
+        "updatedTime": "2025-07-26T12:29:29.000Z",
+        "originalIndex": 0,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "name": "Colorado Real Estate Seller Advisory",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Brayden Hendrix\",\"Phoebe Vu\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:53.000Z",
+        "updatedTime": "2025-07-26T12:29:29.000Z",
+        "originalIndex": 4,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phoebe Vu\",\"Brayden Hendrix\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:52.000Z",
+        "updatedTime": "2025-07-26T12:29:28.000Z",
+        "originalIndex": 3,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/044d9349-5fdb-4eb9-b027-71d5e036c22d.pdf",
+        "name": "DEFINITIONS OF WORKING RELATIONSHIPS __",
+        "driveLink": "https://drive.google.com/file/d/1UK5XLsWD6q6gBE4wQ02YPMCWHbt-q_0f/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/044d9349-5fdb-4eb9-b027-71d5e036c22d.asp",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Brayden Hendrix\",\"Phoebe Vu\",\"Marisa Lindsay\",\"Cory Williams\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/044d9349-5fdb-4eb9-b027-71d5e036c22d.asp",
+        "ourClient1Status": "N/A",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-25T21:29:21.000Z",
+        "updatedTime": "2025-07-26T02:00:39.000Z",
+        "originalIndex": 1
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6.pdf",
+        "name": "Closing Instructions",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"OGBroker Limited\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6&isCTMOne=false",
+        "ourClient1Status": "N/A",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-25T22:00:35.000Z",
+        "updatedTime": "2025-07-25T22:00:45.000Z",
+        "originalIndex": 6
+      }
+    ]
+  }
+};
+    
+    // ADDED: Smart pending text function (JavaScript version)
+    function getSmartPendingText(doc, currentClientRole) {
+      // Check the status of both our client positions
+      const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
+      const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
+      
+      // Check if we have multiple clients on our side
+      const hasClient1 = doc.ourClient1Name && doc.ourClient1Name.trim();
+      const hasClient2 = doc.ourClient2Name && doc.ourClient2Name.trim();
+      const hasMultipleOurClients = hasClient1 && hasClient2;
+      
+      console.log('Smart pending check (modal):', {
+        doc: doc.name,
+        hasClient1, hasClient2, hasMultipleOurClients,
+        client1Complete, client2Complete,
+        currentClientRole
+      });
+      
+      // If we have multiple clients on our side, check if any still need to sign
+      if (hasMultipleOurClients) {
+        const ourSideStillPending = !client1Complete || !client2Complete;
+        
+        if (ourSideStillPending) {
+          // Someone on our side still needs to sign
+          console.log('Our side still pending, using same-side language');
+          if (currentClientRole === 'buyer') {
+            return 'pending other buyers';
+          } else if (currentClientRole === 'seller') {
+            return 'pending other sellers';
+          } else {
+            return 'pending other clients';
+          }
+        }
+      }
+      
+      // If we reach here, all our side clients have signed, so we're waiting on the other side
+      console.log('Our side complete, using other-side language');
+      if (currentClientRole === 'buyer') {
+        return 'pending sellers';
+      } else if (currentClientRole === 'seller') {
+        return 'pending buyers';
+      } else {
+        return 'pending others'; // fallback
+      }
+    }
+    
+    // Helper functions for safety
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text.toString();
+      return div.innerHTML;
+    }
+    
+    function createSafeId(text, prefix = '') {
+      return prefix + text.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, '-')
+        .substring(0, 50);
+    }
+    
+    function openModal(clientName, total, signed, pending) {
+      try {
+        // ADDED: Trim the client name to handle any whitespace issues
+        const trimmedClientName = clientName.toString().trim();
+        
+        const modal = document.getElementById('documentModal');
+        const title = document.getElementById('modalTitle');
+        const docList = document.getElementById('documentList');
+        
+        if (!modal || !title || !docList) {
+          console.error('Modal elements not found');
+          return;
+        }
+        
+        title.textContent = trimmedClientName + "'s Documents";
+        
+        const clientData = clientDocuments[trimmedClientName] || clientDocuments[clientName]; // Fallback
+        const docs = clientData?.documents || [];
+        
+        if (docs.length === 0) {
+          docList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No documents available</div>';
+          modal.classList.add('active');
+          return;
+        }
+        
+        // Group documents by basic categories based on document name
+        const categorizeDocument = (docName) => {
+          const name = docName.toLowerCase();
+          
+          // Team Disclosures - specific document types (fixed patterns)
+          if (name.includes('real estate') && name.includes('advisory')) return 'Team Disclosures';
+          if (name.includes('seller advisory') || name.includes('buyer advisory')) return 'Team Disclosures';
+          if (name.includes('exp aba') || name.includes('aba exp')) return 'Team Disclosures';
+          if (name.includes('mikes aba') || name.includes('mike aba') || name.includes('aba mike')) return 'Team Disclosures';
+          if (name.includes('colorado real estate') && name.includes('advisory')) return 'Team Disclosures';
+          
+          // Seller Disclosures
+          if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
+          if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
+          if (name.includes('property disclosure')) return 'Seller Disclosures';
+          
+          // Contract Documents
+          if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
+          if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+          if (name.includes('loan') && name.includes('extension')) return 'Contract Documents';
+          
+          // Other categories
+          if (name.includes('inspection') && (name.includes('objection') || name.includes('resolution'))) return 'Inspection Objection and Resolution';
+          if (name.includes('inspection') || name.includes('report') || name.includes('test')) return 'Inspection Reports and Tests';
+          if (name.includes('hoa') || name.includes('homeowner')) return 'HOA';
+          if (name.includes('title')) return 'Title Document';
+          if (name.includes('repair') || name.includes('ddd') || name.includes('due diligence')) return 'Repairs and DDD';
+          if (name.includes('closing') || name.includes('settlement')) return 'Closing Documents';
+          return 'Other Documents';
+        };
+        
+        // Group documents by category
+        const groupedDocs = docs.reduce((groups, doc) => {
+          const category = categorizeDocument(doc.name);
+          if (!groups[category]) {
+            groups[category] = [];
+          }
+          groups[category].push(doc);
+          return groups;
+        }, {});
+        
+        // Generate HTML for each category (Team Disclosures first)
+        const categoryOrder = ['Team Disclosures', 'Contract Documents', 'Seller Disclosures', 'Inspection Objection and Resolution', 'Inspection Reports and Tests', 'HOA', 'Title Document', 'Repairs and DDD', 'Closing Documents', 'Other Documents'];
+        
+        const sortedCategories = categoryOrder.filter(cat => groupedDocs[cat]).concat(
+          Object.keys(groupedDocs).filter(cat => !categoryOrder.includes(cat))
+        );
+        
+        const categoriesHTML = sortedCategories.map((category, index) => {
+          const categoryDocs = groupedDocs[category];
+          
+          // Fix: Check if OUR clients have completed their part of each document
+          const getDocumentStatus = (doc) => {
+            const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
+            const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
+            
+            // Determine if our clients have signed
+            let ourClientsComplete = false;
+            if (trimmedClientName === doc.ourClient1Name) {
+              ourClientsComplete = client1Complete;
+            } else if (trimmedClientName === doc.ourClient2Name) {
+              ourClientsComplete = client2Complete;
+            } else {
+              // Fallback to overall completion status
+              ourClientsComplete = doc.completionStatus === 'Complete';
+            }
+            
+            // Determine overall document completion
+            const overallComplete = doc.completionStatus === 'Complete';
+            
+            if (!ourClientsComplete) {
+              return 'needs-signature'; // Clients need to sign
+            } else if (ourClientsComplete && !overallComplete) {
+              return 'signed'; // Clients signed, waiting for others
+            } else {
+              return 'complete'; // Everyone signed, document complete
+            }
+          };
+          
+          const statusCounts = {
+            'needs-signature': 0,
+            'signed': 0, 
+            'complete': 0
+          };
+          
+          categoryDocs.forEach(doc => {
+            const status = getDocumentStatus(doc);
+            statusCounts[status]++;
+          });
+          
+          const pendingInCategory = statusCounts['needs-signature'];
+          const signedInCategory = statusCounts['signed'];
+          const completeInCategory = statusCounts['complete'];
+          const totalInCategory = categoryDocs.length;
+          
+          // Determine if category should be open by default (open if has pending docs)
+          const hasSignatures = pendingInCategory > 0;
+          const categoryId = createSafeId(category, 'doc-category-') + '-' + index;
+          const isExpanded = hasSignatures ? 'expanded' : '';
+          const arrowRotated = hasSignatures ? 'rotated' : '';
+          
+          // Create status summary with SMART pending logic
+          let statusSummary = '';
+          const parts = [];
+          
+          if (completeInCategory > 0) parts.push(completeInCategory + ' complete');
+          if (signedInCategory > 0) {
+            // UPDATED: Use smart pending text that detects the actual situation
+            let waitingOnText = 'pending others'; // fallback
+            
+            // For signed documents, check what we're actually waiting on
+            const signedDoc = categoryDocs.find(doc => getDocumentStatus(doc) === 'signed');
+            if (signedDoc) {
+              waitingOnText = getSmartPendingText(signedDoc, clientData?.clientRole);
+            } else {
+              // Fallback to old logic if no signed docs found
+              const clientRole = clientData?.clientRole || 'unknown';
+              if (clientRole === 'seller') {
+                waitingOnText = 'pending buyers';
+              } else if (clientRole === 'buyer') {
+                waitingOnText = 'pending sellers';
+              } else {
+                waitingOnText = 'pending others';
+              }
+            }
+            
+            parts.push(signedInCategory + ' signed, ' + waitingOnText);
+          }
+          if (pendingInCategory > 0) parts.push(pendingInCategory + ' need signatures');
+          
+          statusSummary = parts.join(' • ') || 'No documents';
+          
+          const docsHTML = categoryDocs.map((doc, docIndex) => {
+            // Use driveLink only (no more webContentLink since we removed conversion)
+            const viewLink = doc.driveLink || '#';
+            
+            // Get the 3-status system
+            const documentStatus = getDocumentStatus(doc);
+            
+            let statusDisplay, actionText, actionClass, statusClass;
+            
+            switch(documentStatus) {
+              case 'needs-signature':
+                statusDisplay = 'NEEDS SIGNATURE';
+                actionText = 'Sign';
+                actionClass = 'btn-primary';
+                statusClass = 'status-pending';
+                break;
+              case 'signed':
+                statusDisplay = 'SIGNED';
+                actionText = 'View';
+                actionClass = 'btn-secondary';
+                statusClass = 'status-signed';
+                break;
+              case 'complete':
+                statusDisplay = 'COMPLETE';
+                actionText = 'View';
+                actionClass = 'btn-secondary';  
+                statusClass = 'status-complete';
+                break;
+              default:
+                statusDisplay = 'UNKNOWN';
+                actionText = 'View';
+                actionClass = 'btn-secondary';
+                statusClass = 'status-pending';
+            }
+            
+            const primaryLink = doc.displayLink || doc.driveLink || '#';
+            
+            // Use document date fields properly
+            const docDate = doc.updatedTime || doc.createdTime || 'Recent';
+            const formattedDate = docDate !== 'Recent' ? new Date(docDate).toLocaleDateString() : 'Recent';
+            
+            // Create unique ID for this document
+            const docId = 'doc-' + index + '-' + docIndex;
+            
+            let buttonHtml;
+            if (documentStatus === 'needs-signature') {
+              // Needs signature: Show both View and Sign buttons
+              buttonHtml = '<button class="btn-small btn-secondary" data-action="view" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(viewLink) + '" onclick="handleDocAction(this)">View</button>' +
+                          '<button class="btn-small ' + actionClass + '" data-action="' + actionText.toLowerCase() + '" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(primaryLink) + '" onclick="handleDocAction(this)">' + actionText + '</button>';
+            } else {
+              // Signed or Complete: Show only one View button
+              buttonHtml = '<button class="btn-small btn-secondary" data-action="view" data-doc="' + escapeHtml(doc.name || '') + '" data-link="' + escapeHtml(viewLink) + '" onclick="handleDocAction(this)">View</button>';
+            }
+            
+            return '<div class="document-item" id="' + docId + '">' +
+              '<div class="doc-info">' +
+                '<h4>' + escapeHtml(doc.name || 'Unknown Document') + '</h4>' +
+                '<div class="doc-meta">' + formattedDate + '</div>' +
+              '</div>' +
+              '<div class="doc-controls">' +
+                '<span class="doc-status ' + statusClass + '">' + statusDisplay + '</span>' +
+                '<div class="doc-actions">' +
+                  buttonHtml +
+                '</div>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+          
+          return '<div class="doc-category">' +
+            '<div class="doc-category-header collapsible-header" onclick="toggleCategory(' + "'" + categoryId + "'" + ')">' +
+              '<div class="category-info">' +
+                '<div class="category-title">' + escapeHtml(category) + '</div>' +
+                '<div class="category-summary">' + statusSummary + '</div>' +
+              '</div>' +
+              '<span class="category-arrow ' + arrowRotated + '" id="' + categoryId + '-arrow">▼</span>' +
+            '</div>' +
+            '<div class="doc-category-content ' + isExpanded + '" id="' + categoryId + '-content">' +
+              docsHTML +
+            '</div>' +
+          '</div>';
+        }).join('');
+        
+        docList.innerHTML = categoriesHTML;
+        modal.classList.add('active');
+        
+      } catch (error) {
+        console.error('Error opening modal:', error);
+        alert('Sorry, there was an error loading the documents.');
+      }
+    }
+    
+    function closeModal(event) {
+      if (!event || event.target === document.getElementById('documentModal')) {
+        document.getElementById('documentModal').classList.remove('active');
+      }
+    }
+    
+    function handleDocAction(button) {
+      const action = button.dataset.action;
+      const docName = button.dataset.doc;
+      const link = button.dataset.link;
+      
+      if (!link || link === '#' || link === 'null') {
+        alert('Document link not available for: ' + docName);
+        return;
+      }
+      
+      // Validate URL
+      try {
+        new URL(link);
+      } catch (e) {
+        alert('Invalid document link for: ' + docName);
+        return;
+      }
+      
+      if (action === 'sign' || action === 'view' || action === 'download') {
+        window.open(link, '_blank');
+      }
+    }
+    
+    function toggleCategory(categoryId) {
+      const content = document.getElementById(categoryId + '-content');
+      const arrow = document.getElementById(categoryId + '-arrow');
+      
+      if (content && arrow) {
+        if (content.classList.contains('expanded')) {
+          content.classList.remove('expanded');
+          arrow.classList.remove('rotated');
+        } else {
+          content.classList.add('expanded');
+          arrow.classList.add('rotated');
+        }
+      }
+    }
+    
+    function toggleFAQ(categoryId) {
+      const content = document.getElementById(categoryId + '-content');
+      const arrow = document.getElementById(categoryId + '-arrow');
+      
+      if (content && arrow) {
+        if (content.classList.contains('expanded')) {
+          content.classList.remove('expanded');
+          arrow.classList.remove('rotated');
+        } else {
+          // Close all other open FAQs
+          document.querySelectorAll('.faq-content.expanded').forEach(el => {
+            el.classList.remove('expanded');
+          });
+          document.querySelectorAll('.faq-arrow.rotated').forEach(el => {
+            el.classList.remove('rotated');
+          });
+          
+          // Open this FAQ
+          content.classList.add('expanded');
+          arrow.classList.add('rotated');
+        }
+      }
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    console.log('Portal loaded for:', '4304 Gunbarrel Drive');
+    console.log('Client documents:', clientDocuments);
+  </script>
+</body>
+</html>
