@@ -179,18 +179,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Brayden Hendrix', 4, 0, 0)">
-      <div>
-        <div class="client-name">Brayden Hendrix</div>
-        <div class="client-docs">4 documents • 4 complete</div>
-      </div>
-      <div>→</div>
-    </button>
-  
     <button class="client-btn" onclick="openModal('Phoebe Vu', 6, 0, 1)">
       <div>
         <div class="client-name">Phoebe Vu</div>
         <div class="client-docs">6 documents • 5 complete • 1 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Brayden Hendrix', 4, 0, 0)">
+      <div>
+        <div class="client-name">Brayden Hendrix</div>
+        <div class="client-docs">4 documents • 4 complete</div>
       </div>
       <div>→</div>
     </button>
@@ -326,88 +326,26 @@
   
   <script>
     const clientDocuments = {
-  "Brayden Hendrix": {
-    "clientName": "Brayden Hendrix",
-    "clientRole": "buyer",
-    "documents": [
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
-        "name": "EXP ABA",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Complete",
-        "signedParties": "[\"PHOEBE VU\",\"BRAYDEN HENDRIX\"]",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
-        "ourClient1Name": "Brayden Hendrix",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Phoebe Vu",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-07-25T21:20:51.000Z",
-        "updatedTime": "2025-07-26T12:29:30.000Z",
-        "originalIndex": 5,
-        "recordId": "recz6I5pLgfdbAoDp"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
-        "name": "Dual Status Disclosure",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Phoebe Vu\",\"BRAYDEN HENDRIX\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
-        "ourClient1Name": "Brayden Hendrix",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Phoebe Vu",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-07-26T04:03:52.000Z",
-        "updatedTime": "2025-07-26T12:29:29.000Z",
-        "originalIndex": 0,
-        "recordId": "recz6I5pLgfdbAoDp"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
-        "name": "Colorado Real Estate Seller Advisory",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Brayden Hendrix\",\"Phoebe Vu\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
-        "ourClient1Name": "Brayden Hendrix",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Phoebe Vu",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-07-26T04:03:53.000Z",
-        "updatedTime": "2025-07-26T12:29:29.000Z",
-        "originalIndex": 4,
-        "recordId": "recz6I5pLgfdbAoDp"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
-        "name": "Mikes ABA",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Phoebe Vu\",\"Brayden Hendrix\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
-        "ourClient1Name": "Brayden Hendrix",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Phoebe Vu",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-07-26T04:03:52.000Z",
-        "updatedTime": "2025-07-26T12:29:28.000Z",
-        "originalIndex": 3,
-        "recordId": "recz6I5pLgfdbAoDp"
-      }
-    ]
-  },
   "Phoebe Vu": {
     "clientName": "Phoebe Vu",
     "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6.pdf",
+        "name": "CLOSING INSTRUCTIONS",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"OGBroker Limited\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6&isCTMOne=false",
+        "ourClient1Status": "N/A",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-25T22:00:35.000Z",
+        "updatedTime": "2025-07-26T13:34:09.000Z",
+        "originalIndex": 6
+      },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
         "name": "EXP ABA",
@@ -495,22 +433,84 @@
         "createdTime": "2025-07-25T21:29:21.000Z",
         "updatedTime": "2025-07-26T02:00:39.000Z",
         "originalIndex": 1
+      }
+    ]
+  },
+  "Brayden Hendrix": {
+    "clientName": "Brayden Hendrix",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
+        "name": "EXP ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/4f51df72-6aae-4c5b-b464-088a51364c73.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"PHOEBE VU\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=4f51df72-6aae-4c5b-b464-088a51364c73&isCTMOne=false",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-25T21:20:51.000Z",
+        "updatedTime": "2025-07-26T12:29:30.000Z",
+        "originalIndex": 5,
+        "recordId": "recz6I5pLgfdbAoDp"
       },
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6.pdf",
-        "name": "Closing Instructions",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "name": "Dual Status Disclosure",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "signingLink": null,
         "status": "pending",
-        "completionStatus": "Pending",
-        "signedParties": "[\"OGBroker Limited\"]",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=c07ac61a-a2a7-4cea-bb50-6ae6d1a88fb6&isCTMOne=false",
-        "ourClient1Status": "N/A",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phoebe Vu\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/25e84d57-1a85-4f21-8d4b-fd74180e06ff.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
         "ourClient2Name": "Phoebe Vu",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-25T22:00:35.000Z",
-        "updatedTime": "2025-07-25T22:00:45.000Z",
-        "originalIndex": 6
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:52.000Z",
+        "updatedTime": "2025-07-26T12:29:29.000Z",
+        "originalIndex": 0,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "name": "Colorado Real Estate Seller Advisory",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Brayden Hendrix\",\"Phoebe Vu\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/d5eec89a-17e0-401a-88a1-81d7b5e6d18e.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:53.000Z",
+        "updatedTime": "2025-07-26T12:29:29.000Z",
+        "originalIndex": 4,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Phoebe Vu\",\"Brayden Hendrix\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/e195b04b-e9e0-4414-8688-e8d7e4c8af14.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-26T04:03:52.000Z",
+        "updatedTime": "2025-07-26T12:29:28.000Z",
+        "originalIndex": 3,
+        "recordId": "recz6I5pLgfdbAoDp"
       }
     ]
   }
