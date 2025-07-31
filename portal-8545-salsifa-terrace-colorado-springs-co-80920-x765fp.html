@@ -341,18 +341,10 @@
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Julie Ann Gavigan', 6, 2, 1)">
+    <button class="client-btn" onclick="openModal('Julie Ann Gavigan', 7, 2, 1)">
       <div>
         <div class="client-name">Julie Ann Gavigan</div>
-        <div class="client-docs">6 documents • 3 complete • 2 signed, pending buyers • 1 need signature</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('Julie Gavigan', 1, 0, 0)">
-      <div>
-        <div class="client-name">Julie Gavigan</div>
-        <div class="client-docs">1 documents • 1 complete</div>
+        <div class="client-docs">7 documents • 4 complete • 2 signed, pending buyers • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -556,7 +548,7 @@
         "name": "HIR_roofing_est_8545 Salsifa",
         "driveLink": "https://www.ctmecontracts.com/files/econ_docs/78ec7e29-aff6-45d3-8b63-740db55799ef.pdf",
         "signingLink": null,
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Complete",
         "displayLink": "https://www.ctmecontracts.com/files/econ_docs/78ec7e29-aff6-45d3-8b63-740db55799ef.pdf",
         "ourClient1Name": "Clinton J Gavigan",
@@ -681,7 +673,7 @@
         "name": "HIR_roofing_est_8545 Salsifa",
         "driveLink": "https://www.ctmecontracts.com/files/econ_docs/78ec7e29-aff6-45d3-8b63-740db55799ef.pdf",
         "signingLink": null,
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Complete",
         "displayLink": "https://www.ctmecontracts.com/files/econ_docs/78ec7e29-aff6-45d3-8b63-740db55799ef.pdf",
         "ourClient1Name": "Clinton J Gavigan",
@@ -743,19 +735,13 @@
         "createdTime": "2025-07-21T18:02:01.000Z",
         "updatedTime": "2025-07-21T18:30:20.000Z",
         "originalIndex": 15
-      }
-    ]
-  },
-  "Julie Gavigan": {
-    "clientName": "Julie Gavigan",
-    "clientRole": "seller",
-    "documents": [
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/823ac697-d32c-4894-9615-89ae589a9c3a.pdf",
         "name": "listing_price_amend",
         "driveLink": "https://www.ctmecontracts.com/files/aspredir/823ac697-d32c-4894-9615-89ae589a9c3a.asp",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/823ac697-d32c-4894-9615-89ae589a9c3a.asp",
-        "status": "signed",
+        "status": "pending",
         "completionStatus": "Complete",
         "signedParties": "[\"Clinton J Gavigan\",\"Julie Ann Gavigan\"]",
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/823ac697-d32c-4894-9615-89ae589a9c3a.asp",
@@ -904,7 +890,7 @@
         }, {});
         
         // Generate HTML for each category (Team Disclosures first)
-        const categoryOrder = ['Team Disclosures', 'Contract Documents', 'Seller Disclosures', 'Inspection Objection and Resolution', 'Inspection Reports and Tests', 'HOA', 'Title Document', 'Repairs and DDD', 'Closing Documents', 'Other Documents'];
+        const categoryOrder = ['Team Disclosures', 'Seller Disclosures', 'Contract Documents', 'Inspection Objection and Resolution', 'Inspection Reports and Tests', 'HOA', 'Title Document', 'Repairs and DDD', 'Closing Documents', 'Other Documents'];
         
         const sortedCategories = categoryOrder.filter(cat => groupedDocs[cat]).concat(
           Object.keys(groupedDocs).filter(cat => !categoryOrder.includes(cat))
