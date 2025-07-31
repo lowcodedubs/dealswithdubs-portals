@@ -333,10 +333,22 @@
     </div>
     
     
-      <div style="text-align: center; color: #666; font-size: 18px; margin: 30px 0;">
-        No client documents available yet.
+    <button class="client-btn" onclick="openModal('Jasmine Connolly', 1, 0, 0)">
+      <div>
+        <div class="client-name">Jasmine Connolly</div>
+        <div class="client-docs">1 documents • 1 complete</div>
       </div>
-    
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Brian William Connoly', 1, 0, 0)">
+      <div>
+        <div class="client-name">Brian William Connoly</div>
+        <div class="client-docs">1 documents • 1 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
     
     <!-- Contact Information -->
     <div style="background: #f8f9fa; border: 2px solid #667eea; border-radius: 12px; padding: 15px; margin: 30px 0 20px 0; text-align: center;">
@@ -493,7 +505,52 @@
   </div>
   
   <script>
-    const clientDocuments = {};
+    const clientDocuments = {
+  "Jasmine Connolly": {
+    "clientName": "Jasmine Connolly",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://drive.google.com/uc?id=16kvvdq4df1hNORT8YzDNhbKHWQdPF80R&export=download",
+        "name": "settlementstatement_6903 Tahoe Rim Drive,Colorado Springs,CO,80927",
+        "driveLink": "https://drive.google.com/uc?id=16kvvdq4df1hNORT8YzDNhbKHWQdPF80R&export=download",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://drive.google.com/uc?id=16kvvdq4df1hNORT8YzDNhbKHWQdPF80R&export=download",
+        "ourClient1Name": "Jasmine Connolly",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Brian William Connoly",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-31T19:06:25.000Z",
+        "updatedTime": "2025-07-31T19:34:21.000Z",
+        "originalIndex": 17
+      }
+    ]
+  },
+  "Brian William Connoly": {
+    "clientName": "Brian William Connoly",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://drive.google.com/uc?id=16kvvdq4df1hNORT8YzDNhbKHWQdPF80R&export=download",
+        "name": "settlementstatement_6903 Tahoe Rim Drive,Colorado Springs,CO,80927",
+        "driveLink": "https://drive.google.com/uc?id=16kvvdq4df1hNORT8YzDNhbKHWQdPF80R&export=download",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://drive.google.com/uc?id=16kvvdq4df1hNORT8YzDNhbKHWQdPF80R&export=download",
+        "ourClient1Name": "Jasmine Connolly",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Brian William Connoly",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-07-31T19:06:25.000Z",
+        "updatedTime": "2025-07-31T19:34:21.000Z",
+        "originalIndex": 17
+      }
+    ]
+  }
+};
     
     // ADDED: Smart pending text function (JavaScript version)
     function getSmartPendingText(doc, currentClientRole) {
