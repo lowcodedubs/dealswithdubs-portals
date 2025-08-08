@@ -333,10 +333,10 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Ethan Cook', 7, 0, 1)">
+    <button class="client-btn" onclick="openModal('Ethan Cook', 8, 1, 2)">
       <div>
         <div class="client-name">Ethan Cook</div>
-        <div class="client-docs">7 documents • 6 complete • 1 need signature</div>
+        <div class="client-docs">8 documents • 5 complete • 1 signed, pending buyers • 2 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -503,6 +503,21 @@
     "clientRole": "seller",
     "documents": [
       {
+        "docId": "https://drive.google.com/file/d/1Dfn_PdrdBN_2ag8DfWK0vJEgujFPnar9/view?usp=drivesdk ",
+        "name": "EM Receipt_misc__829 Hayden",
+        "driveLink": "https://drive.google.com/file/d/1Dfn_PdrdBN_2ag8DfWK0vJEgujFPnar9/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1Dfn_PdrdBN_2ag8DfWK0vJEgujFPnar9/view?usp=drivesdk",
+        "ourClient1Name": "Ethan Cook",
+        "ourClient1Status": "Pending",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-08T11:56:02.000Z",
+        "updatedTime": "2025-08-08T11:56:02.000Z",
+        "originalIndex": 1
+      },
+      {
         "docId": "https://drive.google.com/file/d/1xdTtqsoUGoUdp-0CRKBs-2bM60KlSkde/view?usp=drivesdk ",
         "name": "Title_commitment_contact sheet_829 Hayden",
         "driveLink": "https://drive.google.com/file/d/1xdTtqsoUGoUdp-0CRKBs-2bM60KlSkde/view?usp=drivesdk",
@@ -515,7 +530,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-07T12:25:20.000Z",
         "updatedTime": "2025-08-07T12:25:20.000Z",
-        "originalIndex": 7
+        "originalIndex": 8
       },
       {
         "docId": "https://drive.google.com/file/d/1qJ8ec3sDydqd-YVYZvynllgFZAEROsgc/view?usp=drivesdk ",
@@ -530,7 +545,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-07T12:25:19.000Z",
         "updatedTime": "2025-08-07T12:25:19.000Z",
-        "originalIndex": 6
+        "originalIndex": 7
       },
       {
         "docId": "https://drive.google.com/file/d/1vPJw3WSGwa43_ac7BpQ9SOXRZKxwDutT/view?usp=drivesdk",
@@ -548,7 +563,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-06T14:47:16.000Z",
         "updatedTime": "2025-08-06T14:47:16.000Z",
-        "originalIndex": 2
+        "originalIndex": 3
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/3c345a28-b3fb-4666-934a-5ec6f0f6b73d.pdf",
@@ -580,7 +595,7 @@
         "ourClient2Status": "N/A",
         "createdTime": "2025-07-13T04:01:27.000Z",
         "updatedTime": "2025-07-13T04:29:06.000Z",
-        "originalIndex": 5
+        "originalIndex": 6
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/05aabfa1-133f-4d25-89e5-49e71f1ce657.pdf",
@@ -596,7 +611,7 @@
         "ourClient2Status": "N/A",
         "createdTime": "2025-07-10T22:01:50.000Z",
         "updatedTime": "2025-07-11T12:28:50.000Z",
-        "originalIndex": 1
+        "originalIndex": 2
       },
       {
         "docId": "42334781",
@@ -612,7 +627,7 @@
         "ourClient2Status": "N/A",
         "createdTime": "2025-07-10T21:29:56.000Z",
         "updatedTime": "2025-07-10T21:29:56.000Z",
-        "originalIndex": 3
+        "originalIndex": 4
       }
     ]
   }
@@ -723,8 +738,7 @@
           if (name.includes('property disclosure')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
-          // CHANGE 1: Add Source of Water to Seller Disclosures
-          if (name.includes('source of water')) return 'Seller Disclosures';
+          if (name.includes('closing instructions')) return 'Seller Disclosures';
           
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
@@ -763,11 +777,6 @@
           
           // Fix: Check if OUR clients have completed their part of each document
           const getDocumentStatus = (doc) => {
-            // CHANGE 2: Always show purchase contract as complete
-            if (doc.name && (doc.name.toLowerCase().includes('contract') || doc.name.toLowerCase().includes('purchase'))) {
-              return 'complete';
-            }
-            
             const client1Complete = doc.ourClient1Status === 'Complete' || doc.ourClient1Status === 'N/A';
             const client2Complete = doc.ourClient2Status === 'Complete' || doc.ourClient2Status === 'N/A';
             
