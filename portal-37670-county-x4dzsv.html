@@ -154,7 +154,7 @@
     }
     .faq-content.expanded { 
       padding: 12px 14px; 
-      max-height: 200px; 
+      max-height: 500px; 
     }
     .faq-content p { 
       font-size: 12px; 
@@ -164,6 +164,160 @@
     }
     .faq-content p:last-child {
       margin-bottom: 0;
+    }
+    
+    /* Warning Box Styles */
+    .warning-box {
+      background: #fff3cd; 
+      border: 2px solid #ffc107; 
+      border-radius: 6px; 
+      padding: 8px; 
+      margin-top: 8px; 
+      font-weight: bold; 
+      color: #856404; 
+      text-align: center;
+    }
+    
+    /* Modern Caution Badge Styles */
+    .caution-badge {
+      background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);
+      color: #000;
+      padding: 3px 10px;
+      border-radius: 16px;
+      font-size: 9px;
+      font-weight: 700;
+      margin-left: 8px;
+      display: inline-block;
+      box-shadow: 0 1px 3px rgba(255, 193, 7, 0.15);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 193, 7, 0.2);
+    }
+
+    /* More Info Link Styles */
+    .more-info-link {
+      display: inline-block;
+      color: #667eea;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border: 1px solid #667eea;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      background: #f8f9ff;
+    }
+    
+    .more-info-link:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* More Info Modal Styles */
+    .info-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .info-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .info-modal-content {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 70vh;
+      overflow-y: auto;
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .info-modal-overlay.active .info-modal-content {
+      transform: scale(1);
+    }
+    
+    .info-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .info-modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .info-close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #999;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .info-close-btn:hover {
+      color: #333;
+    }
+    
+    .info-modal-body {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #555;
+    }
+    
+    .info-modal-body h4 {
+      color: #333;
+      margin: 15px 0 8px 0;
+      font-size: 15px;
+    }
+    
+    .info-modal-body p {
+      margin-bottom: 12px;
+    }
+    
+    .even-more-info-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 15px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    
+    .even-more-info-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
     }
   </style>
 </head>
@@ -179,18 +333,26 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Charlene Joyce Clark', 28, 0, 27)">
+    <button class="client-btn" onclick="openModal('Charlene Joyce Clark', 32, 1, 30)">
       <div>
         <div class="client-name">Charlene Joyce Clark</div>
-        <div class="client-docs">28 documents • 1 complete • 27 need signature</div>
+        <div class="client-docs">32 documents • 1 complete • 1 signed, pending other buyers • 30 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Michael Clark', 28, 0, 27)">
+    <button class="client-btn" onclick="openModal('Front Range Septic', 1, 0, 1)">
+      <div>
+        <div class="client-name">Front Range Septic</div>
+        <div class="client-docs">1 documents • 1 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Michael Clark', 31, 0, 30)">
       <div>
         <div class="client-name">Michael Clark</div>
-        <div class="client-docs">28 documents • 1 complete • 27 need signature</div>
+        <div class="client-docs">31 documents • 1 complete • 30 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -213,21 +375,11 @@
         <div class="faq-content" id="team-disclosures-content">
           <p><strong>What are these?</strong> These are disclosures from your real estate team explaining their role, compensation, and any potential conflicts of interest.</p>
           <p><strong>Why am I signing these?</strong> Your signature acknowledges that you've received and reviewed these important disclosures about your team's representation.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('team-disclosures-info'); return false;">More Info</a>
         </div>
       </div>
-      
-      <div class="faq-category">
-        <div class="faq-header" onclick="toggleFAQ('contract-documents')">
-          <span>Contract Documents</span>
-          <span class="faq-arrow" id="contract-documents-arrow">▼</span>
-        </div>
-        <div class="faq-content" id="contract-documents-content">
-          <p><strong>What are these?</strong> The Purchase Contract is the main legal agreement between you and the buyer. Amendments are changes or additions to the original contract terms that both parties agree to during the transaction.</p>
-          <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the contract terms and any modifications outlined in amendments.</p>
-        </div>
-      </div>
-      
-      <div class="faq-category">
+
+ <div class="faq-category">
         <div class="faq-header" onclick="toggleFAQ('seller-disclosures')">
           <span>Seller Disclosures</span>
           <span class="faq-arrow" id="seller-disclosures-arrow">▼</span>
@@ -235,17 +387,34 @@
         <div class="faq-content" id="seller-disclosures-content">
           <p><strong>What are these?</strong> Legal disclosures completed by the seller about the property's condition, square footage, and any known issues or defects.</p>
           <p><strong>Why am I signing these?</strong> Your signature acknowledges that you've received and reviewed the disclosure information.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('seller-disclosures-info'); return false;">More Info</a>
+        </div>
+      </div>
+      
+      
+      <div class="faq-category">
+        <div class="faq-header" onclick="toggleFAQ('contract-documents')">
+          <span>Contract Documents <span class="caution-badge">CAUTION</span></span>
+          <span class="faq-arrow" id="contract-documents-arrow">▼</span>
+        </div>
+        <div class="faq-content" id="contract-documents-content">
+          <p><strong>What are these?</strong> The Purchase Contract is the main legal agreement between buyers and sellers. Amendments are changes or additions to the original contract terms that both parties agree to during the transaction.</p>
+          <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the contract terms and any modifications outlined in amendments.</p>
+          <p class="warning-box">⚠️ **DO NOT SIGN BEFORE CONFIRMING WITH YOUR AGENT** ⚠️</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('contract-documents-info'); return false;">More Info</a>
         </div>
       </div>
       
       <div class="faq-category">
         <div class="faq-header" onclick="toggleFAQ('inspection-objection')">
-          <span>Inspection Objection and Resolution</span>
+          <span>Inspection Objection and Resolution <span class="caution-badge">CAUTION</span></span>
           <span class="faq-arrow" id="inspection-objection-arrow">▼</span>
         </div>
         <div class="faq-content" id="inspection-objection-content">
           <p><strong>What are these?</strong> The Inspection Objection is a buyer's opportunity to request repairs after they have done their home inspection. The Resolution is what the seller responds with and what repairs they agree to. Both parties must come to an agreement and sign the IR.</p>
           <p><strong>Why am I signing these?</strong> Your signature indicates agreement to the specific terms, changes, or resolutions outlined in these documents.</p>
+          <p class="warning-box">⚠️ **DO NOT SIGN BEFORE CONFIRMING WITH YOUR AGENT** ⚠️</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('inspection-objection-info'); return false;">More Info</a>
         </div>
       </div>
       
@@ -257,6 +426,7 @@
         <div class="faq-content" id="inspection-reports-content">
           <p><strong>What are these?</strong> Professional inspection reports and test results conducted on your property, including general home inspection, radon, septic, well water, or other specialized inspections.</p>
           <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of the inspection findings.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('inspection-reports-info'); return false;">More Info</a>
         </div>
       </div>
       
@@ -268,6 +438,7 @@
         <div class="faq-content" id="hoa-content">
           <p><strong>What are these?</strong> Homeowners Association documents including bylaws, covenants, financial statements, and any pending assessments.</p>
           <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of HOA documents that must be provided to the buyer.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('hoa-info'); return false;">More Info</a>
         </div>
       </div>
       
@@ -279,6 +450,7 @@
         <div class="faq-content" id="title-document-content">
           <p><strong>What are these?</strong> Title commitment and related documents showing ownership history, liens, and any title issues that need resolution.</p>
           <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt and review of title conditions affecting your property.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('title-document-info'); return false;">More Info</a>
         </div>
       </div>
       
@@ -290,6 +462,7 @@
         <div class="faq-content" id="repairs-ddd-content">
           <p><strong>What are these?</strong> The repair receipts will show the work completed from the Inspection Resolution. Due Diligence Documents can range from previous repairs to the property, utility bills, or warranties and other paperwork.</p>
           <p><strong>Why am I signing these?</strong> Your signature acknowledges receipt of repair documentation.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('repairs-ddd-info'); return false;">More Info</a>
         </div>
       </div>
       
@@ -301,6 +474,7 @@
         <div class="faq-content" id="closing-documents-content">
           <p><strong>What are these?</strong> Final documents needed to complete the sale, including settlement statements and deed transfer paperwork.</p>
           <p><strong>Why am I signing these?</strong> These documents won't be signed until your actual closing appointment, where your signature completes the legal transfer of your property.</p>
+          <a href="#" class="more-info-link" onclick="openInfoModal('closing-documents-info'); return false;">More Info</a>
         </div>
       </div>
     </div>
@@ -323,6 +497,20 @@
       </div>
     </div>
   </div>
+
+  <!-- More Info Modal -->
+  <div id="infoModal" class="info-modal-overlay" onclick="closeInfoModal(event)">
+    <div class="info-modal-content" onclick="event.stopPropagation()">
+      <div class="info-modal-header">
+        <div class="info-modal-title" id="infoModalTitle">More Information</div>
+        <button class="info-close-btn" onclick="closeInfoModal()">&times;</button>
+      </div>
+      
+      <div class="info-modal-body" id="infoModalBody">
+        <!-- More info content will be populated here -->
+      </div>
+    </div>
+  </div>
   
   <script>
     const clientDocuments = {
@@ -331,34 +519,100 @@
     "clientRole": "buyer",
     "documents": [
       {
-        "docId": "https://drive.google.com/file/d/1Yx8dvKHhXaYWSw5jbxNU-p5YQBxpPY6I/view",
-        "name": "IR Repair_roofing_inv_37670 County Road 69",
-        "driveLink": "https://drive.google.com/file/d/1Yx8dvKHhXaYWSw5jbxNU-p5YQBxpPY6I/view",
-        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=bb9d1334-bd5d-4fa5-8257-df2dcdcf12ee&invitationId=fdfa07be-cf56-48b2-a62b-049b9c0c81b4",
-        "status": "pending",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/8b7d8056-ba71-4e3c-8e46-654ea28c6680.pdf",
+        "name": "IR_Repair_All",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/8b7d8056-ba71-4e3c-8e46-654ea28c6680.pdf",
+        "signingLink": null,
+        "status": "signed",
         "completionStatus": "Pending",
-        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=bb9d1334-bd5d-4fa5-8257-df2dcdcf12ee&invitationId=fdfa07be-cf56-48b2-a62b-049b9c0c81b4",
+        "signedParties": "[\"CHARLENE JOYCE CLARK\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/8b7d8056-ba71-4e3c-8e46-654ea28c6680.pdf",
         "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Front Range Septic",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-24T20:28:52.000Z",
-        "updatedTime": "2025-07-25T00:41:34.000Z",
-        "originalIndex": 30
+        "createdTime": "2025-08-11T18:03:54.000Z",
+        "updatedTime": "2025-08-11T18:03:54.000Z",
+        "originalIndex": 28,
+        "recordId": "recUL5zzmsPClaH9w"
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
-        "name": "69296387-37ab-475c-af5a-9d0c6e5d549b",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/439c65bd-910c-4734-97bb-a7490028385f.pdf",
+        "name": "IR Repair_hvac_inv_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/439c65bd-910c-4734-97bb-a7490028385f.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=0b3513b6-4858-42cb-ba41-8a953673fd56&invitationId=eade17bd-a21f-4e8d-a676-bbfe1f716971",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=0b3513b6-4858-42cb-ba41-8a953673fd56&invitationId=eade17bd-a21f-4e8d-a676-bbfe1f716971",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T13:21:24.000Z",
+        "createdTime": "2025-07-24T10:40:46.000Z",
+        "updatedTime": "2025-07-26T14:56:17.000Z",
+        "originalIndex": 23
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/d769512b-0c3a-407f-81a1-fc3fc6be95b9.pdf",
+        "name": "IR Repair_receipt_water_heater_Receipt_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/d769512b-0c3a-407f-81a1-fc3fc6be95b9.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=eb817d84-3f84-47b8-adc7-0d156e1ce54b&invitationId=55501c60-2b1b-4177-b582-b8780f01a7ac",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=eb817d84-3f84-47b8-adc7-0d156e1ce54b&invitationId=55501c60-2b1b-4177-b582-b8780f01a7ac",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-24T10:40:47.000Z",
+        "updatedTime": "2025-07-26T14:56:16.000Z",
+        "originalIndex": 24
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/73b4bfac-8e71-4099-8e96-6f731e58222a.pdf",
+        "name": "IR Repair_septic_receipt_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/73b4bfac-8e71-4099-8e96-6f731e58222a.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=c14e335a-7a84-4929-811b-d94c345c3723&invitationId=cea19a1a-a7f5-42b3-b820-3f424f4b545a",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=c14e335a-7a84-4929-811b-d94c345c3723&invitationId=cea19a1a-a7f5-42b3-b820-3f424f4b545a",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-24T10:40:47.000Z",
+        "updatedTime": "2025-07-26T14:56:16.000Z",
+        "originalIndex": 27
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/4013f654-8064-4a33-b4b2-4bcd47244698.pdf",
+        "name": "IR Repair_roofing_inv_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/4013f654-8064-4a33-b4b2-4bcd47244698.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=6407d04e-c836-4075-bbdc-d50b829687fd&invitationId=74be9763-b362-470a-b62b-92f516024b8b",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=6407d04e-c836-4075-bbdc-d50b829687fd&invitationId=74be9763-b362-470a-b62b-92f516024b8b",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-24T10:40:45.000Z",
+        "updatedTime": "2025-07-26T14:56:15.000Z",
+        "originalIndex": 25
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
+        "name": "3591c4fb-690d-4cd8-9553-5b9932eed037",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-12T08:41:07.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
         "originalIndex": 0
       },
@@ -379,164 +633,20 @@
         "originalIndex": 1
       },
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
-        "name": "486730b3-3bd6-4645-9e72-46f130420794",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
+        "name": "712670de-1412-48be-abf8-a05a9e93101e",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T16:08:37.000Z",
+        "createdTime": "2025-07-12T09:40:55.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
         "originalIndex": 2
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
-        "name": "bc834ec4-ba68-455d-8ee9-3b60fd01794b",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:08:13.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 3
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
-        "name": "535e5327-db6c-4d7a-bb81-04251a980b38",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T15:41:16.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 4
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
-        "name": "0ab7bb0c-91f7-4a0e-a21c-08be288524c9",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T22:21:20.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 6
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
-        "name": "cd33e862-5a91-44d7-b644-9fac02b29d3d",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T16:08:37.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 7
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
-        "name": "b27f375b-0346-4d9c-8740-bb7d6f154034",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:08:12.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 8
-      },
-      {
-        "docId": "41863521",
-        "name": "Source of Water",
-        "driveLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-15T21:12:14.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 9
-      },
-      {
-        "docId": "41863048",
-        "name": "Listing Amend - Other",
-        "driveLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-12T12:37:56.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 10
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
-        "name": "2abd1586-416f-45c7-b7a0-4d0d1e252209",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:41:11.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 11
-      },
-      {
-        "docId": "41863522",
-        "name": "Square Footage Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-15T21:12:14.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 12
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/10ba739b-3c1d-4a75-8b29-f9d631170a6c.pdf",
@@ -552,87 +662,23 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-12T13:21:23.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 14
+        "originalIndex": 3
       },
       {
-        "docId": "41995604",
-        "name": "Inspection Objection",
-        "driveLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
-        "signingLink": null,
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
+        "name": "69296387-37ab-475c-af5a-9d0c6e5d549b",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-05-26T23:02:05.000Z",
+        "createdTime": "2025-07-12T13:21:24.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 15
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
-        "name": "712670de-1412-48be-abf8-a05a9e93101e",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T09:40:55.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 16
-      },
-      {
-        "docId": "41863520",
-        "name": "Sellers Property Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1W44_z_66YbVD7OgYeJCebAZw9_dA-1aZ/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1W44_z_66YbVD7OgYeJCebAZw9_dA-1aZ/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-15T21:12:13.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 17
-      },
-      {
-        "docId": "42025779",
-        "name": "Inspection Resolution",
-        "driveLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-06-25T06:03:21.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 18
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
-        "name": "2d53cdfe-0872-4b14-80d3-9765b802b6de",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:08:12.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 19
+        "originalIndex": 4
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d0f451e5-254c-45ed-b3bc-05d7a171ac40.pdf",
@@ -648,55 +694,55 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-12T13:21:24.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 20
+        "originalIndex": 5
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
-        "name": "51ade801-d97d-4f86-b230-bc6eec8ed889",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
+        "name": "535e5327-db6c-4d7a-bb81-04251a980b38",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:41:12.000Z",
+        "createdTime": "2025-07-12T15:41:16.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 23
+        "originalIndex": 6
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
-        "name": "eb3b88d7-2e3d-4743-ae4c-6ca228d6440b",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
+        "name": "486730b3-3bd6-4645-9e72-46f130420794",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T20:21:13.000Z",
+        "createdTime": "2025-07-12T16:08:37.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 24
+        "originalIndex": 7
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
-        "name": "1f8c59ee-4e20-4134-8930-0af2b5e98524",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
+        "name": "cd33e862-5a91-44d7-b644-9fac02b29d3d",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:41:12.000Z",
+        "createdTime": "2025-07-12T16:08:37.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 25
+        "originalIndex": 8
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/4ab301f0-bb55-457b-b8dd-da33b38ecea0.pdf",
@@ -712,7 +758,103 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-14T19:08:17.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 28
+        "originalIndex": 9
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
+        "name": "eb3b88d7-2e3d-4743-ae4c-6ca228d6440b",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T20:21:13.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 10
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
+        "name": "0ab7bb0c-91f7-4a0e-a21c-08be288524c9",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T22:21:20.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 11
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
+        "name": "b27f375b-0346-4d9c-8740-bb7d6f154034",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:08:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 12
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
+        "name": "2d53cdfe-0872-4b14-80d3-9765b802b6de",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:08:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 13
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
+        "name": "bc834ec4-ba68-455d-8ee9-3b60fd01794b",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:08:13.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 14
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
+        "name": "2abd1586-416f-45c7-b7a0-4d0d1e252209",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:41:11.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 15
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/1f60516d-0b08-46f1-befe-c2e1c0778309.pdf",
@@ -728,7 +870,39 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-14T23:41:11.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 29
+        "originalIndex": 16
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
+        "name": "51ade801-d97d-4f86-b230-bc6eec8ed889",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:41:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 17
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
+        "name": "1f8c59ee-4e20-4134-8930-0af2b5e98524",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:41:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 18
       },
       {
         "docId": "41863047",
@@ -744,40 +918,144 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-05-11T02:31:56.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 31
+        "originalIndex": 20
       },
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
-        "name": "3591c4fb-690d-4cd8-9553-5b9932eed037",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "docId": "41995604",
+        "name": "Inspection Objection",
+        "driveLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
+        "signingLink": null,
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "displayLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T08:41:07.000Z",
+        "createdTime": "2025-05-26T23:02:05.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 21
+      },
+      {
+        "docId": "42025779",
+        "name": "Inspection Resolution",
+        "driveLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-06-25T06:03:21.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 22
+      },
+      {
+        "docId": "41863048",
+        "name": "Listing Amend - Other",
+        "driveLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-12T12:37:56.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 29
+      },
+      {
+        "docId": "41881382",
+        "name": "Sellers Property Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1JqtakwKW-Pdl3-Q2Xc8epX_TPOl8InuJ/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1JqtakwKW-Pdl3-Q2Xc8epX_TPOl8InuJ/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-15T21:12:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 30
+      },
+      {
+        "docId": "41863521",
+        "name": "Source of Water",
+        "driveLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-15T21:12:14.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
         "originalIndex": 32
+      },
+      {
+        "docId": "41863522",
+        "name": "Square Footage Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-15T21:12:14.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 33
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/0d767d7d-a520-4e02-8eae-2a1403713e97.pdf",
         "name": "closing_date_amend",
         "driveLink": "https://drive.google.com/file/d/1S2nalYOF1HpF95BYErIth-pYebz5kHRL/view?usp=drivesdk",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/0d767d7d-a520-4e02-8eae-2a1403713e97.asp",
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Complete",
         "signedParties": "[\"Sergio Gutierrez\",\"Mayra Jaquez\",\"Charlene Joyce Clark\",\"Michael Phillip Clark\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/0d767d7d-a520-4e02-8eae-2a1403713e97.asp",
+        "displayLink": "https://drive.google.com/file/d/1S2nalYOF1HpF95BYErIth-pYebz5kHRL/view?usp=drivesdk",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Complete",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-24T14:29:47.000Z",
         "updatedTime": "2025-07-24T20:00:46.000Z",
-        "originalIndex": 21
+        "originalIndex": 19
+      }
+    ]
+  },
+  "Front Range Septic": {
+    "clientName": "Front Range Septic",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/8b7d8056-ba71-4e3c-8e46-654ea28c6680.pdf",
+        "name": "IR_Repair_All",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/8b7d8056-ba71-4e3c-8e46-654ea28c6680.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"CHARLENE JOYCE CLARK\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/8b7d8056-ba71-4e3c-8e46-654ea28c6680.pdf",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Front Range Septic",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-08-11T18:03:54.000Z",
+        "updatedTime": "2025-08-11T18:03:54.000Z",
+        "originalIndex": 28,
+        "recordId": "recUL5zzmsPClaH9w"
       }
     ]
   },
@@ -786,34 +1064,82 @@
     "clientRole": "buyer",
     "documents": [
       {
-        "docId": "https://drive.google.com/file/d/1Yx8dvKHhXaYWSw5jbxNU-p5YQBxpPY6I/view",
-        "name": "IR Repair_roofing_inv_37670 County Road 69",
-        "driveLink": "https://drive.google.com/file/d/1Yx8dvKHhXaYWSw5jbxNU-p5YQBxpPY6I/view",
-        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=bb9d1334-bd5d-4fa5-8257-df2dcdcf12ee&invitationId=e28c19bf-35da-4b2d-8587-bcb68e1b57e5",
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/439c65bd-910c-4734-97bb-a7490028385f.pdf",
+        "name": "IR Repair_hvac_inv_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/439c65bd-910c-4734-97bb-a7490028385f.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=0b3513b6-4858-42cb-ba41-8a953673fd56&invitationId=fcf2f34b-f6dd-4bde-9f0e-28a712080690",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=bb9d1334-bd5d-4fa5-8257-df2dcdcf12ee&invitationId=e28c19bf-35da-4b2d-8587-bcb68e1b57e5",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=0b3513b6-4858-42cb-ba41-8a953673fd56&invitationId=fcf2f34b-f6dd-4bde-9f0e-28a712080690",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-24T20:28:52.000Z",
-        "updatedTime": "2025-07-25T00:41:34.000Z",
-        "originalIndex": 30
+        "createdTime": "2025-07-24T10:40:46.000Z",
+        "updatedTime": "2025-07-26T14:56:17.000Z",
+        "originalIndex": 23
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
-        "name": "69296387-37ab-475c-af5a-9d0c6e5d549b",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/d769512b-0c3a-407f-81a1-fc3fc6be95b9.pdf",
+        "name": "IR Repair_receipt_water_heater_Receipt_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/d769512b-0c3a-407f-81a1-fc3fc6be95b9.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=eb817d84-3f84-47b8-adc7-0d156e1ce54b&invitationId=af732a86-c8ac-4d4a-a638-6b76c2b68d5a",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=eb817d84-3f84-47b8-adc7-0d156e1ce54b&invitationId=af732a86-c8ac-4d4a-a638-6b76c2b68d5a",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T13:21:24.000Z",
+        "createdTime": "2025-07-24T10:40:47.000Z",
+        "updatedTime": "2025-07-26T14:56:16.000Z",
+        "originalIndex": 24
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/73b4bfac-8e71-4099-8e96-6f731e58222a.pdf",
+        "name": "IR Repair_septic_receipt_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/73b4bfac-8e71-4099-8e96-6f731e58222a.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=c14e335a-7a84-4929-811b-d94c345c3723&invitationId=ba8a1f13-62ec-40ab-9848-3bfc09054957",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=c14e335a-7a84-4929-811b-d94c345c3723&invitationId=ba8a1f13-62ec-40ab-9848-3bfc09054957",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-24T10:40:47.000Z",
+        "updatedTime": "2025-07-26T14:56:16.000Z",
+        "originalIndex": 27
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/econ_docs/4013f654-8064-4a33-b4b2-4bcd47244698.pdf",
+        "name": "IR Repair_roofing_inv_37670 County Road 69",
+        "driveLink": "https://www.ctmecontracts.com/files/econ_docs/4013f654-8064-4a33-b4b2-4bcd47244698.pdf",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=6407d04e-c836-4075-bbdc-d50b829687fd&invitationId=76fde68d-d507-48b4-890a-1f4c1dcb6a45",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=6407d04e-c836-4075-bbdc-d50b829687fd&invitationId=76fde68d-d507-48b4-890a-1f4c1dcb6a45",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-24T10:40:45.000Z",
+        "updatedTime": "2025-07-26T14:56:15.000Z",
+        "originalIndex": 25
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
+        "name": "3591c4fb-690d-4cd8-9553-5b9932eed037",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-12T08:41:07.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
         "originalIndex": 0
       },
@@ -834,164 +1160,20 @@
         "originalIndex": 1
       },
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
-        "name": "486730b3-3bd6-4645-9e72-46f130420794",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
+        "name": "712670de-1412-48be-abf8-a05a9e93101e",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T16:08:37.000Z",
+        "createdTime": "2025-07-12T09:40:55.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
         "originalIndex": 2
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
-        "name": "bc834ec4-ba68-455d-8ee9-3b60fd01794b",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:08:13.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 3
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
-        "name": "535e5327-db6c-4d7a-bb81-04251a980b38",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T15:41:16.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 4
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
-        "name": "0ab7bb0c-91f7-4a0e-a21c-08be288524c9",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T22:21:20.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 6
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
-        "name": "cd33e862-5a91-44d7-b644-9fac02b29d3d",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T16:08:37.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 7
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
-        "name": "b27f375b-0346-4d9c-8740-bb7d6f154034",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:08:12.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 8
-      },
-      {
-        "docId": "41863521",
-        "name": "Source of Water",
-        "driveLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-15T21:12:14.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 9
-      },
-      {
-        "docId": "41863048",
-        "name": "Listing Amend - Other",
-        "driveLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-12T12:37:56.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 10
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
-        "name": "2abd1586-416f-45c7-b7a0-4d0d1e252209",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:41:11.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 11
-      },
-      {
-        "docId": "41863522",
-        "name": "Square Footage Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-15T21:12:14.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 12
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/10ba739b-3c1d-4a75-8b29-f9d631170a6c.pdf",
@@ -1007,87 +1189,23 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-12T13:21:23.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 14
+        "originalIndex": 3
       },
       {
-        "docId": "41995604",
-        "name": "Inspection Objection",
-        "driveLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
-        "signingLink": null,
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
+        "name": "69296387-37ab-475c-af5a-9d0c6e5d549b",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/69296387-37ab-475c-af5a-9d0c6e5d549b.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=69296387-37ab-475c-af5a-9d0c6e5d549b&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-05-26T23:02:05.000Z",
+        "createdTime": "2025-07-12T13:21:24.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 15
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
-        "name": "712670de-1412-48be-abf8-a05a9e93101e",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/712670de-1412-48be-abf8-a05a9e93101e.pdf",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/712670de-1412-48be-abf8-a05a9e93101e.asp",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T09:40:55.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 16
-      },
-      {
-        "docId": "41863520",
-        "name": "Sellers Property Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1W44_z_66YbVD7OgYeJCebAZw9_dA-1aZ/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/1W44_z_66YbVD7OgYeJCebAZw9_dA-1aZ/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-05-15T21:12:13.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 17
-      },
-      {
-        "docId": "42025779",
-        "name": "Inspection Resolution",
-        "driveLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-06-25T06:03:21.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 18
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
-        "name": "2d53cdfe-0872-4b14-80d3-9765b802b6de",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
-        "ourClient1Name": "Charlene Joyce Clark",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Michael Clark",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:08:12.000Z",
-        "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 19
+        "originalIndex": 4
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/d0f451e5-254c-45ed-b3bc-05d7a171ac40.pdf",
@@ -1103,55 +1221,55 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-12T13:21:24.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 20
+        "originalIndex": 5
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
-        "name": "51ade801-d97d-4f86-b230-bc6eec8ed889",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
+        "name": "535e5327-db6c-4d7a-bb81-04251a980b38",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/535e5327-db6c-4d7a-bb81-04251a980b38.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=535e5327-db6c-4d7a-bb81-04251a980b38&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:41:12.000Z",
+        "createdTime": "2025-07-12T15:41:16.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 23
+        "originalIndex": 6
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
-        "name": "eb3b88d7-2e3d-4743-ae4c-6ca228d6440b",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
+        "name": "486730b3-3bd6-4645-9e72-46f130420794",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/486730b3-3bd6-4645-9e72-46f130420794.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=486730b3-3bd6-4645-9e72-46f130420794&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T20:21:13.000Z",
+        "createdTime": "2025-07-12T16:08:37.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 24
+        "originalIndex": 7
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
-        "name": "1f8c59ee-4e20-4134-8930-0af2b5e98524",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
-        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
+        "name": "cd33e862-5a91-44d7-b644-9fac02b29d3d",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/cd33e862-5a91-44d7-b644-9fac02b29d3d.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=cd33e862-5a91-44d7-b644-9fac02b29d3d&isCTMOne=false",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-14T23:41:12.000Z",
+        "createdTime": "2025-07-12T16:08:37.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 25
+        "originalIndex": 8
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/4ab301f0-bb55-457b-b8dd-da33b38ecea0.pdf",
@@ -1167,7 +1285,103 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-14T19:08:17.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 28
+        "originalIndex": 9
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
+        "name": "eb3b88d7-2e3d-4743-ae4c-6ca228d6440b",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/eb3b88d7-2e3d-4743-ae4c-6ca228d6440b.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=eb3b88d7-2e3d-4743-ae4c-6ca228d6440b&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T20:21:13.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 10
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
+        "name": "0ab7bb0c-91f7-4a0e-a21c-08be288524c9",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/0ab7bb0c-91f7-4a0e-a21c-08be288524c9.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=0ab7bb0c-91f7-4a0e-a21c-08be288524c9&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T22:21:20.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 11
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
+        "name": "b27f375b-0346-4d9c-8740-bb7d6f154034",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/b27f375b-0346-4d9c-8740-bb7d6f154034.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=b27f375b-0346-4d9c-8740-bb7d6f154034&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:08:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 12
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
+        "name": "2d53cdfe-0872-4b14-80d3-9765b802b6de",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2d53cdfe-0872-4b14-80d3-9765b802b6de.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2d53cdfe-0872-4b14-80d3-9765b802b6de&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:08:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 13
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
+        "name": "bc834ec4-ba68-455d-8ee9-3b60fd01794b",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/bc834ec4-ba68-455d-8ee9-3b60fd01794b.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=bc834ec4-ba68-455d-8ee9-3b60fd01794b&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:08:13.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 14
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
+        "name": "2abd1586-416f-45c7-b7a0-4d0d1e252209",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/2abd1586-416f-45c7-b7a0-4d0d1e252209.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=2abd1586-416f-45c7-b7a0-4d0d1e252209&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:41:11.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 15
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/1f60516d-0b08-46f1-befe-c2e1c0778309.pdf",
@@ -1183,7 +1397,39 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-07-14T23:41:11.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 29
+        "originalIndex": 16
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
+        "name": "51ade801-d97d-4f86-b230-bc6eec8ed889",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/51ade801-d97d-4f86-b230-bc6eec8ed889.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=51ade801-d97d-4f86-b230-bc6eec8ed889&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:41:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 17
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
+        "name": "1f8c59ee-4e20-4134-8930-0af2b5e98524",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/1f8c59ee-4e20-4134-8930-0af2b5e98524.pdf",
+        "signingLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://www.ctmecontracts.com/sota/contracts/signing.htm?fromASP=true&contractGuid=1f8c59ee-4e20-4134-8930-0af2b5e98524&isCTMOne=false",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-07-14T23:41:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 18
       },
       {
         "docId": "41863047",
@@ -1199,40 +1445,120 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-05-11T02:31:56.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
-        "originalIndex": 31
+        "originalIndex": 20
       },
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
-        "name": "3591c4fb-690d-4cd8-9553-5b9932eed037",
-        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3591c4fb-690d-4cd8-9553-5b9932eed037.pdf",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "docId": "41995604",
+        "name": "Inspection Objection",
+        "driveLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
+        "signingLink": null,
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/3591c4fb-690d-4cd8-9553-5b9932eed037.asp",
+        "displayLink": "https://drive.google.com/file/d/1OY_umxXytfEohDyzqFmfyuztvKZ3Gp_U/view?usp=drivesdk",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Pending",
-        "createdTime": "2025-07-12T08:41:07.000Z",
+        "createdTime": "2025-05-26T23:02:05.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 21
+      },
+      {
+        "docId": "42025779",
+        "name": "Inspection Resolution",
+        "driveLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/12Mw4jf_UTa3IQhRciIgoKJlikyl3Z8O8/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-06-25T06:03:21.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 22
+      },
+      {
+        "docId": "41863048",
+        "name": "Listing Amend - Other",
+        "driveLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1MdwffBAR3ilmljqy5spHoiLjhezuydFh/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-12T12:37:56.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 29
+      },
+      {
+        "docId": "41881382",
+        "name": "Sellers Property Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1JqtakwKW-Pdl3-Q2Xc8epX_TPOl8InuJ/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1JqtakwKW-Pdl3-Q2Xc8epX_TPOl8InuJ/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-15T21:12:12.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 30
+      },
+      {
+        "docId": "41863521",
+        "name": "Source of Water",
+        "driveLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1CD1qcSEoFKWX9J_VAeQJbgNzbT5JhVne/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-15T21:12:14.000Z",
         "updatedTime": "2025-07-25T00:40:12.000Z",
         "originalIndex": 32
+      },
+      {
+        "docId": "41863522",
+        "name": "Square Footage Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1IFSKnIlyFbKhb_hR8RxaxRL5lmeXkAEm/view?usp=drivesdk",
+        "ourClient1Name": "Charlene Joyce Clark",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Michael Clark",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-05-15T21:12:14.000Z",
+        "updatedTime": "2025-07-25T00:40:12.000Z",
+        "originalIndex": 33
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/0d767d7d-a520-4e02-8eae-2a1403713e97.pdf",
         "name": "closing_date_amend",
         "driveLink": "https://drive.google.com/file/d/1S2nalYOF1HpF95BYErIth-pYebz5kHRL/view?usp=drivesdk",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/0d767d7d-a520-4e02-8eae-2a1403713e97.asp",
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Complete",
         "signedParties": "[\"Sergio Gutierrez\",\"Mayra Jaquez\",\"Charlene Joyce Clark\",\"Michael Phillip Clark\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/0d767d7d-a520-4e02-8eae-2a1403713e97.asp",
+        "displayLink": "https://drive.google.com/file/d/1S2nalYOF1HpF95BYErIth-pYebz5kHRL/view?usp=drivesdk",
         "ourClient1Name": "Charlene Joyce Clark",
         "ourClient1Status": "Complete",
         "ourClient2Name": "Michael Clark",
         "ourClient2Status": "Complete",
         "createdTime": "2025-07-24T14:29:47.000Z",
         "updatedTime": "2025-07-24T20:00:46.000Z",
-        "originalIndex": 21
+        "originalIndex": 19
       }
     ]
   }
@@ -1334,11 +1660,16 @@
           if (name.includes('exp aba') || name.includes('aba exp')) return 'Team Disclosures';
           if (name.includes('mikes aba') || name.includes('mike aba') || name.includes('aba mike')) return 'Team Disclosures';
           if (name.includes('colorado real estate') && name.includes('advisory')) return 'Team Disclosures';
+          if (name.includes('dual status')) return 'Team Disclosures';
+          if (name.includes('definitions of working relationships') || name.includes('working relationships')) return 'Team Disclosures';
           
           // Seller Disclosures
           if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
+          if (name.includes('closing disclosure')) return 'Seller Disclosures';
+          if (name.includes('closing instructions')) return 'Seller Disclosures';
+          if (name.includes('closing instructions')) return 'Seller Disclosures';
           
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
@@ -1366,7 +1697,7 @@
         }, {});
         
         // Generate HTML for each category (Team Disclosures first)
-        const categoryOrder = ['Team Disclosures', 'Contract Documents', 'Seller Disclosures', 'Inspection Objection and Resolution', 'Inspection Reports and Tests', 'HOA', 'Title Document', 'Repairs and DDD', 'Closing Documents', 'Other Documents'];
+        const categoryOrder = ['Team Disclosures', 'Seller Disclosures', 'Contract Documents', 'Inspection Objection and Resolution', 'Inspection Reports and Tests', 'HOA', 'Title Document', 'Repairs and DDD', 'Closing Documents', 'Other Documents'];
         
         const sortedCategories = categoryOrder.filter(cat => groupedDocs[cat]).concat(
           Object.keys(groupedDocs).filter(cat => !categoryOrder.includes(cat))
@@ -1419,12 +1750,11 @@
           const completeInCategory = statusCounts['complete'];
           const totalInCategory = categoryDocs.length;
           
-          // Determine if category should be open by default (open if has pending docs)
-          const hasSignatures = pendingInCategory > 0;
-          const categoryId = createSafeId(category, 'doc-category-') + '-' + index;
-          const isExpanded = hasSignatures ? 'expanded' : '';
-          const arrowRotated = hasSignatures ? 'rotated' : '';
-          
+          // Determine if category should be open by default (open if has pending docs OR if it's Closing Documents with any docs)
+const hasSignatures = pendingInCategory > 0 || (category === 'Closing Documents' && totalInCategory > 0);
+const categoryId = createSafeId(category, 'doc-category-') + '-' + index;
+const isExpanded = hasSignatures ? 'expanded' : '';
+const arrowRotated = hasSignatures ? 'rotated' : '';
           // Create status summary with SMART pending logic
           let statusSummary = '';
           const parts = [];
@@ -1614,11 +1944,577 @@
         }
       }
     }
+
+    // More Info Modal Functions
+    function openInfoModal(infoType) {
+      const modal = document.getElementById('infoModal');
+      const title = document.getElementById('infoModalTitle');
+      const body = document.getElementById('infoModalBody');
+      
+      const infoContent = getInfoContent(infoType);
+      
+      title.textContent = infoContent.title;
+      body.innerHTML = infoContent.content;
+      
+      modal.classList.add('active');
+    }
+    
+    function closeInfoModal(event) {
+      if (!event || event.target === document.getElementById('infoModal')) {
+        document.getElementById('infoModal').classList.remove('active');
+      }
+    }
+
+    function openEvenMoreInfo(infoType) {
+      const modal = document.getElementById('infoModal');
+      const title = document.getElementById('infoModalTitle');
+      const body = document.getElementById('infoModalBody');
+      
+      const moreContent = getEvenMoreInfoContent(infoType);
+      
+      title.textContent = moreContent.title;
+      body.innerHTML = moreContent.content;
+    }
+    
+    function getInfoContent(infoType) {
+      const content = {
+        'team-disclosures-info': {
+          title: 'Team Disclosures - Detailed Information',
+          content: `
+            <h4>Purpose of Team Disclosures</h4>
+            <p>Team disclosures ensure transparency in your real estate transaction by clearly outlining how your real estate team operates and gets compensated.</p>
+            
+            <h4>Key Information Included</h4>
+            <p>• Agent's role and responsibilities</p>
+            <p>• How commission is structured and paid</p>
+            <p>• Any business relationships that could affect the transaction</p>
+            <p>• Your rights as a client</p>
+            
+            <h4>Legal Requirements</h4>
+            <p>Real estate law requires these disclosures to be provided before any binding agreements are signed. Your acknowledgment confirms you understand these relationships.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('team-disclosures'); return false;">Even More Info</a>
+          `
+        },
+        'contract-documents-info': {
+          title: 'Contract Documents - Detailed Information',
+          content: `
+            <h4>⚠️ Critical Documents - Handle with Care</h4>
+            <p>Contract documents are legally binding agreements that define the terms of your property purchase or sale.</p>
+            
+            <h4>Types of Contract Documents</h4>
+            <p>• <strong>Purchase Contract:</strong> Main agreement outlining price, terms, and conditions</p>
+            <p>• <strong>Amendments:</strong> Modifications to the original contract</p>
+            <p>• <strong>Addendums:</strong> Additional terms or conditions</p>
+            
+            <h4>Before You Sign</h4>
+            <p>• Always review with your agent first</p>
+            <p>• Understand all terms and conditions</p>
+            <p>• Ask questions about anything unclear</p>
+            <p>• Ensure all negotiated items are included</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('contract-documents'); return false;">Even More Info</a>
+          `
+        },
+        'seller-disclosures-info': {
+          title: 'Seller Disclosures - Detailed Information',
+          content: `
+            <h4>What Sellers Must Disclose</h4>
+            <p>Sellers are legally required to disclose known material facts about the property that could affect its value or desirability.</p>
+            
+            <h4>Common Disclosure Topics</h4>
+            <p>• Property condition and known defects</p>
+            <p>• Environmental hazards (lead, asbestos, radon)</p>
+            <p>• Neighborhood issues (noise, odors, planned construction)</p>
+            <p>• Property improvements and permits</p>
+            <p>• Insurance claims and loss history</p>
+            
+            <h4>Your Rights</h4>
+            <p>You have the right to review all disclosures and may have the option to withdraw from the contract if material issues are discovered.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('seller-disclosures'); return false;">Even More Info</a>
+          `
+        },
+        'inspection-objection-info': {
+          title: 'Inspection Objection & Resolution - Detailed Information',
+          content: `
+            <h4>⚠️ Important Negotiation Documents</h4>
+            <p>These documents formalize the inspection process and any resulting negotiations between buyer and seller.</p>
+            
+            <h4>The Process</h4>
+            <p>1. <strong>Inspection:</strong> Professional examines property</p>
+            <p>2. <strong>Objection:</strong> Buyer requests repairs or credits</p>
+            <p>3. <strong>Response:</strong> Seller agrees, counters, or rejects</p>
+            <p>4. <strong>Resolution:</strong> Final agreement on repairs/credits</p>
+            
+            <h4>Timeline Importance</h4>
+            <p>Inspection periods have strict deadlines. Missing deadlines could mean losing your right to object or your earnest money.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('inspection-objection'); return false;">Even More Info</a>
+          `
+        },
+        'inspection-reports-info': {
+          title: 'Inspection Reports & Tests - Detailed Information',
+          content: `
+            <h4>Professional Property Assessments</h4>
+            <p>These reports provide detailed information about the property's condition and any potential issues.</p>
+            
+            <h4>Common Types of Inspections</h4>
+            <p>• <strong>General Home Inspection:</strong> Overall property condition</p>
+            <p>• <strong>Radon Testing:</strong> Dangerous gas levels</p>
+            <p>• <strong>Septic Inspection:</strong> Waste system functionality</p>
+            <p>• <strong>Well Water Testing:</strong> Water quality and safety</p>
+            <p>• <strong>Structural Engineering:</strong> Foundation and structural integrity</p>
+            
+            <h4>Understanding Reports</h4>
+            <p>Reports categorize issues by severity. Your agent can help prioritize which items to address in negotiations.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('inspection-reports'); return false;">Even More Info</a>
+          `
+        },
+        'hoa-info': {
+          title: 'HOA Documents - Detailed Information',
+          content: `
+            <h4>Homeowners Association Overview</h4>
+            <p>HOA documents outline the rules, restrictions, and financial obligations that come with owning property in the community.</p>
+            
+            <h4>Key Documents</h4>
+            <p>• <strong>CC&Rs:</strong> Covenants, Conditions & Restrictions</p>
+            <p>• <strong>Bylaws:</strong> HOA operational procedures</p>
+            <p>• <strong>Financial Statements:</strong> HOA budget and reserves</p>
+            <p>• <strong>Meeting Minutes:</strong> Recent board decisions</p>
+            
+            <h4>Review Period</h4>
+            <p>You typically have a specific timeframe to review HOA documents and decide if you want to proceed with the purchase.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('hoa'); return false;">Even More Info</a>
+          `
+        },
+        'title-document-info': {
+          title: 'Title Documents - Detailed Information',
+          content: `
+            <h4>Proving Property Ownership</h4>
+            <p>Title documents establish the legal right to own and transfer the property by showing its ownership history and any encumbrances.</p>
+            
+            <h4>Key Components</h4>
+            <p>• <strong>Title Commitment:</strong> Promise to insure clear title</p>
+            <p>• <strong>Property History:</strong> Chain of ownership</p>
+            <p>• <strong>Liens & Encumbrances:</strong> Outstanding debts or restrictions</p>
+            <p>• <strong>Easements:</strong> Rights others have to use the property</p>
+            
+            <h4>Title Insurance</h4>
+            <p>Protects against unknown title defects that could affect your ownership rights.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('title-document'); return false;">Even More Info</a>
+          `
+        },
+        'repairs-ddd-info': {
+          title: 'Repairs & Due Diligence Documents - Detailed Information',
+          content: `
+            <h4>Repair Documentation</h4>
+            <p>These documents show what repairs were completed as agreed upon in the inspection resolution.</p>
+            
+            <h4>Types of Documents</h4>
+            <p>• <strong>Receipts:</strong> Proof of completed repairs</p>
+            <p>• <strong>Permits:</strong> Required approvals for work done</p>
+            <p>• <strong>Warranties:</strong> Coverage for new systems or repairs</p>
+            <p>• <strong>Utility Bills:</strong> Usage history for budgeting</p>
+            
+            <h4>Due Diligence Documents</h4>
+            <p>Additional information to help you make an informed decision about the property purchase.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('repairs-ddd'); return false;">Even More Info</a>
+          `
+        },
+        'closing-documents-info': {
+          title: 'Closing Documents - Detailed Information',
+          content: `
+            <h4>Final Transaction Documents</h4>
+            <p>These documents complete the legal transfer of property ownership and finalize all financial aspects of the transaction.</p>
+            
+            <h4>Key Closing Documents</h4>
+            <p>• <strong>Settlement Statement:</strong> Final accounting of all costs</p>
+            <p>• <strong>Deed:</strong> Legal transfer of ownership</p>
+            <p>• <strong>Loan Documents:</strong> Mortgage paperwork (if applicable)</p>
+            <p>• <strong>Title Policy:</strong> Final title insurance</p>
+            
+            <h4>The Closing Process</h4>
+            <p>Documents are typically signed at a title company or attorney's office with all parties present or represented.</p>
+            
+            <a href="#" class="even-more-info-link" onclick="openEvenMoreInfo('closing-documents'); return false;">Even More Info</a>
+          `
+        }
+      };
+      
+      return content[infoType] || {
+        title: 'Information Not Available',
+        content: '<p>Sorry, detailed information for this section is not currently available.</p>'
+      };
+    }
+
+    function getEvenMoreInfoContent(infoType) {
+      const content = {
+        'team-disclosures': {
+          title: 'Team Disclosures - Comprehensive Guide',
+          content: `
+            <h4>Legal Foundation</h4>
+            <p>Team disclosures are mandated by state real estate law to ensure all parties understand the business relationships and potential conflicts of interest.</p>
+            
+            <h4>Agent Representation Types</h4>
+            <p>• <strong>Buyer's Agent:</strong> Exclusively represents buyer interests</p>
+            <p>• <strong>Seller's Agent:</strong> Exclusively represents seller interests</p>
+            <p>• <strong>Dual Agent:</strong> Represents both parties (requires special disclosure)</p>
+            <p>• <strong>Transaction Broker:</strong> Facilitates transaction without representing either party</p>
+            
+            <h4>Commission Structure Details</h4>
+            <p>Typically, the seller pays both listing and buyer agent commissions from the sale proceeds. The exact percentage and split should be clearly disclosed.</p>
+            
+            <h4>Your Rights & Protections</h4>
+            <p>• Right to understand all compensation arrangements</p>
+            <p>• Right to know about any business relationships</p>
+            <p>• Right to ask questions and get clear answers</p>
+            <p>• Protection against undisclosed conflicts of interest</p>
+            
+            <h4>What to Watch For</h4>
+            <p>• Agents representing both parties in the same transaction</p>
+            <p>• Financial interests agents may have in service providers</p>
+            <p>• Family or business relationships between agents</p>
+          `
+        },
+        'contract-documents': {
+          title: 'Contract Documents - Legal Framework',
+          content: `
+            <h4>Legal Binding Nature</h4>
+            <p>Once signed, purchase contracts become legally enforceable agreements. Breaking a contract can result in loss of earnest money or legal action.</p>
+            
+            <h4>Essential Contract Elements</h4>
+            <p>• <strong>Property Description:</strong> Legal description and address</p>
+            <p>• <strong>Purchase Price:</strong> Total amount and payment terms</p>
+            <p>• <strong>Financing Terms:</strong> Loan conditions and deadlines</p>
+            <p>• <strong>Contingencies:</strong> Conditions that must be met</p>
+            <p>• <strong>Closing Date:</strong> When ownership transfers</p>
+            
+            <h4>Common Contingencies</h4>
+            <p>• Financing approval</p>
+            <p>• Satisfactory home inspection</p>
+            <p>• Clear title</p>
+            <p>• Appraisal at or above purchase price</p>
+            <p>• Sale of buyer's current home</p>
+            
+            <h4>Amendment vs. Addendum</h4>
+            <p><strong>Amendment:</strong> Changes existing contract terms</p>
+            <p><strong>Addendum:</strong> Adds new terms to the contract</p>
+            <p>Both require signatures from all parties to be valid.</p>
+            
+            <h4>Warning Signs</h4>
+            <p>🚨 Never sign if:</p>
+            <p>• Terms don't match your understanding</p>
+            <p>• Blanks are left unfilled</p>
+            <p>• You haven't discussed with your agent</p>
+            <p>• You're being pressured to sign immediately</p>
+          `
+        },
+        'seller-disclosures': {
+          title: 'Seller Disclosures - Legal Requirements',
+          content: `
+            <h4>Legal Obligation</h4>
+            <p>Most states require sellers to disclose known material defects. "Material" means anything that would affect a reasonable buyer's decision to purchase or the price they'd pay.</p>
+            
+            <h4>Standard Disclosure Categories</h4>
+            <p>• <strong>Structural:</strong> Foundation, walls, roof issues</p>
+            <p>• <strong>Mechanical:</strong> HVAC, plumbing, electrical problems</p>
+            <p>• <strong>Environmental:</strong> Asbestos, lead paint, mold, radon</p>
+            <p>• <strong>Water Damage:</strong> Flooding, leaks, drainage issues</p>
+            <p>• <strong>Pest Issues:</strong> Termites, rodents, other infestations</p>
+            
+            <h4>What If Sellers Don't Disclose?</h4>
+            <p>If sellers knowingly hide material defects, buyers may have legal recourse including:</p>
+            <p>• Rescission of the sale</p>
+            <p>• Monetary damages for repairs</p>
+            <p>• Legal fees and court costs</p>
+            
+            <h4>Buyer's Due Diligence</h4>
+            <p>While sellers must disclose known issues, buyers should still:</p>
+            <p>• Conduct professional inspections</p>
+            <p>• Research neighborhood and property history</p>
+            <p>• Ask specific questions about concerns</p>
+            
+            <h4>Red Flags</h4>
+            <p>• Reluctance to answer questions</p>
+            <p>• Recent repairs without explanation</p>
+            <p>• Unusual odors or stains</p>
+            <p>• Missing permits for improvements</p>
+          `
+        },
+        'inspection-objection': {
+          title: 'Inspection Process - Complete Framework',
+          content: `
+            <h4>Timeline Overview</h4>
+            <p>Inspection periods are typically 7-10 days from contract acceptance, but this varies by location and contract terms.</p>
+            
+            <h4>Step-by-Step Process</h4>
+            <p><strong>Day 1-3:</strong> Schedule and complete inspections</p>
+            <p><strong>Day 4-5:</strong> Review reports with agent</p>
+            <p><strong>Day 6-7:</strong> Submit objection (if any)</p>
+            <p><strong>Day 8-10:</strong> Negotiate resolution</p>
+            
+            <h4>Types of Objections</h4>
+            <p>• <strong>Repair Requests:</strong> Ask seller to fix issues</p>
+            <p>• <strong>Credit Requests:</strong> Ask for money to handle repairs yourself</p>
+            <p>• <strong>Price Reduction:</strong> Lower the purchase price</p>
+            <p>• <strong>Contract Termination:</strong> Walk away from the deal</p>
+            
+            <h4>Seller Response Options</h4>
+            <p>• Accept all requests</p>
+            <p>• Accept some, reject others</p>
+            <p>• Counter with different terms</p>
+            <p>• Reject all requests</p>
+            
+            <h4>Critical Deadlines</h4>
+            <p>⏰ Missing inspection deadlines typically means:</p>
+            <p>• Waiving your right to object</p>
+            <p>• Accepting property "as-is"</p>
+            <p>• Potential loss of earnest money if you try to withdraw</p>
+            
+            <h4>Negotiation Strategies</h4>
+            <p>• Prioritize safety and major system issues</p>
+            <p>• Be reasonable with cosmetic requests</p>
+            <p>• Consider market conditions</p>
+            <p>• Remember both parties want the deal to close</p>
+          `
+        },
+        'inspection-reports': {
+          title: 'Inspection Reports - Technical Guide',
+          content: `
+            <h4>Home Inspector Qualifications</h4>
+            <p>Choose licensed, certified inspectors with experience in your area. Many belong to professional organizations like ASHI or InterNACHI.</p>
+            
+            <h4>Standard Home Inspection Covers</h4>
+            <p>• Structural elements (foundation, framing, roof)</p>
+            <p>• Exterior (siding, windows, doors, driveways)</p>
+            <p>• Roofing system</p>
+            <p>• Plumbing system</p>
+            <p>• Electrical system</p>
+            <p>• HVAC system</p>
+            <p>• Interior (floors, walls, ceilings, stairs)</p>
+            <p>• Insulation and ventilation</p>
+            
+            <h4>Additional Specialized Tests</h4>
+            <p>• <strong>Radon:</strong> Radioactive gas test (48-72 hours)</p>
+            <p>• <strong>Mold:</strong> Air or surface sampling</p>
+            <p>• <strong>Lead Paint:</strong> Especially in pre-1978 homes</p>
+            <p>• <strong>Asbestos:</strong> Common in older homes</p>
+            <p>• <strong>Pest:</strong> Termites, carpenter ants, etc.</p>
+            
+            <h4>Understanding Report Terminology</h4>
+            <p>• <strong>Safety Hazard:</strong> Immediate danger requiring prompt attention</p>
+            <p>• <strong>Major Defect:</strong> Significant issues affecting function/value</p>
+            <p>• <strong>Minor Defect:</strong> Normal wear or minor maintenance needed</p>
+            <p>• <strong>Monitor:</strong> Watch for changes over time</p>
+            
+            <h4>Cost Estimates</h4>
+            <p>Inspection reports typically don't include repair costs. Get quotes from contractors for major issues before finalizing your objection.</p>
+            
+            <h4>Attending the Inspection</h4>
+            <p>Benefits of being present:</p>
+            <p>• Ask questions in real-time</p>
+            <p>• See issues firsthand</p>
+            <p>• Learn about home maintenance</p>
+            <p>• Build relationship with inspector</p>
+          `
+        },
+        'hoa': {
+          title: 'HOA Documents - Complete Analysis',
+          content: `
+            <h4>Financial Health Indicators</h4>
+            <p>Review the HOA's financial statements for:</p>
+            <p>• Adequate reserve funds (typically 25-50% of annual budget)</p>
+            <p>• Recent or planned special assessments</p>
+            <p>• Delinquency rates on HOA fees</p>
+            <p>• Major upcoming expenses (roof, siding, etc.)</p>
+            
+            <h4>CC&R Restrictions May Include</h4>
+            <p>• Architectural guidelines and approval processes</p>
+            <p>• Pet restrictions (type, size, number)</p>
+            <p>• Rental restrictions or requirements</p>
+            <p>• Parking rules and guest policies</p>
+            <p>• Landscaping requirements</p>
+            <p>• Noise and nuisance regulations</p>
+            
+            <h4>Red Flags to Watch For</h4>
+            <p>• Multiple special assessments in recent years</p>
+            <p>• Low reserve funds</p>
+            <p>• High delinquency rates</p>
+            <p>• Frequent board turnover</p>
+            <p>• Ongoing litigation</p>
+            <p>• Deferred maintenance on common areas</p>
+            
+            <h4>Your Rights as an Owner</h4>
+            <p>• Attend board meetings</p>
+            <p>• Access financial records</p>
+            <p>• Vote on major decisions</p>
+            <p>• Run for board positions</p>
+            <p>• Request hearing for violation disputes</p>
+            
+            <h4>Questions to Ask</h4>
+            <p>• What are current and planned HOA fees?</p>
+            <p>• Any upcoming special assessments?</p>
+            <p>• What amenities are included?</p>
+            <p>• How are violations handled?</p>
+            <p>• What insurance does HOA carry vs. individual responsibility?</p>
+          `
+        },
+        'title-document': {
+          title: 'Title Documents - Ownership Protection',
+          content: `
+            <h4>Title Search Process</h4>
+            <p>A title company or attorney searches public records going back 30-50 years to verify:</p>
+            <p>• Chain of ownership</p>
+            <p>• Outstanding liens or judgments</p>
+            <p>• Easements and restrictions</p>
+            <p>• Tax assessments</p>
+            <p>• Pending legal actions</p>
+            
+            <h4>Common Title Issues</h4>
+            <p>• <strong>Liens:</strong> Unpaid contractor, tax, or judgment liens</p>
+            <p>• <strong>Easements:</strong> Utility or neighbor access rights</p>
+            <p>• <strong>Encroachments:</strong> Structures crossing property lines</p>
+            <p>• <strong>Forgery:</strong> Fraudulent documents in chain of title</p>
+            <p>• <strong>Errors:</strong> Mistakes in public records</p>
+            
+            <h4>Title Insurance Types</h4>
+            <p><strong>Lender's Policy:</strong> Protects mortgage lender (required)</p>
+            <p><strong>Owner's Policy:</strong> Protects buyer (optional but recommended)</p>
+            
+            <h4>What Title Insurance Covers</h4>
+            <p>• Unknown liens or encumbrances</p>
+            <p>• Forgery or fraud in title documents</p>
+            <p>• Errors in public records</p>
+            <p>• Missing heirs claiming ownership</p>
+            <p>• Legal defense costs</p>
+            
+            <h4>Title Insurance Cost</h4>
+            <p>One-time premium paid at closing. In some areas, seller pays; in others, buyer pays. Cost typically 0.5-1% of purchase price.</p>
+            
+            <h4>Clear Title Requirements</h4>
+            <p>Before closing, all title issues must be resolved or insured over. This may require:</p>
+            <p>• Paying off liens</p>
+            <p>• Getting lien releases</p>
+            <p>• Obtaining quit claim deeds</p>
+            <p>• Filing corrective documents</p>
+          `
+        },
+        'repairs-ddd': {
+          title: 'Repairs & Due Diligence - Complete Documentation',
+          content: `
+            <h4>Repair Documentation Standards</h4>
+            <p>Proper repair documentation should include:</p>
+            <p>• Detailed receipts with labor and materials</p>
+            <p>• Before and after photos</p>
+            <p>• Permits for electrical, plumbing, or structural work</p>
+            <p>• Warranties on new equipment or systems</p>
+            <p>• Professional certifications (electrical, HVAC, etc.)</p>
+            
+            <h4>Verifying Completed Repairs</h4>
+            <p>• Compare work to original repair requests</p>
+            <p>• Check that permits were properly closed</p>
+            <p>• Verify contractor licenses and insurance</p>
+            <p>• Test repaired systems when possible</p>
+            <p>• Get warranties transferred to your name</p>
+            
+            <h4>Due Diligence Document Types</h4>
+            <p>• <strong>Utility Bills:</strong> 12 months to estimate costs</p>
+            <p>• <strong>Property Tax Records:</strong> Recent assessments and payments</p>
+            <p>• <strong>Insurance Claims:</strong> History of damage/claims</p>
+            <p>• <strong>Maintenance Records:</strong> HVAC service, roof repairs, etc.</p>
+            <p>• <strong>Warranty Information:</strong> Remaining coverage on systems</p>
+            
+            <h4>Analyzing Utility Costs</h4>
+            <p>Look for:</p>
+            <p>• Seasonal patterns in heating/cooling costs</p>
+            <p>• Unusually high water usage (potential leaks)</p>
+            <p>• Average monthly total for budgeting</p>
+            <p>• Energy efficiency upgrades that may reduce costs</p>
+            
+            <h4>Maintenance Record Insights</h4>
+            <p>• Regular HVAC maintenance extends system life</p>
+            <p>• Recent major repairs may indicate other issues</p>
+            <p>• Well-maintained properties typically have fewer surprises</p>
+            <p>• Deferred maintenance may indicate financial stress</p>
+            
+            <h4>Questions for Sellers</h4>
+            <p>• What repairs have been done in last 5 years?</p>
+            <p>• Are there any recurring issues?</p>
+            <p>• What preventive maintenance is recommended?</p>
+            <p>• Are there any warranties being transferred?</p>
+          `
+        },
+        'closing-documents': {
+          title: 'Closing Documents - Final Transaction',
+          content: `
+            <h4>Pre-Closing Preparation</h4>
+            <p>Before closing day:</p>
+            <p>• Conduct final walk-through</p>
+            <p>• Obtain certified funds for closing costs</p>
+            <p>• Review settlement statement (HUD-1 or CD)</p>
+            <p>• Arrange homeowner's insurance</p>
+            <p>• Coordinate with all parties on timing</p>
+            
+            <h4>Settlement Statement Details</h4>
+            <p>The Closing Disclosure shows:</p>
+            <p>• Final loan terms and monthly payment</p>
+            <p>• Total closing costs breakdown</p>
+            <p>• Cash needed at closing</p>
+            <p>• Prorated taxes and utilities</p>
+            <p>• Title and escrow fees</p>
+            
+            <h4>Key Documents You'll Sign</h4>
+            <p>• <strong>Promissory Note:</strong> Your promise to repay the loan</p>
+            <p>• <strong>Deed of Trust/Mortgage:</strong> Secures loan with property</p>
+            <p>• <strong>Deed:</strong> Transfers ownership to you</p>
+            <p>• <strong>Title Affidavit:</strong> Confirms no unreported changes</p>
+            
+            <h4>What You'll Receive</h4>
+            <p>• Copy of recorded deed</p>
+            <p>• Title insurance policy</p>
+            <p>• Survey (if applicable)</p>
+            <p>• House keys and garage remotes</p>
+            <p>• Warranty information</p>
+            
+            <h4>Closing Day Timeline</h4>
+            <p>• Loan documents signed first (longest process)</p>
+            <p>• Settlement statement review and signature</p>
+            <p>• Transfer documents signed</p>
+            <p>• Funds disbursed</p>
+            <p>• Keys transferred</p>
+            
+            <h4>After Closing</h4>
+            <p>• Deed recorded at courthouse</p>
+            <p>• Title insurance policies issued</p>
+            <p>• First mortgage payment due (typically 30-45 days)</p>
+            <p>• Property taxes may be reassessed</p>
+            
+            <h4>Potential Closing Delays</h4>
+            <p>• Last-minute loan issues</p>
+            <p>• Title problems discovered</p>
+            <p>• Property damage found in final walk-through</p>
+            <p>• Missing required documents</p>
+            <p>• Funding delays from lender</p>
+          `
+        }
+      };
+      
+      return content[infoType] || {
+        title: 'Comprehensive Information Not Available',
+        content: '<p>Sorry, comprehensive information for this section is not currently available.</p>'
+      };
+    }
     
     // Close modal with Escape key
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
         closeModal();
+        closeInfoModal();
       }
     });
     
