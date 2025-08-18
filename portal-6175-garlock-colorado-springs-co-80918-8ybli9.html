@@ -333,18 +333,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('John Mastriani', 2, 0, 1)">
+    <button class="client-btn" onclick="openModal('John K Mastriani', 3, 1, 1)">
       <div>
-        <div class="client-name">John Mastriani</div>
-        <div class="client-docs">2 documents • 1 complete • 1 need signature</div>
+        <div class="client-name">John K Mastriani</div>
+        <div class="client-docs">3 documents • 1 complete • 1 signed, pending sellers • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Lindsey Mastriani', 2, 1, 0)">
+    <button class="client-btn" onclick="openModal('Lindsey Ann Mastriani', 3, 1, 1)">
       <div>
-        <div class="client-name">Lindsey Mastriani</div>
-        <div class="client-docs">2 documents • 1 complete • 1 signed, pending other sellers</div>
+        <div class="client-name">Lindsey Ann Mastriani</div>
+        <div class="client-docs">3 documents • 1 complete • 1 signed, pending sellers • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -506,10 +506,27 @@
   
   <script>
     const clientDocuments = {
-  "John Mastriani": {
-    "clientName": "John Mastriani",
-    "clientRole": "seller",
+  "John K Mastriani": {
+    "clientName": "John K Mastriani",
+    "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "ourClient1Name": "John K Mastriani",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Lindsey Ann Mastriani",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-18T21:42:24.000Z",
+        "updatedTime": "2025-08-18T21:42:24.000Z",
+        "originalIndex": 2
+      },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/168a7c0e-cc59-4d3a-81df-f6c8b8f3c505.pdf",
         "name": "Unknown Doc",
@@ -525,7 +542,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-08T02:04:50.000Z",
         "updatedTime": "2025-08-08T02:05:10.000Z",
-        "originalIndex": 2,
+        "originalIndex": 3,
         "recordId": "recVwCbAesWljSeJS"
       },
       {
@@ -548,10 +565,27 @@
       }
     ]
   },
-  "Lindsey Mastriani": {
-    "clientName": "Lindsey Mastriani",
-    "clientRole": "seller",
+  "Lindsey Ann Mastriani": {
+    "clientName": "Lindsey Ann Mastriani",
+    "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "ourClient1Name": "John K Mastriani",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Lindsey Ann Mastriani",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-18T21:42:24.000Z",
+        "updatedTime": "2025-08-18T21:42:24.000Z",
+        "originalIndex": 2
+      },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/168a7c0e-cc59-4d3a-81df-f6c8b8f3c505.pdf",
         "name": "Unknown Doc",
@@ -567,7 +601,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-08T02:04:50.000Z",
         "updatedTime": "2025-08-08T02:05:10.000Z",
-        "originalIndex": 2,
+        "originalIndex": 3,
         "recordId": "recVwCbAesWljSeJS"
       },
       {
@@ -575,7 +609,7 @@
         "name": "MLS",
         "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/f5adcfc9-8016-4b7d-a54e-13e591bf14e9.pdf",
         "signingLink": null,
-        "status": "signed",
+        "status": "pending",
         "completionStatus": "Pending",
         "signedParties": "[\"Lindsey Ann Mastriani\"]",
         "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/f5adcfc9-8016-4b7d-a54e-13e591bf14e9.pdf",
@@ -695,6 +729,8 @@
           if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
+          if (name.includes('source of water')) return 'Seller Disclosures';
+          if (name.includes('lead based paint') || name.includes('lead-based paint')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
@@ -702,6 +738,7 @@
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
           if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+          if (name.includes('short sale') && name.includes('addendum')) return 'Contract Documents';
           if (name.includes('loan') && name.includes('extension')) return 'Contract Documents';
           
           // Other categories
