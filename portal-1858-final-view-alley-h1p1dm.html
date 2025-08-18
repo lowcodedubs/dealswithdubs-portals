@@ -333,10 +333,10 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Michael Green', 3, 1, 1)">
+    <button class="client-btn" onclick="openModal('Michael Green', 4, 0, 1)">
       <div>
         <div class="client-name">Michael Green</div>
-        <div class="client-docs">3 documents • 1 complete • 1 signed, pending buyers • 1 need signature</div>
+        <div class="client-docs">4 documents • 3 complete • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -503,14 +503,28 @@
     "clientRole": "seller",
     "documents": [
       {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/50980fd1-3f28-4c48-9928-f907453e149c.pdf",
+        "name": "loan_extension_amend",
+        "driveLink": "https://drive.google.com/file/d/1g-lPQqTiXaLwpcJuZ0vt-lAu6f5OoSON/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/50980fd1-3f28-4c48-9928-f907453e149c.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Nick Kramer\",\"Michael Green\"]",
+        "displayLink": "https://drive.google.com/file/d/1g-lPQqTiXaLwpcJuZ0vt-lAu6f5OoSON/view?usp=drivesdk",
+        "ourClient1Name": "Michael Green",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-12T01:41:35.000Z",
+        "updatedTime": "2025-08-18T11:13:58.000Z",
+        "originalIndex": 33
+      },
+      {
         "docId": "https://www.ctmone.com/files/PDFConvert/50980fd1-3f28-4c48-9928-f907453e149c.pdf",
         "name": "50980fd1-3f28-4c48-9928-f907453e149c",
         "driveLink": "https://www.ctmone.com/files/aspredir/50980fd1-3f28-4c48-9928-f907453e149c.asp",
         "signingLink": "https://www.ctmone.com/files/aspredir/50980fd1-3f28-4c48-9928-f907453e149c.asp",
         "status": "pending",
-        "completionStatus": {
-          "error": "#ERROR!"
-        },
+        "completionStatus": "Pending",
         "signedParties": "[\"Nick Kramer\"]",
         "displayLink": "https://www.ctmone.com/files/aspredir/50980fd1-3f28-4c48-9928-f907453e149c.asp",
         "ourClient1Name": "Michael Green",
@@ -526,14 +540,12 @@
         "driveLink": "https://drive.google.com/file/d/1T6ApYIkqQWIIwrfOuOKvZIIY5zWH34BQ/view?usp=drivesdk",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/80627b5a-5008-44eb-ae60-99ff6beda4a7.asp",
         "status": "signed",
-        "completionStatus": {
-          "error": "#ERROR!"
-        },
+        "completionStatus": "Complete",
         "signedParties": "[\"Michael Green\",\"Nick Kramer\"]",
         "displayLink": "https://drive.google.com/file/d/1T6ApYIkqQWIIwrfOuOKvZIIY5zWH34BQ/view?usp=drivesdk",
         "ourClient1Name": "Michael Green",
         "ourClient1Status": "Complete",
-        "ourClient2Status": "N/A",
+        "ourClient2Status": "Complete",
         "createdTime": "2025-08-07T18:02:31.000Z",
         "updatedTime": "2025-08-07T18:02:48.000Z",
         "originalIndex": 27
@@ -552,7 +564,7 @@
         "ourClient2Status": "N/A",
         "createdTime": "2025-07-18T14:40:46.000Z",
         "updatedTime": "2025-07-18T16:40:58.000Z",
-        "originalIndex": 31,
+        "originalIndex": 30,
         "recordId": "recozR9FxLJSjrnuz"
       }
     ]
@@ -662,6 +674,8 @@
           if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
+          if (name.includes('source of water')) return 'Seller Disclosures';
+          if (name.includes('lead based paint') || name.includes('lead-based paint')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
@@ -669,6 +683,7 @@
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
           if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+          if (name.includes('short sale') && name.includes('addendum')) return 'Contract Documents';
           if (name.includes('loan') && name.includes('extension')) return 'Contract Documents';
           
           // Other categories
