@@ -333,18 +333,34 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('John K Mastriani', 8, 1, 6)">
+    <button class="client-btn" onclick="openModal('John Mastriani', 7, 1, 5)">
       <div>
-        <div class="client-name">John K Mastriani</div>
-        <div class="client-docs">8 documents • 1 complete • 1 signed, pending buyers • 6 need signature</div>
+        <div class="client-name">John Mastriani</div>
+        <div class="client-docs">7 documents • 1 complete • 1 signed, pending other sellers • 5 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Lindsey Ann Mastriani', 8, 1, 6)">
+    <button class="client-btn" onclick="openModal('Lindsey Mastriani', 7, 4, 2)">
+      <div>
+        <div class="client-name">Lindsey Mastriani</div>
+        <div class="client-docs">7 documents • 1 complete • 4 signed, pending other sellers • 2 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('John K Mastriani', 2, 1, 1)">
+      <div>
+        <div class="client-name">John K Mastriani</div>
+        <div class="client-docs">2 documents • 1 signed, pending sellers • 1 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Lindsey Ann Mastriani', 2, 1, 1)">
       <div>
         <div class="client-name">Lindsey Ann Mastriani</div>
-        <div class="client-docs">8 documents • 1 complete • 1 signed, pending buyers • 6 need signature</div>
+        <div class="client-docs">2 documents • 1 signed, pending sellers • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -506,8 +522,8 @@
   
   <script>
     const clientDocuments = {
-  "John K Mastriani": {
-    "clientName": "John K Mastriani",
+  "John Mastriani": {
+    "clientName": "John Mastriani",
     "clientRole": "seller",
     "documents": [
       {
@@ -515,7 +531,7 @@
         "name": "lbp_disclosure",
         "driveLink": "https://www.ctmecontracts.com/files/aspredir/005cba17-bf93-4db3-970a-af9721aee97d.asp",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/005cba17-bf93-4db3-970a-af9721aee97d.asp",
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Pending",
         "signedParties": "[\"John K Mastriani\",\"Marisa Lindsay\"]",
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/005cba17-bf93-4db3-970a-af9721aee97d.asp",
@@ -596,23 +612,6 @@
         "createdTime": "2025-08-19T13:29:17.000Z",
         "updatedTime": "2025-08-19T13:29:17.000Z",
         "originalIndex": 9
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
-        "name": "Purchase Contract",
-        "driveLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Pending",
-        "signedParties": "ALL",
-        "displayLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
-        "ourClient1Name": "John K Mastriani",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Lindsey Ann Mastriani",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-18T21:42:24.000Z",
-        "updatedTime": "2025-08-18T21:42:24.000Z",
-        "originalIndex": 8
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/168a7c0e-cc59-4d3a-81df-f6c8b8f3c505.pdf",
@@ -652,8 +651,8 @@
       }
     ]
   },
-  "Lindsey Ann Mastriani": {
-    "clientName": "Lindsey Ann Mastriani",
+  "Lindsey Mastriani": {
+    "clientName": "Lindsey Mastriani",
     "clientRole": "seller",
     "documents": [
       {
@@ -678,7 +677,7 @@
         "name": "EXP ABA",
         "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/6ebb1c70-a971-4257-9806-e6627dfb7561.pdf",
         "signingLink": null,
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Pending",
         "signedParties": "[\"Lindsey Ann Mastriani\"]",
         "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/6ebb1c70-a971-4257-9806-e6627dfb7561.pdf",
@@ -696,7 +695,7 @@
         "name": "Colorado Real Estate Seller Advisory",
         "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/89700a6b-07d6-4d89-b64b-ccc42c0f3e00.pdf",
         "signingLink": null,
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Pending",
         "signedParties": "[\"Lindsey Ann Mastriani\"]",
         "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/89700a6b-07d6-4d89-b64b-ccc42c0f3e00.pdf",
@@ -731,7 +730,7 @@
         "name": "SqFt",
         "driveLink": "https://www.ctmecontracts.com/files/aspredir/7ed7a6a0-6682-4a2c-98b2-40c32bd86b85.asp",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/7ed7a6a0-6682-4a2c-98b2-40c32bd86b85.asp",
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Pending",
         "signedParties": "[\"Lindsey Ann Mastriani\"]",
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/7ed7a6a0-6682-4a2c-98b2-40c32bd86b85.asp",
@@ -742,23 +741,6 @@
         "createdTime": "2025-08-19T13:29:17.000Z",
         "updatedTime": "2025-08-19T13:29:17.000Z",
         "originalIndex": 9
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
-        "name": "Purchase Contract",
-        "driveLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Pending",
-        "signedParties": "ALL",
-        "displayLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
-        "ourClient1Name": "John K Mastriani",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Lindsey Ann Mastriani",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-18T21:42:24.000Z",
-        "updatedTime": "2025-08-18T21:42:24.000Z",
-        "originalIndex": 8
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/168a7c0e-cc59-4d3a-81df-f6c8b8f3c505.pdf",
@@ -783,7 +765,7 @@
         "name": "MLS",
         "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/f5adcfc9-8016-4b7d-a54e-13e591bf14e9.pdf",
         "signingLink": null,
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Pending",
         "signedParties": "[\"Lindsey Ann Mastriani\"]",
         "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/f5adcfc9-8016-4b7d-a54e-13e591bf14e9.pdf",
@@ -795,6 +777,82 @@
         "updatedTime": "2025-08-08T02:04:51.000Z",
         "originalIndex": 7,
         "recordId": "recVwCbAesWljSeJS"
+      }
+    ]
+  },
+  "John K Mastriani": {
+    "clientName": "John K Mastriani",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "ourClient1Name": "John K Mastriani",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Lindsey Ann Mastriani",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-18T21:42:24.000Z",
+        "updatedTime": "2025-08-18T21:42:24.000Z",
+        "originalIndex": 8
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/03b8a0ca-379b-43a5-80a8-e82936a00f17.pdf",
+        "name": "EXCLUSIVE RIGHT-TO-SELL LISTING CONTRACT 6175__Garlock",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/03b8a0ca-379b-43a5-80a8-e82936a00f17.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/03b8a0ca-379b-43a5-80a8-e82936a00f17.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"John K Mastriani\",\"Lindsey Ann Mastriani\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/03b8a0ca-379b-43a5-80a8-e82936a00f17.asp",
+        "ourClient1Status": "N/A",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-08T11:33:14.000Z",
+        "updatedTime": "2025-08-08T11:33:14.000Z",
+        "originalIndex": 3
+      }
+    ]
+  },
+  "Lindsey Ann Mastriani": {
+    "clientName": "Lindsey Ann Mastriani",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1OBXAaK7cNKgE26q2fOPwSYCvnN0U-qIA/view?usp=drivesdk",
+        "ourClient1Name": "John K Mastriani",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Lindsey Ann Mastriani",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-18T21:42:24.000Z",
+        "updatedTime": "2025-08-18T21:42:24.000Z",
+        "originalIndex": 8
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/03b8a0ca-379b-43a5-80a8-e82936a00f17.pdf",
+        "name": "EXCLUSIVE RIGHT-TO-SELL LISTING CONTRACT 6175__Garlock",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/03b8a0ca-379b-43a5-80a8-e82936a00f17.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/03b8a0ca-379b-43a5-80a8-e82936a00f17.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"John K Mastriani\",\"Lindsey Ann Mastriani\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/03b8a0ca-379b-43a5-80a8-e82936a00f17.asp",
+        "ourClient1Status": "N/A",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-08T11:33:14.000Z",
+        "updatedTime": "2025-08-08T11:33:14.000Z",
+        "originalIndex": 3
       }
     ]
   }
