@@ -333,18 +333,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Brayden Hendrix', 23, 0, 0)">
+    <button class="client-btn" onclick="openModal('Brayden Hendrix', 24, 0, 0)">
       <div>
         <div class="client-name">Brayden Hendrix</div>
-        <div class="client-docs">23 documents • 23 complete</div>
+        <div class="client-docs">24 documents • 24 complete</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Phoebe Vu', 23, 0, 0)">
+    <button class="client-btn" onclick="openModal('Phoebe Vu', 24, 0, 0)">
       <div>
         <div class="client-name">Phoebe Vu</div>
-        <div class="client-docs">23 documents • 23 complete</div>
+        <div class="client-docs">24 documents • 24 complete</div>
       </div>
       <div>→</div>
     </button>
@@ -510,6 +510,24 @@
     "clientName": "Brayden Hendrix",
     "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/a214df1e-94ba-4486-9087-8ed2f1aab807.pdf",
+        "name": "Unknown Doc",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/a214df1e-94ba-4486-9087-8ed2f1aab807.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Kerri Kaminer\",\"Phoebe Vu\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/a214df1e-94ba-4486-9087-8ed2f1aab807.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-19T20:03:56.000Z",
+        "updatedTime": "2025-08-19T20:03:56.000Z",
+        "originalIndex": 25,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/903ab3d2-712b-44e6-ba82-153336197f2a.pdf",
         "name": "Inspection Objection",
@@ -919,6 +937,24 @@
     "clientName": "Phoebe Vu",
     "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/a214df1e-94ba-4486-9087-8ed2f1aab807.pdf",
+        "name": "Unknown Doc",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/a214df1e-94ba-4486-9087-8ed2f1aab807.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Kerri Kaminer\",\"Phoebe Vu\",\"BRAYDEN HENDRIX\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/a214df1e-94ba-4486-9087-8ed2f1aab807.pdf",
+        "ourClient1Name": "Brayden Hendrix",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Phoebe Vu",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-19T20:03:56.000Z",
+        "updatedTime": "2025-08-19T20:03:56.000Z",
+        "originalIndex": 25,
+        "recordId": "recz6I5pLgfdbAoDp"
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/903ab3d2-712b-44e6-ba82-153336197f2a.pdf",
         "name": "Inspection Objection",
@@ -1429,6 +1465,8 @@
           if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
+          if (name.includes('source of water')) return 'Seller Disclosures';
+          if (name.includes('lead based paint') || name.includes('lead-based paint')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
@@ -1436,6 +1474,7 @@
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
           if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+          if (name.includes('short sale') && name.includes('addendum')) return 'Contract Documents';
           if (name.includes('loan') && name.includes('extension')) return 'Contract Documents';
           
           // Other categories
