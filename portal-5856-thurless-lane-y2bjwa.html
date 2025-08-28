@@ -333,10 +333,10 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Michael E Claycomb', 4, 1, 0)">
+    <button class="client-btn" onclick="openModal('Michael E Claycomb', 5, 0, 1)">
       <div>
         <div class="client-name">Michael E Claycomb</div>
-        <div class="client-docs">4 documents • 3 complete • 1 signed, pending buyers</div>
+        <div class="client-docs">5 documents • 4 complete • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -503,6 +503,22 @@
     "clientRole": "seller",
     "documents": [
       {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d10ad796-21de-4c73-bbb1-1e26544106dc.pdf",
+        "name": "listing_amend_price",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d10ad796-21de-4c73-bbb1-1e26544106dc.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d10ad796-21de-4c73-bbb1-1e26544106dc.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Marisa Lindsay\",\"Debi Volk\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d10ad796-21de-4c73-bbb1-1e26544106dc.asp",
+        "ourClient1Name": "Michael E Claycomb",
+        "ourClient1Status": "Pending",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-28T15:02:00.000Z",
+        "updatedTime": "2025-08-28T15:02:00.000Z",
+        "originalIndex": 3
+      },
+      {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/da0fb1a5-f066-40a9-acbf-c4577719977a.pdf",
         "name": "SHORT SALE ADDENDUM (Seller Listing Contract) __",
         "driveLink": "https://www.ctmecontracts.com/files/aspredir/da0fb1a5-f066-40a9-acbf-c4577719977a.asp",
@@ -513,10 +529,10 @@
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/da0fb1a5-f066-40a9-acbf-c4577719977a.asp",
         "ourClient1Name": "Michael E Claycomb",
         "ourClient1Status": "Complete",
-        "ourClient2Status": "N/A",
+        "ourClient2Status": "Complete",
         "createdTime": "2025-08-15T10:29:43.000Z",
         "updatedTime": "2025-08-17T18:51:27.000Z",
-        "originalIndex": 3
+        "originalIndex": 4
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/f956a328-0207-4136-b5a0-a6b09976f891.pdf",
@@ -541,12 +557,12 @@
         "driveLink": "https://drive.google.com/file/d/1qwMdpjQdGidvu8GHXauc6egGp80pEDa6/view?usp=drivesdk",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/e4b34901-be5c-4bc8-853f-7f89748ec308.asp",
         "status": "signed",
-        "completionStatus": "Pending",
+        "completionStatus": "Complete",
         "signedParties": "[\"Michael E Claycomb\",\"Marisa Lindsay\"]",
         "displayLink": "https://drive.google.com/file/d/1qwMdpjQdGidvu8GHXauc6egGp80pEDa6/view?usp=drivesdk",
         "ourClient1Name": "Michael E Claycomb",
         "ourClient1Status": "Complete",
-        "ourClient2Status": "N/A",
+        "ourClient2Status": "Complete",
         "createdTime": "2025-08-11T14:33:36.000Z",
         "updatedTime": "2025-08-11T15:33:18.000Z",
         "originalIndex": 1
@@ -562,7 +578,7 @@
         "displayLink": "https://drive.google.com/file/d/1u3KczNYTfQ5PFDuuIOjKOQZRP2jdDLHI/view?usp=drivesdk",
         "ourClient1Name": "Michael E Claycomb",
         "ourClient1Status": "Complete",
-        "ourClient2Status": "N/A",
+        "ourClient2Status": "Complete",
         "createdTime": "2025-08-11T14:33:37.000Z",
         "updatedTime": "2025-08-11T14:33:48.000Z",
         "originalIndex": 2
@@ -674,6 +690,8 @@
           if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
+          if (name.includes('source of water')) return 'Seller Disclosures';
+          if (name.includes('lead based paint') || name.includes('lead-based paint')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
@@ -681,6 +699,7 @@
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
           if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+          if (name.includes('short sale') && name.includes('addendum')) return 'Contract Documents';
           if (name.includes('loan') && name.includes('extension')) return 'Contract Documents';
           
           // Other categories
