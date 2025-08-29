@@ -333,26 +333,26 @@
     </div>
     
     
+    <button class="client-btn" onclick="openModal('John Cornelius', 10, 0, 3)">
+      <div>
+        <div class="client-name">John Cornelius</div>
+        <div class="client-docs">10 documents • 7 complete • 3 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Betsy Cornelius', 16, 6, 3)">
+      <div>
+        <div class="client-name">Betsy Cornelius</div>
+        <div class="client-docs">16 documents • 7 complete • 6 signed, pending other buyers • 3 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
     <button class="client-btn" onclick="openModal('Jeff Cornelius', 6, 0, 6)">
       <div>
         <div class="client-name">Jeff Cornelius</div>
         <div class="client-docs">6 documents • 6 need signature</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('Betsy Cornelius', 15, 6, 2)">
-      <div>
-        <div class="client-name">Betsy Cornelius</div>
-        <div class="client-docs">15 documents • 7 complete • 6 signed, pending other buyers • 2 need signature</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('John Cornelius', 9, 0, 2)">
-      <div>
-        <div class="client-name">John Cornelius</div>
-        <div class="client-docs">9 documents • 7 complete • 2 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -514,117 +514,177 @@
   
   <script>
     const clientDocuments = {
-  "Jeff Cornelius": {
-    "clientName": "Jeff Cornelius",
+  "John Cornelius": {
+    "clientName": "John Cornelius",
     "clientRole": "buyer",
     "documents": [
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
-        "name": "HIR",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
-        "signingLink": null,
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c523370e-1ff6-445f-9ae0-c17ced0b9015.pdf",
+        "name": "IR Ext 9/3",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/c523370e-1ff6-445f-9ae0-c17ced0b9015.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/c523370e-1ff6-445f-9ae0-c17ced0b9015.asp",
         "status": "pending",
         "completionStatus": "Pending",
-        "signedParties": "[\"BETSY CORNELIUS\",\"John Cornelius\",\"BRANDI B CRUZ\",\"LAWRENCE K CRUZ\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
-        "ourClient1Name": "Jeff Cornelius",
+        "signedParties": "[\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/c523370e-1ff6-445f-9ae0-c17ced0b9015.asp",
+        "ourClient1Name": "John Cornelius",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-25T16:04:31.000Z",
-        "updatedTime": "2025-08-27T16:04:38.000Z",
-        "originalIndex": 4,
-        "recordId": "recaXf8lZtVbJqoZJ"
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-08-29T22:29:59.000Z",
+        "updatedTime": "2025-08-29T22:29:59.000Z",
+        "originalIndex": 9
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/eef6e81e-945d-417f-9c8e-fd61cac9dbf1.pdf",
-        "name": "HIR_sewer",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/eef6e81e-945d-417f-9c8e-fd61cac9dbf1.pdf",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "signedParties": "[\"Betsy Cornelius\",\"John Cornelius\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/eef6e81e-945d-417f-9c8e-fd61cac9dbf1.pdf",
-        "ourClient1Name": "Jeff Cornelius",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-25T16:04:31.000Z",
-        "updatedTime": "2025-08-25T22:04:30.000Z",
-        "originalIndex": 6,
-        "recordId": "recaXf8lZtVbJqoZJ"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/b70648b8-7748-465d-8097-67fcdeddf9b3.pdf",
-        "name": "Unknown Doc",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/b70648b8-7748-465d-8097-67fcdeddf9b3.pdf",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/8e386d0b-62a5-4c4c-996e-6ccd31e3a360.pdf",
+        "name": "Inspection Objection",
+        "driveLink": "https://drive.google.com/file/d/1rxaFG1vGW4dejXoRMdcnrY-_UHDl_QlR/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/8e386d0b-62a5-4c4c-996e-6cd31e3a360.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
         "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/b70648b8-7748-465d-8097-67fcdeddf9b3.pdf",
-        "ourClient1Name": "Jeff Cornelius",
-        "ourClient1Status": "Pending",
+        "displayLink": "https://drive.google.com/file/d/1rxaFG1vGW4dejXoRMdcnrY-_UHDl_QlR/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
         "ourClient2Name": "Betsy Cornelius",
         "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T22:04:31.000Z",
-        "updatedTime": "2025-08-22T00:04:52.000Z",
-        "originalIndex": 15,
-        "recordId": "recaXf8lZtVbJqoZJ"
+        "createdTime": "2025-08-24T17:01:24.000Z",
+        "updatedTime": "2025-08-24T17:01:32.000Z",
+        "originalIndex": 8
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/cf112632-d71c-43f7-b2f2-5f1293703a7d.pdf",
-        "name": "EXP ABA",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/cf112632-d71c-43f7-b2f2-5f1293703a7d.pdf",
-        "signingLink": null,
+        "docId": "https://drive.google.com/file/d/15K9nxFKzZdtn-J0bkd5ROn6VUBkkBX-p/view?usp=drivesdk",
+        "name": "HIR_termite_4735 Wineskin Circle.pdf",
+        "driveLink": "https://drive.google.com/file/d/15K9nxFKzZdtn-J0bkd5ROn6VUBkkBX-p/view?usp=drivesdk",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=8cc93db8-0e24-46fe-a056-f695ed458fdf&invitationId=f56e2591-cbe7-414f-9208-c57e95a8da4f",
         "status": "pending",
         "completionStatus": "Pending",
-        "signedParties": "[\"JOHN CORNELIUS\",\"Betsy Cornelius\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/cf112632-d71c-43f7-b2f2-5f1293703a7d.pdf",
-        "ourClient1Name": "Jeff Cornelius",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=8cc93db8-0e24-46fe-a056-f695ed458fdf&invitationId=f56e2591-cbe7-414f-9208-c57e95a8da4f",
+        "ourClient1Name": "John Cornelius",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T22:04:31.000Z",
-        "updatedTime": "2025-08-22T00:04:51.000Z",
-        "originalIndex": 3,
-        "recordId": "recaXf8lZtVbJqoZJ"
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-08-22T21:53:09.000Z",
+        "updatedTime": "2025-08-22T21:53:09.000Z",
+        "originalIndex": 7
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/5e9001f3-02d1-4515-bac6-86b39bc9197a.pdf",
-        "name": "Dual Status Disclosure",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/5e9001f3-02d1-4515-bac6-86b39bc9197a.pdf",
-        "signingLink": null,
+        "docId": "https://drive.google.com/file/d/1sNHQbcvO_8feqJGfPT5oU74LdFHpQoUM/view?usp=drivesdk",
+        "name": "HIR__4735 Wineskin Circle.pdf",
+        "driveLink": "https://drive.google.com/file/d/1sNHQbcvO_8feqJGfPT5oU74LdFHpQoUM/view?usp=drivesdk",
+        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=807a4003-905f-4f27-8d2b-43153d71e7ba&invitationId=653bdbed-73db-4e93-b71c-04fb38cee67f",
         "status": "pending",
         "completionStatus": "Pending",
-        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/5e9001f3-02d1-4515-bac6-86b39bc9197a.pdf",
-        "ourClient1Name": "Jeff Cornelius",
+        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=807a4003-905f-4f27-8d2b-43153d71e7ba&invitationId=653bdbed-73db-4e93-b71c-04fb38cee67f",
+        "ourClient1Name": "John Cornelius",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T22:04:30.000Z",
-        "updatedTime": "2025-08-22T00:04:50.000Z",
-        "originalIndex": 2,
-        "recordId": "recaXf8lZtVbJqoZJ"
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-08-22T21:47:30.000Z",
+        "updatedTime": "2025-08-22T21:53:08.000Z",
+        "originalIndex": 5
       },
       {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/6bc28912-690a-46b5-8a95-dca444b75883.pdf",
-        "name": "Mikes ABA",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/6bc28912-690a-46b5-8a95-dca444b75883.pdf",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Pending",
-        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/6bc28912-690a-46b5-8a95-dca444b75883.pdf",
-        "ourClient1Name": "Jeff Cornelius",
-        "ourClient1Status": "Pending",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c9851f20-b43e-4a4b-bce9-f21befd835f7.pdf",
+        "name": "Sellers Property Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1y5XPcq-OeGZFsfoTlLTL6FtJ4DqmWrcq/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/c9851f20-b43e-4a4b-bce9-f21befd835f7.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\",\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
+        "displayLink": "https://drive.google.com/file/d/1y5XPcq-OeGZFsfoTlLTL6FtJ4DqmWrcq/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
         "ourClient2Name": "Betsy Cornelius",
         "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T22:04:30.000Z",
-        "updatedTime": "2025-08-22T00:04:50.000Z",
-        "originalIndex": 9,
-        "recordId": "recaXf8lZtVbJqoZJ"
+        "createdTime": "2025-08-21T21:01:39.000Z",
+        "updatedTime": "2025-08-21T23:30:30.000Z",
+        "originalIndex": 12
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/dd6f7e2e-bbad-444a-b73b-f27d417ed92a.pdf",
+        "name": "Square Footage Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1ckQ0qGR8pR7RxXZQc9h89seT6WwH7SEG/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/dd6f7e2e-bbad-444a-b73b-f27d417ed92a.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\",\"Lawrence K Cruz\",\"Brandi B Cruz\",\"Christy Dunfee\",\"Michele Cooksey\"]",
+        "displayLink": "https://drive.google.com/file/d/1ckQ0qGR8pR7RxXZQc9h89seT6WwH7SEG/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-21T21:01:38.000Z",
+        "updatedTime": "2025-08-21T23:30:29.000Z",
+        "originalIndex": 15
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/69e8203f-cf69-495d-a377-c96f2208ce33.pdf",
+        "name": "Source of Water",
+        "driveLink": "https://drive.google.com/file/d/1wiLOZ8EKFYzSQ5AteyBivWj3sx5Y82SX/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/69e8203f-cf69-495d-a377-c96f2208ce33.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\",\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
+        "displayLink": "https://drive.google.com/file/d/1wiLOZ8EKFYzSQ5AteyBivWj3sx5Y82SX/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-21T21:01:38.000Z",
+        "updatedTime": "2025-08-21T23:30:18.000Z",
+        "originalIndex": 14
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3b320ad7-9253-4e84-bc79-94056355c480.pdf",
+        "name": "Closing Instructions",
+        "driveLink": "https://drive.google.com/file/d/1KXo1f5JakQml6Zh8KdkLYwQCib2JAQUx/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3b320ad7-9253-4e84-bc79-94056355c480.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
+        "displayLink": "https://drive.google.com/file/d/1KXo1f5JakQml6Zh8KdkLYwQCib2JAQUx/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-20T20:28:58.000Z",
+        "updatedTime": "2025-08-20T20:29:02.000Z",
+        "originalIndex": 0
+      },
+      {
+        "docId": "https://drive.google.com/file/d/1rD3CYH1M7Cz3AL8YDTpL9dediqsry2S5/view?usp=drivesdk",
+        "name": "Counter",
+        "driveLink": "https://drive.google.com/file/d/1rD3CYH1M7Cz3AL8YDTpL9dediqsry2S5/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1rD3CYH1M7Cz3AL8YDTpL9dediqsry2S5/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-20T03:12:37.000Z",
+        "updatedTime": "2025-08-20T03:12:37.000Z",
+        "originalIndex": 1
+      },
+      {
+        "docId": "https://drive.google.com/file/d/1fxgX_mZqZWbp3Y-OTP9K19xrHemmtohM/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1fxgX_mZqZWbp3Y-OTP9K19xrHemmtohM/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1fxgX_mZqZWbp3Y-OTP9K19xrHemmtohM/view?usp=drivesdk",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-20T03:12:35.000Z",
+        "updatedTime": "2025-08-20T03:12:35.000Z",
+        "originalIndex": 11
       }
     ]
   },
@@ -632,6 +692,23 @@
     "clientName": "Betsy Cornelius",
     "clientRole": "buyer",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c523370e-1ff6-445f-9ae0-c17ced0b9015.pdf",
+        "name": "IR Ext 9/3",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/c523370e-1ff6-445f-9ae0-c17ced0b9015.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/c523370e-1ff6-445f-9ae0-c17ced0b9015.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/c523370e-1ff6-445f-9ae0-c17ced0b9015.asp",
+        "ourClient1Name": "John Cornelius",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-08-29T22:29:59.000Z",
+        "updatedTime": "2025-08-29T22:29:59.000Z",
+        "originalIndex": 9
+      },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
         "name": "HIR",
@@ -732,7 +809,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-21T22:04:31.000Z",
         "updatedTime": "2025-08-22T00:04:52.000Z",
-        "originalIndex": 15,
+        "originalIndex": 16,
         "recordId": "recaXf8lZtVbJqoZJ"
       },
       {
@@ -786,7 +863,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-21T22:04:30.000Z",
         "updatedTime": "2025-08-22T00:04:50.000Z",
-        "originalIndex": 9,
+        "originalIndex": 10,
         "recordId": "recaXf8lZtVbJqoZJ"
       },
       {
@@ -804,7 +881,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-21T21:01:39.000Z",
         "updatedTime": "2025-08-21T23:30:30.000Z",
-        "originalIndex": 11
+        "originalIndex": 12
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/dd6f7e2e-bbad-444a-b73b-f27d417ed92a.pdf",
@@ -821,7 +898,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-21T21:01:38.000Z",
         "updatedTime": "2025-08-21T23:30:29.000Z",
-        "originalIndex": 14
+        "originalIndex": 15
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/69e8203f-cf69-495d-a377-c96f2208ce33.pdf",
@@ -838,7 +915,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-21T21:01:38.000Z",
         "updatedTime": "2025-08-21T23:30:18.000Z",
-        "originalIndex": 13
+        "originalIndex": 14
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/3b320ad7-9253-4e84-bc79-94056355c480.pdf",
@@ -889,164 +966,121 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-20T03:12:35.000Z",
         "updatedTime": "2025-08-20T03:12:35.000Z",
-        "originalIndex": 10
+        "originalIndex": 11
       }
     ]
   },
-  "John Cornelius": {
-    "clientName": "John Cornelius",
+  "Jeff Cornelius": {
+    "clientName": "Jeff Cornelius",
     "clientRole": "buyer",
     "documents": [
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/8e386d0b-62a5-4c4c-996e-6ccd31e3a360.pdf",
-        "name": "Inspection Objection",
-        "driveLink": "https://drive.google.com/file/d/1rxaFG1vGW4dejXoRMdcnrY-_UHDl_QlR/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/8e386d0b-62a5-4c4c-996e-6cd31e3a360.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
+        "name": "HIR",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"BETSY CORNELIUS\",\"John Cornelius\",\"BRANDI B CRUZ\",\"LAWRENCE K CRUZ\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/b4e53386-f9fc-4812-913f-83a99010a853.pdf",
+        "ourClient1Name": "Jeff Cornelius",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-25T16:04:31.000Z",
+        "updatedTime": "2025-08-27T16:04:38.000Z",
+        "originalIndex": 4,
+        "recordId": "recaXf8lZtVbJqoZJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/eef6e81e-945d-417f-9c8e-fd61cac9dbf1.pdf",
+        "name": "HIR_sewer",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/eef6e81e-945d-417f-9c8e-fd61cac9dbf1.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Betsy Cornelius\",\"John Cornelius\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/eef6e81e-945d-417f-9c8e-fd61cac9dbf1.pdf",
+        "ourClient1Name": "Jeff Cornelius",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Betsy Cornelius",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-25T16:04:31.000Z",
+        "updatedTime": "2025-08-25T22:04:30.000Z",
+        "originalIndex": 6,
+        "recordId": "recaXf8lZtVbJqoZJ"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/b70648b8-7748-465d-8097-67fcdeddf9b3.pdf",
+        "name": "Unknown Doc",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/b70648b8-7748-465d-8097-67fcdeddf9b3.pdf",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Pending",
         "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\"]",
-        "displayLink": "https://drive.google.com/file/d/1rxaFG1vGW4dejXoRMdcnrY-_UHDl_QlR/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-24T17:01:24.000Z",
-        "updatedTime": "2025-08-24T17:01:32.000Z",
-        "originalIndex": 8
-      },
-      {
-        "docId": "https://drive.google.com/file/d/15K9nxFKzZdtn-J0bkd5ROn6VUBkkBX-p/view?usp=drivesdk",
-        "name": "HIR_termite_4735 Wineskin Circle.pdf",
-        "driveLink": "https://drive.google.com/file/d/15K9nxFKzZdtn-J0bkd5ROn6VUBkkBX-p/view?usp=drivesdk",
-        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=8cc93db8-0e24-46fe-a056-f695ed458fdf&invitationId=f56e2591-cbe7-414f-9208-c57e95a8da4f",
-        "status": "pending",
-        "completionStatus": "Pending",
-        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=8cc93db8-0e24-46fe-a056-f695ed458fdf&invitationId=f56e2591-cbe7-414f-9208-c57e95a8da4f",
-        "ourClient1Name": "John Cornelius",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/b70648b8-7748-465d-8097-67fcdeddf9b3.pdf",
+        "ourClient1Name": "Jeff Cornelius",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-08-22T21:53:09.000Z",
-        "updatedTime": "2025-08-22T21:53:09.000Z",
-        "originalIndex": 7
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-08-21T22:04:31.000Z",
+        "updatedTime": "2025-08-22T00:04:52.000Z",
+        "originalIndex": 16,
+        "recordId": "recaXf8lZtVbJqoZJ"
       },
       {
-        "docId": "https://drive.google.com/file/d/1sNHQbcvO_8feqJGfPT5oU74LdFHpQoUM/view?usp=drivesdk",
-        "name": "HIR__4735 Wineskin Circle.pdf",
-        "driveLink": "https://drive.google.com/file/d/1sNHQbcvO_8feqJGfPT5oU74LdFHpQoUM/view?usp=drivesdk",
-        "signingLink": "https://www.digisigner.com/online/showDocument?documentId=807a4003-905f-4f27-8d2b-43153d71e7ba&invitationId=653bdbed-73db-4e93-b71c-04fb38cee67f",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/cf112632-d71c-43f7-b2f2-5f1293703a7d.pdf",
+        "name": "EXP ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/cf112632-d71c-43f7-b2f2-5f1293703a7d.pdf",
+        "signingLink": null,
         "status": "pending",
         "completionStatus": "Pending",
-        "displayLink": "https://www.digisigner.com/online/showDocument?documentId=807a4003-905f-4f27-8d2b-43153d71e7ba&invitationId=653bdbed-73db-4e93-b71c-04fb38cee67f",
-        "ourClient1Name": "John Cornelius",
+        "signedParties": "[\"JOHN CORNELIUS\",\"Betsy Cornelius\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/cf112632-d71c-43f7-b2f2-5f1293703a7d.pdf",
+        "ourClient1Name": "Jeff Cornelius",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Pending",
-        "createdTime": "2025-08-22T21:47:30.000Z",
-        "updatedTime": "2025-08-22T21:53:08.000Z",
-        "originalIndex": 5
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/c9851f20-b43e-4a4b-bce9-f21befd835f7.pdf",
-        "name": "Sellers Property Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1y5XPcq-OeGZFsfoTlLTL6FtJ4DqmWrcq/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/c9851f20-b43e-4a4b-bce9-f21befd835f7.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\",\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
-        "displayLink": "https://drive.google.com/file/d/1y5XPcq-OeGZFsfoTlLTL6FtJ4DqmWrcq/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Betsy Cornelius",
         "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T21:01:39.000Z",
-        "updatedTime": "2025-08-21T23:30:30.000Z",
-        "originalIndex": 11
+        "createdTime": "2025-08-21T22:04:31.000Z",
+        "updatedTime": "2025-08-22T00:04:51.000Z",
+        "originalIndex": 3,
+        "recordId": "recaXf8lZtVbJqoZJ"
       },
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/dd6f7e2e-bbad-444a-b73b-f27d417ed92a.pdf",
-        "name": "Square Footage Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1ckQ0qGR8pR7RxXZQc9h89seT6WwH7SEG/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/dd6f7e2e-bbad-444a-b73b-f27d417ed92a.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\",\"Lawrence K Cruz\",\"Brandi B Cruz\",\"Christy Dunfee\",\"Michele Cooksey\"]",
-        "displayLink": "https://drive.google.com/file/d/1ckQ0qGR8pR7RxXZQc9h89seT6WwH7SEG/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T21:01:38.000Z",
-        "updatedTime": "2025-08-21T23:30:29.000Z",
-        "originalIndex": 14
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/69e8203f-cf69-495d-a377-c96f2208ce33.pdf",
-        "name": "Source of Water",
-        "driveLink": "https://drive.google.com/file/d/1wiLOZ8EKFYzSQ5AteyBivWj3sx5Y82SX/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/69e8203f-cf69-495d-a377-c96f2208ce33.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\",\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
-        "displayLink": "https://drive.google.com/file/d/1wiLOZ8EKFYzSQ5AteyBivWj3sx5Y82SX/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-21T21:01:38.000Z",
-        "updatedTime": "2025-08-21T23:30:18.000Z",
-        "originalIndex": 13
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3b320ad7-9253-4e84-bc79-94056355c480.pdf",
-        "name": "Closing Instructions",
-        "driveLink": "https://drive.google.com/file/d/1KXo1f5JakQml6Zh8KdkLYwQCib2JAQUx/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3b320ad7-9253-4e84-bc79-94056355c480.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Lawrence K Cruz\",\"Brandi B Cruz\"]",
-        "displayLink": "https://drive.google.com/file/d/1KXo1f5JakQml6Zh8KdkLYwQCib2JAQUx/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Betsy Cornelius",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-08-20T20:28:58.000Z",
-        "updatedTime": "2025-08-20T20:29:02.000Z",
-        "originalIndex": 0
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1rD3CYH1M7Cz3AL8YDTpL9dediqsry2S5/view?usp=drivesdk",
-        "name": "Counter",
-        "driveLink": "https://drive.google.com/file/d/1rD3CYH1M7Cz3AL8YDTpL9dediqsry2S5/view?usp=drivesdk",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/5e9001f3-02d1-4515-bac6-86b39bc9197a.pdf",
+        "name": "Dual Status Disclosure",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/5e9001f3-02d1-4515-bac6-86b39bc9197a.pdf",
         "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "ALL",
-        "displayLink": "https://drive.google.com/file/d/1rD3CYH1M7Cz3AL8YDTpL9dediqsry2S5/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/5e9001f3-02d1-4515-bac6-86b39bc9197a.pdf",
+        "ourClient1Name": "Jeff Cornelius",
+        "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
         "ourClient2Status": "Complete",
-        "createdTime": "2025-08-20T03:12:37.000Z",
-        "updatedTime": "2025-08-20T03:12:37.000Z",
-        "originalIndex": 1
+        "createdTime": "2025-08-21T22:04:30.000Z",
+        "updatedTime": "2025-08-22T00:04:50.000Z",
+        "originalIndex": 2,
+        "recordId": "recaXf8lZtVbJqoZJ"
       },
       {
-        "docId": "https://drive.google.com/file/d/1fxgX_mZqZWbp3Y-OTP9K19xrHemmtohM/view?usp=drivesdk",
-        "name": "Purchase Contract",
-        "driveLink": "https://drive.google.com/file/d/1fxgX_mZqZWbp3Y-OTP9K19xrHemmtohM/view?usp=drivesdk",
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/6bc28912-690a-46b5-8a95-dca444b75883.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/6bc28912-690a-46b5-8a95-dca444b75883.pdf",
         "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "ALL",
-        "displayLink": "https://drive.google.com/file/d/1fxgX_mZqZWbp3Y-OTP9K19xrHemmtohM/view?usp=drivesdk",
-        "ourClient1Name": "John Cornelius",
-        "ourClient1Status": "Complete",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"John Cornelius\",\"Betsy Cornelius\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/6bc28912-690a-46b5-8a95-dca444b75883.pdf",
+        "ourClient1Name": "Jeff Cornelius",
+        "ourClient1Status": "Pending",
         "ourClient2Name": "Betsy Cornelius",
         "ourClient2Status": "Complete",
-        "createdTime": "2025-08-20T03:12:35.000Z",
-        "updatedTime": "2025-08-20T03:12:35.000Z",
-        "originalIndex": 10
+        "createdTime": "2025-08-21T22:04:30.000Z",
+        "updatedTime": "2025-08-22T00:04:50.000Z",
+        "originalIndex": 10,
+        "recordId": "recaXf8lZtVbJqoZJ"
       }
     ]
   }
