@@ -503,20 +503,20 @@
     "clientRole": "seller",
     "documents": [
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/e8458d51-383c-4c6b-81e8-2e146278f081.pdf",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/35ff18ed-74d8-4ae1-965d-cdef4c7e925b.pdf",
         "name": "listing_amend_amendments",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/e8458d51-383c-4c6b-81e8-2e146278f081.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/e8458d51-383c-4c6b-81e8-2e146278f081.asp",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/35ff18ed-74d8-4ae1-965d-cdef4c7e925b.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/35ff18ed-74d8-4ae1-965d-cdef4c7e925b.asp",
         "status": "pending",
         "completionStatus": "Pending",
-        "signedParties": "[\"Jace Gieck\",\"Megan Gieck\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/e8458d51-383c-4c6b-81e8-2e146278f081.asp",
+        "signedParties": "[\"Debi Volk\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/35ff18ed-74d8-4ae1-965d-cdef4c7e925b.asp",
         "ourClient1Name": "Cheryl Bouchard",
         "ourClient1Status": "Pending",
         "ourClient2Status": "N/A",
-        "createdTime": "2025-08-12T12:19:01.000Z",
-        "updatedTime": "2025-08-12T12:19:01.000Z",
-        "originalIndex": 0
+        "createdTime": "2025-09-19T15:31:11.000Z",
+        "updatedTime": "2025-09-19T15:31:11.000Z",
+        "originalIndex": 1
       }
     ]
   }
@@ -625,6 +625,8 @@
           if (name.includes('square footage') && name.includes('disclosure')) return 'Seller Disclosures';
           if (name.includes('sellers property disclosure') || name.includes('seller property disclosure')) return 'Seller Disclosures';
           if (name.includes('property disclosure')) return 'Seller Disclosures';
+          if (name.includes('source of water')) return 'Seller Disclosures';
+          if (name.includes('lead based paint') || name.includes('lead-based paint')) return 'Seller Disclosures';
           if (name.includes('closing disclosure')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
           if (name.includes('closing instructions')) return 'Seller Disclosures';
@@ -632,6 +634,7 @@
           // Contract Documents
           if (name.includes('contract') || name.includes('purchase')) return 'Contract Documents';
           if (name.includes('amendment') || name.includes('amend')) return 'Contract Documents';
+          if (name.includes('short sale') && name.includes('addendum')) return 'Contract Documents';
           if (name.includes('loan') && name.includes('extension')) return 'Contract Documents';
           
           // Other categories
