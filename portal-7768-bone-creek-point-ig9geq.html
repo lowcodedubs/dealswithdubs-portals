@@ -333,18 +333,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Derek Brown', 1, 0, 1)">
+    <button class="client-btn" onclick="openModal('Derek A Brown', 3, 1, 2)">
       <div>
-        <div class="client-name">Derek Brown</div>
-        <div class="client-docs">1 documents • 1 need signature</div>
+        <div class="client-name">Derek A Brown</div>
+        <div class="client-docs">3 documents • 1 signed, pending other sellers • 2 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Emily Brown', 1, 0, 1)">
+    <button class="client-btn" onclick="openModal('Emily Brown', 3, 1, 2)">
       <div>
         <div class="client-name">Emily Brown</div>
-        <div class="client-docs">1 documents • 1 need signature</div>
+        <div class="client-docs">3 documents • 1 signed, pending other sellers • 2 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -506,10 +506,44 @@
   
   <script>
     const clientDocuments = {
-  "Derek Brown": {
-    "clientName": "Derek Brown",
+  "Derek A Brown": {
+    "clientName": "Derek A Brown",
     "clientRole": "seller",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/ec1df9a2-3307-4e39-a222-675c49fdc989.pdf",
+        "name": "ERS",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/ec1df9a2-3307-4e39-a222-675c49fdc989.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/ec1df9a2-3307-4e39-a222-675c49fdc989.asp",
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Derek A Brown\",\"Marisa Lindsay\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/ec1df9a2-3307-4e39-a222-675c49fdc989.asp",
+        "ourClient1Name": "Derek A Brown",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Emily Brown",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-10-02T16:01:57.000Z",
+        "updatedTime": "2025-10-02T16:01:57.000Z",
+        "originalIndex": 1
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d9c8b119-646f-4c60-a7bc-902aa88102fb.pdf",
+        "name": "SS Add",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d9c8b119-646f-4c60-a7bc-902aa88102fb.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d9c8b119-646f-4c60-a7bc-902aa88102fb.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Emily Brown\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d9c8b119-646f-4c60-a7bc-902aa88102fb.asp",
+        "ourClient1Name": "Derek A Brown",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Emily Brown",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-02T16:01:53.000Z",
+        "updatedTime": "2025-10-02T16:01:53.000Z",
+        "originalIndex": 2
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/1a25d99d-e1b1-491a-ae12-ffbde52cdea8.pdf",
         "name": "DEFINITIONS OF WORKING RELATIONSHIPS 7768__Bone_Creek",
@@ -519,7 +553,7 @@
         "completionStatus": "Pending",
         "signedParties": "[]",
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/1a25d99d-e1b1-491a-ae12-ffbde52cdea8.asp",
-        "ourClient1Name": "Derek Brown",
+        "ourClient1Name": "Derek A Brown",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Emily Brown",
         "ourClient2Status": "Pending",
@@ -534,6 +568,40 @@
     "clientRole": "seller",
     "documents": [
       {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/ec1df9a2-3307-4e39-a222-675c49fdc989.pdf",
+        "name": "ERS",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/ec1df9a2-3307-4e39-a222-675c49fdc989.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/ec1df9a2-3307-4e39-a222-675c49fdc989.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Derek A Brown\",\"Marisa Lindsay\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/ec1df9a2-3307-4e39-a222-675c49fdc989.asp",
+        "ourClient1Name": "Derek A Brown",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Emily Brown",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-10-02T16:01:57.000Z",
+        "updatedTime": "2025-10-02T16:01:57.000Z",
+        "originalIndex": 1
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d9c8b119-646f-4c60-a7bc-902aa88102fb.pdf",
+        "name": "SS Add",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d9c8b119-646f-4c60-a7bc-902aa88102fb.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d9c8b119-646f-4c60-a7bc-902aa88102fb.asp",
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Emily Brown\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d9c8b119-646f-4c60-a7bc-902aa88102fb.asp",
+        "ourClient1Name": "Derek A Brown",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Emily Brown",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-02T16:01:53.000Z",
+        "updatedTime": "2025-10-02T16:01:53.000Z",
+        "originalIndex": 2
+      },
+      {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/1a25d99d-e1b1-491a-ae12-ffbde52cdea8.pdf",
         "name": "DEFINITIONS OF WORKING RELATIONSHIPS 7768__Bone_Creek",
         "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/1a25d99d-e1b1-491a-ae12-ffbde52cdea8.pdf",
@@ -542,7 +610,7 @@
         "completionStatus": "Pending",
         "signedParties": "[]",
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/1a25d99d-e1b1-491a-ae12-ffbde52cdea8.asp",
-        "ourClient1Name": "Derek Brown",
+        "ourClient1Name": "Derek A Brown",
         "ourClient1Status": "Pending",
         "ourClient2Name": "Emily Brown",
         "ourClient2Status": "Pending",
