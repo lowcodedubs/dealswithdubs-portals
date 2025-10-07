@@ -333,10 +333,30 @@
     </div>
     
     
-      <div style="text-align: center; color: #666; font-size: 18px; margin: 30px 0;">
-        No client documents available yet.
+    <button class="client-btn" onclick="openModal('Diego A Galindo', 6, 0, 0)">
+      <div>
+        <div class="client-name">Diego A Galindo</div>
+        <div class="client-docs">6 documents • 6 complete</div>
       </div>
-    
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Lisbeth R Galindo', 6, 0, 0)">
+      <div>
+        <div class="client-name">Lisbeth R Galindo</div>
+        <div class="client-docs">6 documents • 6 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Marisa Lindsay', 5, 0, 0)">
+      <div>
+        <div class="client-name">Marisa Lindsay</div>
+        <div class="client-docs">5 documents • 5 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
     
     <!-- Contact Information -->
     <div style="background: #f8f9fa; border: 2px solid #667eea; border-radius: 12px; padding: 15px; margin: 30px 0 20px 0; text-align: center;">
@@ -493,7 +513,237 @@
   </div>
   
   <script>
-    const clientDocuments = {};
+    const clientDocuments = {
+  "Diego A Galindo": {
+    "clientName": "Diego A Galindo",
+    "clientRole": "seller",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/439ce376-21df-408e-8df7-7bc291911cfa.pdf",
+        "name": "listing_amend_amendments",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/439ce376-21df-408e-8df7-7bc291911cfa.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/439ce376-21df-408e-8df7-7bc291911cfa.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Marisa Lindsay\",\"Brian Schaefer\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/439ce376-21df-408e-8df7-7bc291911cfa.asp",
+        "ourClient1Name": "Diego A Galindo",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Lisbeth R Galindo",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-07T20:00:51.000Z",
+        "updatedTime": "2025-10-07T20:00:51.000Z",
+        "originalIndex": 5
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/879717a3-f777-4ecf-a206-351329edac7d.pdf",
+        "name": "LISTING CONTRACT AMEND/EXTEND __",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Diego A Galindo\",\"Lisbeth R Galindo\",\"Marisa Lindsay\",\"Brian Schaefer\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "ourClient1Status": "N/A",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-18T20:29:06.000Z",
+        "updatedTime": "2025-08-19T00:00:46.000Z",
+        "originalIndex": 4
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "name": "edb3a54f-f343-4250-853d-c3529c81e4bc",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "createdTime": "2025-07-16T05:21:54.000Z",
+        "updatedTime": "2025-07-16T05:21:54.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "name": "24a495a3-30e0-495e-9ee2-835e107b9ade",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "createdTime": "2025-07-16T05:21:53.000Z",
+        "updatedTime": "2025-07-16T05:21:53.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "name": "48c13244-aac1-4aab-9406-b1221280e648",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "createdTime": "2025-07-16T05:21:53.000Z",
+        "updatedTime": "2025-07-16T05:21:53.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "name": "3ad60132-fd7e-4cc5-a6ba-58f7425d0400",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "createdTime": "2025-07-16T05:21:52.000Z",
+        "updatedTime": "2025-07-16T05:21:52.000Z"
+      }
+    ]
+  },
+  "Lisbeth R Galindo": {
+    "clientName": "Lisbeth R Galindo",
+    "clientRole": "seller",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/439ce376-21df-408e-8df7-7bc291911cfa.pdf",
+        "name": "listing_amend_amendments",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/439ce376-21df-408e-8df7-7bc291911cfa.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/439ce376-21df-408e-8df7-7bc291911cfa.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Marisa Lindsay\",\"Brian Schaefer\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/439ce376-21df-408e-8df7-7bc291911cfa.asp",
+        "ourClient1Name": "Diego A Galindo",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Lisbeth R Galindo",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-07T20:00:51.000Z",
+        "updatedTime": "2025-10-07T20:00:51.000Z",
+        "originalIndex": 5
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/879717a3-f777-4ecf-a206-351329edac7d.pdf",
+        "name": "LISTING CONTRACT AMEND/EXTEND __",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Diego A Galindo\",\"Lisbeth R Galindo\",\"Marisa Lindsay\",\"Brian Schaefer\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "ourClient1Status": "N/A",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-18T20:29:06.000Z",
+        "updatedTime": "2025-08-19T00:00:46.000Z",
+        "originalIndex": 4
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "name": "edb3a54f-f343-4250-853d-c3529c81e4bc",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "createdTime": "2025-07-16T05:21:54.000Z",
+        "updatedTime": "2025-07-16T05:21:54.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "name": "24a495a3-30e0-495e-9ee2-835e107b9ade",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "createdTime": "2025-07-16T05:21:53.000Z",
+        "updatedTime": "2025-07-16T05:21:53.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "name": "48c13244-aac1-4aab-9406-b1221280e648",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "createdTime": "2025-07-16T05:21:53.000Z",
+        "updatedTime": "2025-07-16T05:21:53.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "name": "3ad60132-fd7e-4cc5-a6ba-58f7425d0400",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "createdTime": "2025-07-16T05:21:52.000Z",
+        "updatedTime": "2025-07-16T05:21:52.000Z"
+      }
+    ]
+  },
+  "Marisa Lindsay": {
+    "clientName": "Marisa Lindsay",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/879717a3-f777-4ecf-a206-351329edac7d.pdf",
+        "name": "LISTING CONTRACT AMEND/EXTEND __",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Diego A Galindo\",\"Lisbeth R Galindo\",\"Marisa Lindsay\",\"Brian Schaefer\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/879717a3-f777-4ecf-a206-351329edac7d.asp",
+        "ourClient1Status": "N/A",
+        "ourClient2Status": "N/A",
+        "createdTime": "2025-08-18T20:29:06.000Z",
+        "updatedTime": "2025-08-19T00:00:46.000Z",
+        "originalIndex": 4
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "name": "edb3a54f-f343-4250-853d-c3529c81e4bc",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/edb3a54f-f343-4250-853d-c3529c81e4bc.pdf",
+        "createdTime": "2025-07-16T05:21:54.000Z",
+        "updatedTime": "2025-07-16T05:21:54.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "name": "24a495a3-30e0-495e-9ee2-835e107b9ade",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/24a495a3-30e0-495e-9ee2-835e107b9ade.pdf",
+        "createdTime": "2025-07-16T05:21:53.000Z",
+        "updatedTime": "2025-07-16T05:21:53.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "name": "48c13244-aac1-4aab-9406-b1221280e648",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/48c13244-aac1-4aab-9406-b1221280e648.pdf",
+        "createdTime": "2025-07-16T05:21:53.000Z",
+        "updatedTime": "2025-07-16T05:21:53.000Z"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "name": "3ad60132-fd7e-4cc5-a6ba-58f7425d0400",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://www.ctmecontracts.com/files/PDFConvert/3ad60132-fd7e-4cc5-a6ba-58f7425d0400.pdf",
+        "createdTime": "2025-07-16T05:21:52.000Z",
+        "updatedTime": "2025-07-16T05:21:52.000Z"
+      }
+    ]
+  }
+};
     
     // ADDED: Smart pending text function (JavaScript version)
     function getSmartPendingText(doc, currentClientRole) {
