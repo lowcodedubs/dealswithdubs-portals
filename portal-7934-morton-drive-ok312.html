@@ -333,17 +333,25 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Lindsey Nicole Johnston', 1, 0, 0)">
+    <button class="client-btn" onclick="openModal('Lindsey Johnson', 2, 0, 1)">
       <div>
-        <div class="client-name">Lindsey Nicole Johnston</div>
-        <div class="client-docs">1 documents • 1 complete</div>
+        <div class="client-name">Lindsey Johnson</div>
+        <div class="client-docs">2 documents • 1 complete • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Brandon James Johnston', 1, 0, 0)">
+    <button class="client-btn" onclick="openModal('Brandon James Johnston', 3, 0, 1)">
       <div>
         <div class="client-name">Brandon James Johnston</div>
+        <div class="client-docs">3 documents • 2 complete • 1 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('Lindsey Nicole Johnston', 1, 0, 0)">
+      <div>
+        <div class="client-name">Lindsey Nicole Johnston</div>
         <div class="client-docs">1 documents • 1 complete</div>
       </div>
       <div>→</div>
@@ -506,6 +514,104 @@
   
   <script>
     const clientDocuments = {
+  "Lindsey Johnson": {
+    "clientName": "Lindsey Johnson",
+    "clientRole": "seller",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.pdf",
+        "name": "DEFINITIONS OF WORKING RELATIONSHIPS __",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.pdf",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Makensie McDonald\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.asp",
+        "ourClient1Name": "Lindsey Johnson",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Brandon James Johnston",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-10-13T23:03:33.000Z",
+        "updatedTime": "2025-10-13T23:03:45.000Z",
+        "originalIndex": 0
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/04957689-6d5e-4724-9ff3-886befdd99bb.pdf",
+        "name": "ERS",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/04957689-6d5e-4724-9ff3-886befdd99bb.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/04957689-6d5e-4724-9ff3-886befdd99bb.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Marisa Lindsay\",\"Tanner Bond\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/04957689-6d5e-4724-9ff3-886befdd99bb.asp",
+        "ourClient1Name": "Lindsey Johnson",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Brandon James Johnston",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-13T23:03:40.000Z",
+        "updatedTime": "2025-10-13T23:03:40.000Z",
+        "originalIndex": 1
+      }
+    ]
+  },
+  "Brandon James Johnston": {
+    "clientName": "Brandon James Johnston",
+    "clientRole": "seller",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.pdf",
+        "name": "DEFINITIONS OF WORKING RELATIONSHIPS __",
+        "driveLink": "https://www.ctmecontracts.com/files/PDFConvert/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.pdf",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Makensie McDonald\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/e32653d8-1efe-4d7b-91e9-b4e1dec8ebbf.asp",
+        "ourClient1Name": "Lindsey Johnson",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Brandon James Johnston",
+        "ourClient2Status": "Pending",
+        "createdTime": "2025-10-13T23:03:33.000Z",
+        "updatedTime": "2025-10-13T23:03:45.000Z",
+        "originalIndex": 0
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/04957689-6d5e-4724-9ff3-886befdd99bb.pdf",
+        "name": "ERS",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/04957689-6d5e-4724-9ff3-886befdd99bb.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/04957689-6d5e-4724-9ff3-886befdd99bb.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Marisa Lindsay\",\"Tanner Bond\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/04957689-6d5e-4724-9ff3-886befdd99bb.asp",
+        "ourClient1Name": "Lindsey Johnson",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Brandon James Johnston",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-13T23:03:40.000Z",
+        "updatedTime": "2025-10-13T23:03:40.000Z",
+        "originalIndex": 1
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/60653856-6ba1-4af8-a095-0247703ac10b.pdf",
+        "name": "MLS",
+        "driveLink": "https://drive.google.com/file/d/1E4w2QstlxRT7xrnCNcgVwuiI6YQirEqo/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Brandon James Johnston\",\"Lindsey Nicole Johnston\"]",
+        "displayLink": "https://drive.google.com/file/d/1E4w2QstlxRT7xrnCNcgVwuiI6YQirEqo/view?usp=drivesdk",
+        "ourClient1Name": "Lindsey Nicole Johnston",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Brandon James Johnston",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-09T18:04:34.000Z",
+        "updatedTime": "2025-10-09T18:04:45.000Z",
+        "originalIndex": 2,
+        "recordId": "recslZLTRPi4zmktg"
+      }
+    ]
+  },
   "Lindsey Nicole Johnston": {
     "clientName": "Lindsey Nicole Johnston",
     "clientRole": "seller",
@@ -525,31 +631,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-10-09T18:04:34.000Z",
         "updatedTime": "2025-10-09T18:04:45.000Z",
-        "originalIndex": 0,
-        "recordId": "recslZLTRPi4zmktg"
-      }
-    ]
-  },
-  "Brandon James Johnston": {
-    "clientName": "Brandon James Johnston",
-    "clientRole": "seller",
-    "documents": [
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/60653856-6ba1-4af8-a095-0247703ac10b.pdf",
-        "name": "MLS",
-        "driveLink": "https://drive.google.com/file/d/1E4w2QstlxRT7xrnCNcgVwuiI6YQirEqo/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Brandon James Johnston\",\"Lindsey Nicole Johnston\"]",
-        "displayLink": "https://drive.google.com/file/d/1E4w2QstlxRT7xrnCNcgVwuiI6YQirEqo/view?usp=drivesdk",
-        "ourClient1Name": "Lindsey Nicole Johnston",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Brandon James Johnston",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-10-09T18:04:34.000Z",
-        "updatedTime": "2025-10-09T18:04:45.000Z",
-        "originalIndex": 0,
+        "originalIndex": 2,
         "recordId": "recslZLTRPi4zmktg"
       }
     ]
