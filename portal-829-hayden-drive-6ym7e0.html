@@ -333,6 +333,14 @@
     </div>
     
     
+    <button class="client-btn" onclick="openModal('Ethan Cook', 26, 1, 2)">
+      <div>
+        <div class="client-name">Ethan Cook</div>
+        <div class="client-docs">26 documents • 23 complete • 1 signed, pending buyers • 2 need signature</div>
+      </div>
+      <div>→</div>
+    </button>
+  
     <button class="client-btn" onclick="openModal('The Echeverry Family Trust (Juan C Echeverry)', 3, 0, 0)">
       <div>
         <div class="client-name">The Echeverry Family Trust (Juan C Echeverry)</div>
@@ -345,14 +353,6 @@
       <div>
         <div class="client-name">The Echeverry Family Trust (Nadine Echeverry)</div>
         <div class="client-docs">3 documents • 3 complete</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('Ethan Cook', 25, 1, 2)">
-      <div>
-        <div class="client-name">Ethan Cook</div>
-        <div class="client-docs">25 documents • 22 complete • 1 signed, pending buyers • 2 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -522,96 +522,26 @@
   
   <script>
     const clientDocuments = {
-  "The Echeverry Family Trust (Juan C Echeverry)": {
-    "clientName": "The Echeverry Family Trust (Juan C Echeverry)",
-    "clientRole": "buyer",
-    "documents": [
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d3c97963-5601-4492-b617-3f17bef1a356.pdf",
-        "name": "listing_amend_amendments",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"The Echeverry Family Trust (Juan C Echeverry)\",\"The Echeverry Family Trust (Nadine Echeverry)\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
-        "ourClient1Status": "Complete",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-10-06T15:29:44.000Z",
-        "updatedTime": "2025-10-20T02:26:32.000Z",
-        "originalIndex": 20
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
-        "name": "HIR_",
-        "driveLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "displayLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
-        "createdTime": "2025-08-21T14:55:24.000Z",
-        "updatedTime": "2025-08-21T14:55:24.000Z"
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
-        "name": "HIR_termite",
-        "driveLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "displayLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
-        "createdTime": "2025-08-21T14:55:24.000Z",
-        "updatedTime": "2025-08-21T14:55:24.000Z"
-      }
-    ]
-  },
-  "The Echeverry Family Trust (Nadine Echeverry)": {
-    "clientName": "The Echeverry Family Trust (Nadine Echeverry)",
-    "clientRole": "buyer",
-    "documents": [
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d3c97963-5601-4492-b617-3f17bef1a356.pdf",
-        "name": "listing_amend_amendments",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"The Echeverry Family Trust (Juan C Echeverry)\",\"The Echeverry Family Trust (Nadine Echeverry)\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
-        "ourClient1Status": "Complete",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-10-06T15:29:44.000Z",
-        "updatedTime": "2025-10-20T02:26:32.000Z",
-        "originalIndex": 20
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
-        "name": "HIR_",
-        "driveLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "displayLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
-        "createdTime": "2025-08-21T14:55:24.000Z",
-        "updatedTime": "2025-08-21T14:55:24.000Z"
-      },
-      {
-        "docId": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
-        "name": "HIR_termite",
-        "driveLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "displayLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
-        "createdTime": "2025-08-21T14:55:24.000Z",
-        "updatedTime": "2025-08-21T14:55:24.000Z"
-      }
-    ]
-  },
   "Ethan Cook": {
     "clientName": "Ethan Cook",
     "clientRole": "seller",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/6a069142-2885-41c9-bdd0-c6e73771a721.pdf",
+        "name": "EARNEST MONEY RELEASE __",
+        "driveLink": "https://drive.google.com/file/d/11u13Kt9OBe3XWb6NwBLiplfufnb_bxVE/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/6a069142-2885-41c9-bdd0-c6e73771a721.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Tanner Bond\",\"Kelly Bond\"]",
+        "displayLink": "https://drive.google.com/file/d/11u13Kt9OBe3XWb6NwBLiplfufnb_bxVE/view?usp=drivesdk",
+        "ourClient1Name": "Ethan Cook",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-14T01:03:58.000Z",
+        "updatedTime": "2025-10-20T02:31:53.000Z",
+        "originalIndex": 2
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/995b2daa-cbd5-4dfb-a1a4-4588a188516a.pdf",
         "name": "em_release",
@@ -900,7 +830,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-08-08T11:56:02.000Z",
         "updatedTime": "2025-08-08T11:56:02.000Z",
-        "originalIndex": 2
+        "originalIndex": 3
       },
       {
         "docId": "https://drive.google.com/file/d/1xdTtqsoUGoUdp-0CRKBs-2bM60KlSkde/view?usp=drivesdk ",
@@ -995,6 +925,92 @@
         "displayLink": "https://drive.google.com/file/d/1CllYyGKwYGKq2sY2M2wFYg51tBg2s0Sk/view?usp=drivesdk",
         "createdTime": "2025-08-19T21:53:33.000Z",
         "updatedTime": "2025-08-19T21:53:33.000Z"
+      }
+    ]
+  },
+  "The Echeverry Family Trust (Juan C Echeverry)": {
+    "clientName": "The Echeverry Family Trust (Juan C Echeverry)",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d3c97963-5601-4492-b617-3f17bef1a356.pdf",
+        "name": "listing_amend_amendments",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"The Echeverry Family Trust (Juan C Echeverry)\",\"The Echeverry Family Trust (Nadine Echeverry)\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-06T15:29:44.000Z",
+        "updatedTime": "2025-10-20T02:26:32.000Z",
+        "originalIndex": 20
+      },
+      {
+        "docId": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
+        "name": "HIR_",
+        "driveLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
+        "createdTime": "2025-08-21T14:55:24.000Z",
+        "updatedTime": "2025-08-21T14:55:24.000Z"
+      },
+      {
+        "docId": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
+        "name": "HIR_termite",
+        "driveLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
+        "createdTime": "2025-08-21T14:55:24.000Z",
+        "updatedTime": "2025-08-21T14:55:24.000Z"
+      }
+    ]
+  },
+  "The Echeverry Family Trust (Nadine Echeverry)": {
+    "clientName": "The Echeverry Family Trust (Nadine Echeverry)",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/d3c97963-5601-4492-b617-3f17bef1a356.pdf",
+        "name": "listing_amend_amendments",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"The Echeverry Family Trust (Juan C Echeverry)\",\"The Echeverry Family Trust (Nadine Echeverry)\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/d3c97963-5601-4492-b617-3f17bef1a356.asp",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-06T15:29:44.000Z",
+        "updatedTime": "2025-10-20T02:26:32.000Z",
+        "originalIndex": 20
+      },
+      {
+        "docId": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
+        "name": "HIR_",
+        "driveLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://drive.google.com/file/d/1qrAS7wuijRPjYhhcU0WDYW0DjJ0OwcSG/view?usp=drivesdk",
+        "createdTime": "2025-08-21T14:55:24.000Z",
+        "updatedTime": "2025-08-21T14:55:24.000Z"
+      },
+      {
+        "docId": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
+        "name": "HIR_termite",
+        "driveLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "displayLink": "https://drive.google.com/file/d/1qvuVyvCiDunL2AxPm8eBDk9OiNxwzkj-/view?usp=drivesdk",
+        "createdTime": "2025-08-21T14:55:24.000Z",
+        "updatedTime": "2025-08-21T14:55:24.000Z"
       }
     ]
   },
