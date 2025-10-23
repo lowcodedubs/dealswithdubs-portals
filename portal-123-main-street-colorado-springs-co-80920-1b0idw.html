@@ -333,18 +333,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('John Smith', 1, 1, 0)">
+    <button class="client-btn" onclick="openModal('John Smith', 2, 1, 0)">
       <div>
         <div class="client-name">John Smith</div>
-        <div class="client-docs">1 documents • 1 signed, pending sellers</div>
+        <div class="client-docs">2 documents • 1 complete • 1 signed, pending buyers</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Jane Smith', 1, 1, 0)">
+    <button class="client-btn" onclick="openModal('Jane Smith', 2, 1, 0)">
       <div>
         <div class="client-name">Jane Smith</div>
-        <div class="client-docs">1 documents • 1 signed, pending sellers</div>
+        <div class="client-docs">2 documents • 1 complete • 1 signed, pending buyers</div>
       </div>
       <div>→</div>
     </button>
@@ -508,8 +508,26 @@
     const clientDocuments = {
   "John Smith": {
     "clientName": "John Smith",
-    "clientRole": "buyer",
+    "clientRole": "seller",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/ba2dd3db-bdcd-43fc-b9f0-e7f1ef90e1ab.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://drive.google.com/file/d/13MA-DUUP1RQ80kKGP2_6rRkNGbeJff21/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"April Marissa Hernandez\",\"Jonathan Jose Juarez-Chavez\"]",
+        "displayLink": "https://drive.google.com/file/d/13MA-DUUP1RQ80kKGP2_6rRkNGbeJff21/view?usp=drivesdk",
+        "ourClient1Name": "John Smith",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Jane Smith",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-23T04:04:11.000Z",
+        "updatedTime": "2025-10-23T04:04:25.000Z",
+        "originalIndex": 0,
+        "recordId": "recU3Ze1gIaoBqS6V"
+      },
       {
         "docId": "https://drive.google.com/file/d/1R-0d88ioeYZZKrnkE7BuGGK2zKuGoqAH/view?usp=drivesdk",
         "name": "Purchase Contract",
@@ -525,14 +543,32 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-09-16T16:42:42.000Z",
         "updatedTime": "2025-09-16T16:42:42.000Z",
-        "originalIndex": 0
+        "originalIndex": 1
       }
     ]
   },
   "Jane Smith": {
     "clientName": "Jane Smith",
-    "clientRole": "buyer",
+    "clientRole": "seller",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/ba2dd3db-bdcd-43fc-b9f0-e7f1ef90e1ab.pdf",
+        "name": "Mikes ABA",
+        "driveLink": "https://drive.google.com/file/d/13MA-DUUP1RQ80kKGP2_6rRkNGbeJff21/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"April Marissa Hernandez\",\"Jonathan Jose Juarez-Chavez\"]",
+        "displayLink": "https://drive.google.com/file/d/13MA-DUUP1RQ80kKGP2_6rRkNGbeJff21/view?usp=drivesdk",
+        "ourClient1Name": "John Smith",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Jane Smith",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-10-23T04:04:11.000Z",
+        "updatedTime": "2025-10-23T04:04:25.000Z",
+        "originalIndex": 0,
+        "recordId": "recU3Ze1gIaoBqS6V"
+      },
       {
         "docId": "https://drive.google.com/file/d/1R-0d88ioeYZZKrnkE7BuGGK2zKuGoqAH/view?usp=drivesdk",
         "name": "Purchase Contract",
@@ -548,7 +584,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-09-16T16:42:42.000Z",
         "updatedTime": "2025-09-16T16:42:42.000Z",
-        "originalIndex": 0
+        "originalIndex": 1
       }
     ]
   }
