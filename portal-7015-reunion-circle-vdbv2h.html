@@ -333,18 +333,18 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('Eric Dingman', 2, 0, 0)">
+    <button class="client-btn" onclick="openModal('Jill Dingman', 3, 0, 1)">
       <div>
-        <div class="client-name">Eric Dingman</div>
-        <div class="client-docs">2 documents • 2 complete</div>
+        <div class="client-name">Jill Dingman</div>
+        <div class="client-docs">3 documents • 2 complete • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
   
-    <button class="client-btn" onclick="openModal('Jill Dingman', 2, 0, 0)">
+    <button class="client-btn" onclick="openModal('Eric Dingman', 3, 1, 0)">
       <div>
-        <div class="client-name">Jill Dingman</div>
-        <div class="client-docs">2 documents • 2 complete</div>
+        <div class="client-name">Eric Dingman</div>
+        <div class="client-docs">3 documents • 2 complete • 1 signed, pending other sellers</div>
       </div>
       <div>→</div>
     </button>
@@ -514,10 +514,27 @@
   
   <script>
     const clientDocuments = {
-  "Eric Dingman": {
-    "clientName": "Eric Dingman",
-    "clientRole": "buyer",
+  "Jill Dingman": {
+    "clientName": "Jill Dingman",
+    "clientRole": "seller",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/a7cf8646-2f4a-4abd-92b1-8c38f868f837.pdf",
+        "name": "SqFt",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/a7cf8646-2f4a-4abd-92b1-8c38f868f837.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/a7cf8646-2f4a-4abd-92b1-8c38f868f837.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Marisa Lindsay\",\"Eric Dingman\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/a7cf8646-2f4a-4abd-92b1-8c38f868f837.asp",
+        "ourClient1Name": "Jill Dingman",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Eric Dingman",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-11-05T07:00:39.000Z",
+        "updatedTime": "2025-11-05T07:00:39.000Z",
+        "originalIndex": 2
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/f400ff63-5038-4592-9fd6-9fb902c783e4.pdf",
         "name": "EXCLUSIVE RIGHT-TO-SELL LISTING CONTRACT 7015__Reunion",
@@ -546,10 +563,27 @@
       }
     ]
   },
-  "Jill Dingman": {
-    "clientName": "Jill Dingman",
-    "clientRole": "buyer",
+  "Eric Dingman": {
+    "clientName": "Eric Dingman",
+    "clientRole": "seller",
     "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/a7cf8646-2f4a-4abd-92b1-8c38f868f837.pdf",
+        "name": "SqFt",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/a7cf8646-2f4a-4abd-92b1-8c38f868f837.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/a7cf8646-2f4a-4abd-92b1-8c38f868f837.asp",
+        "status": "signed",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Marisa Lindsay\",\"Eric Dingman\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/a7cf8646-2f4a-4abd-92b1-8c38f868f837.asp",
+        "ourClient1Name": "Jill Dingman",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Eric Dingman",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-11-05T07:00:39.000Z",
+        "updatedTime": "2025-11-05T07:00:39.000Z",
+        "originalIndex": 2
+      },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/f400ff63-5038-4592-9fd6-9fb902c783e4.pdf",
         "name": "EXCLUSIVE RIGHT-TO-SELL LISTING CONTRACT 7015__Reunion",
