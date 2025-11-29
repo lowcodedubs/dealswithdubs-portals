@@ -333,10 +333,26 @@
     </div>
     
     
-    <button class="client-btn" onclick="openModal('SUSAN M PERRY', 9, 0, 1)">
+    <button class="client-btn" onclick="openModal('Maria & Robert Huckels', 8, 1, 0)">
+      <div>
+        <div class="client-name">Maria & Robert Huckels</div>
+        <div class="client-docs">8 documents • 7 complete • 1 signed, pending other buyers</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('ROBERT M HUCKELS', 2, 0, 0)">
+      <div>
+        <div class="client-name">ROBERT M HUCKELS</div>
+        <div class="client-docs">2 documents • 2 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('SUSAN M PERRY', 10, 0, 1)">
       <div>
         <div class="client-name">SUSAN M PERRY</div>
-        <div class="client-docs">9 documents • 8 complete • 1 need signature</div>
+        <div class="client-docs">10 documents • 9 complete • 1 need signature</div>
       </div>
       <div>→</div>
     </button>
@@ -345,14 +361,6 @@
       <div>
         <div class="client-name">Robert M. Huckels</div>
         <div class="client-docs">3 documents • 3 complete</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('Maria & Robert Huckels', 7, 1, 0)">
-      <div>
-        <div class="client-name">Maria & Robert Huckels</div>
-        <div class="client-docs">7 documents • 6 complete • 1 signed, pending other sellers</div>
       </div>
       <div>→</div>
     </button>
@@ -514,43 +522,24 @@
   
   <script>
     const clientDocuments = {
-  "SUSAN M PERRY": {
-    "clientName": "SUSAN M PERRY",
-    "clientRole": "seller",
+  "Maria & Robert Huckels": {
+    "clientName": "Maria & Robert Huckels",
+    "clientRole": "buyer",
     "documents": [
       {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/48de8837-4910-474f-b98b-8fcd0e532459.pdf",
-        "name": "Contract Misc",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/48de8837-4910-474f-b98b-8fcd0e532459.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/48de8837-4910-474f-b98b-8fcd0e532459.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/48de8837-4910-474f-b98b-8fcd0e532459.asp",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Robert M. Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-17T16:01:55.000Z",
-        "updatedTime": "2025-09-17T17:01:31.000Z",
-        "originalIndex": 1
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2583a3d9-02f0-422b-9c68-a066275cfb97.pdf",
-        "name": "Square Footage Disclosure",
-        "driveLink": "https://drive.google.com/file/d/17-8NUebkdEt-Hwf1i_0XiBmtNMXCUaq5/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/2583a3d9-02f0-422b-9c68-a066275cfb97.asp",
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/a8689970-e87d-4812-9eb8-e19716ab849a.pdf",
+        "name": "listing_amend_price",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
         "status": "signed",
         "completionStatus": "Complete",
         "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\",\"Marisa Lindsay\"]",
-        "displayLink": "https://drive.google.com/file/d/17-8NUebkdEt-Hwf1i_0XiBmtNMXCUaq5/view?usp=drivesdk",
-        "ourClient1Name": "SUSAN M PERRY",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
         "ourClient1Status": "Complete",
-        "ourClient2Name": "Robert M. Huckels",
         "ourClient2Status": "Complete",
-        "createdTime": "2025-09-09T23:30:30.000Z",
-        "updatedTime": "2025-09-17T10:02:06.000Z",
-        "originalIndex": 8
+        "createdTime": "2025-11-29T16:01:25.000Z",
+        "updatedTime": "2025-11-29T16:01:25.000Z",
+        "originalIndex": 5
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/085eba0d-0f3d-487a-936b-c1b06b0c6ba5.pdf",
@@ -567,14 +556,14 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-09-16T00:30:24.000Z",
         "updatedTime": "2025-09-16T01:02:33.000Z",
-        "originalIndex": 6
+        "originalIndex": 7
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/cff36b14-a731-4cb2-903d-9457074f67da.pdf",
         "name": "SPD_needfuel&electric",
         "driveLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
         "signingLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
-        "status": "pending",
+        "status": "signed",
         "completionStatus": "Pending",
         "signedParties": "[\"Robert M Huckels\"]",
         "displayLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
@@ -584,7 +573,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-09-09T23:30:29.000Z",
         "updatedTime": "2025-09-12T14:02:22.000Z",
-        "originalIndex": 7
+        "originalIndex": 8
       },
       {
         "docId": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
@@ -637,7 +626,212 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-09-05T12:04:17.000Z",
         "updatedTime": "2025-09-05T14:04:30.000Z",
-        "originalIndex": 5,
+        "originalIndex": 6,
+        "recordId": "recjxR9ww9iOBk5Z8"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3878d882-3111-4b92-9a7c-1131001468b1.pdf",
+        "name": "EXCLUSIVE RIGHT-TO-SELL LISTING CONTRACT 4401__Windmill_Creek",
+        "driveLink": "https://drive.google.com/file/d/1FpHVW71C1sf9PrrUxFuULj5aHGNvMXnt/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3878d882-3111-4b92-9a7c-11310001468b1.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\",\"Marisa Lindsay\"]",
+        "displayLink": "https://drive.google.com/file/d/1FpHVW71C1sf9PrrUxFuULj5aHGNvMXnt/view?usp=drivesdk",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Maria & Robert Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-05T11:29:25.000Z",
+        "updatedTime": "2025-09-05T11:29:33.000Z",
+        "originalIndex": 2
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/e7e30a3e-11c2-49ec-9ca3-8b620bbb77a2.pdf",
+        "name": "LISTING CONTRACT AMEND/EXTEND __",
+        "driveLink": "https://drive.google.com/file/d/1svVXa0P6XXI8dziFM38_UDNu0n3dEwmM/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[]",
+        "displayLink": "https://drive.google.com/file/d/1svVXa0P6XXI8dziFM38_UDNu0n3dEwmM/view?usp=drivesdk",
+        "createdTime": "2025-10-14T01:03:58.000Z",
+        "updatedTime": "2025-10-20T02:56:48.000Z"
+      }
+    ]
+  },
+  "ROBERT M HUCKELS": {
+    "clientName": "ROBERT M HUCKELS",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/a8689970-e87d-4812-9eb8-e19716ab849a.pdf",
+        "name": "listing_amend_price",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\",\"Marisa Lindsay\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-11-29T16:01:25.000Z",
+        "updatedTime": "2025-11-29T16:01:25.000Z",
+        "originalIndex": 5
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/e7e30a3e-11c2-49ec-9ca3-8b620bbb77a2.pdf",
+        "name": "LISTING CONTRACT AMEND/EXTEND __",
+        "driveLink": "https://drive.google.com/file/d/1svVXa0P6XXI8dziFM38_UDNu0n3dEwmM/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[]",
+        "displayLink": "https://drive.google.com/file/d/1svVXa0P6XXI8dziFM38_UDNu0n3dEwmM/view?usp=drivesdk",
+        "createdTime": "2025-10-14T01:03:58.000Z",
+        "updatedTime": "2025-10-20T02:56:48.000Z"
+      }
+    ]
+  },
+  "SUSAN M PERRY": {
+    "clientName": "SUSAN M PERRY",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/a8689970-e87d-4812-9eb8-e19716ab849a.pdf",
+        "name": "listing_amend_price",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\",\"Marisa Lindsay\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/a8689970-e87d-4812-9eb8-e19716ab849a.asp",
+        "ourClient1Status": "Complete",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-11-29T16:01:25.000Z",
+        "updatedTime": "2025-11-29T16:01:25.000Z",
+        "originalIndex": 5
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/48de8837-4910-474f-b98b-8fcd0e532459.pdf",
+        "name": "Contract Misc",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/48de8837-4910-474f-b98b-8fcd0e532459.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/48de8837-4910-474f-b98b-8fcd0e532459.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/48de8837-4910-474f-b98b-8fcd0e532459.asp",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Robert M. Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-17T16:01:55.000Z",
+        "updatedTime": "2025-09-17T17:01:31.000Z",
+        "originalIndex": 1
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/2583a3d9-02f0-422b-9c68-a066275cfb97.pdf",
+        "name": "Square Footage Disclosure",
+        "driveLink": "https://drive.google.com/file/d/17-8NUebkdEt-Hwf1i_0XiBmtNMXCUaq5/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/2583a3d9-02f0-422b-9c68-a066275cfb97.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\",\"Marisa Lindsay\"]",
+        "displayLink": "https://drive.google.com/file/d/17-8NUebkdEt-Hwf1i_0XiBmtNMXCUaq5/view?usp=drivesdk",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Robert M. Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-09T23:30:30.000Z",
+        "updatedTime": "2025-09-17T10:02:06.000Z",
+        "originalIndex": 9
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/085eba0d-0f3d-487a-936b-c1b06b0c6ba5.pdf",
+        "name": "Sellers Property Disclosure",
+        "driveLink": "https://drive.google.com/file/d/1tf91l1NYFcxYqLG6XxTOLWYXPPQqWDm2/view?usp=drivesdk",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/085eba0d-0f3d-487a-936b-c1b06b0c6ba5.asp",
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\"]",
+        "displayLink": "https://drive.google.com/file/d/1tf91l1NYFcxYqLG6XxTOLWYXPPQqWDm2/view?usp=drivesdk",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Maria & Robert Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-16T00:30:24.000Z",
+        "updatedTime": "2025-09-16T01:02:33.000Z",
+        "originalIndex": 7
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cff36b14-a731-4cb2-903d-9457074f67da.pdf",
+        "name": "SPD_needfuel&electric",
+        "driveLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
+        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
+        "status": "pending",
+        "completionStatus": "Pending",
+        "signedParties": "[\"Robert M Huckels\"]",
+        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Pending",
+        "ourClient2Name": "Maria & Robert Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-09T23:30:29.000Z",
+        "updatedTime": "2025-09-12T14:02:22.000Z",
+        "originalIndex": 8
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
+        "name": "Colorado Real Estate Seller Advisory",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"Maria Huckels\",\"SUSAN M PERRY\",\"ROBERT M HUCKELS\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Maria & Robert Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-09T22:04:18.000Z",
+        "updatedTime": "2025-09-10T00:04:45.000Z",
+        "originalIndex": 0,
+        "recordId": "recjxR9ww9iOBk5Z8"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/1a5254dd-4de4-4f32-8f9a-602717d28d28.pdf",
+        "name": "EXP ABA",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/1a5254dd-4de4-4f32-8f9a-602717d28d28.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"MARIA HUCKELS\",\"SUSAN M PERRY\",\"ROBERT M HUCKELS\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/1a5254dd-4de4-4f32-8f9a-602717d28d28.pdf",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Maria & Robert Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-09T22:04:17.000Z",
+        "updatedTime": "2025-09-10T00:04:45.000Z",
+        "originalIndex": 3,
+        "recordId": "recjxR9ww9iOBk5Z8"
+      },
+      {
+        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/7f8b00a8-dcba-452c-9212-ceb0adce4ba3.pdf",
+        "name": "MLS",
+        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/7f8b00a8-dcba-452c-9212-ceb0adce4ba3.pdf",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "[\"SUSAN M PERRY\",\"ROBERT M HUCKELS\",\"MARIA HUCKELS\"]",
+        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/7f8b00a8-dcba-452c-9212-ceb0adce4ba3.pdf",
+        "ourClient1Name": "SUSAN M PERRY",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "Maria & Robert Huckels",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-09-05T12:04:17.000Z",
+        "updatedTime": "2025-09-05T14:04:30.000Z",
+        "originalIndex": 6,
         "recordId": "recjxR9ww9iOBk5Z8"
       },
       {
@@ -707,130 +901,7 @@
         "ourClient2Status": "Complete",
         "createdTime": "2025-09-09T23:30:30.000Z",
         "updatedTime": "2025-09-17T10:02:06.000Z",
-        "originalIndex": 8
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/e7e30a3e-11c2-49ec-9ca3-8b620bbb77a2.pdf",
-        "name": "LISTING CONTRACT AMEND/EXTEND __",
-        "driveLink": "https://drive.google.com/file/d/1svVXa0P6XXI8dziFM38_UDNu0n3dEwmM/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[]",
-        "displayLink": "https://drive.google.com/file/d/1svVXa0P6XXI8dziFM38_UDNu0n3dEwmM/view?usp=drivesdk",
-        "createdTime": "2025-10-14T01:03:58.000Z",
-        "updatedTime": "2025-10-20T02:56:48.000Z"
-      }
-    ]
-  },
-  "Maria & Robert Huckels": {
-    "clientName": "Maria & Robert Huckels",
-    "clientRole": "seller",
-    "documents": [
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/085eba0d-0f3d-487a-936b-c1b06b0c6ba5.pdf",
-        "name": "Sellers Property Disclosure",
-        "driveLink": "https://drive.google.com/file/d/1tf91l1NYFcxYqLG6XxTOLWYXPPQqWDm2/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/085eba0d-0f3d-487a-936b-c1b06b0c6ba5.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\"]",
-        "displayLink": "https://drive.google.com/file/d/1tf91l1NYFcxYqLG6XxTOLWYXPPQqWDm2/view?usp=drivesdk",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Maria & Robert Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-16T00:30:24.000Z",
-        "updatedTime": "2025-09-16T01:02:33.000Z",
-        "originalIndex": 6
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/cff36b14-a731-4cb2-903d-9457074f67da.pdf",
-        "name": "SPD_needfuel&electric",
-        "driveLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
-        "status": "signed",
-        "completionStatus": "Pending",
-        "signedParties": "[\"Robert M Huckels\"]",
-        "displayLink": "https://www.ctmecontracts.com/files/aspredir/cff36b14-a731-4cb2-903d-9457074f67da.asp",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Pending",
-        "ourClient2Name": "Maria & Robert Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-09T23:30:29.000Z",
-        "updatedTime": "2025-09-12T14:02:22.000Z",
-        "originalIndex": 7
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
-        "name": "Colorado Real Estate Seller Advisory",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Maria Huckels\",\"SUSAN M PERRY\",\"ROBERT M HUCKELS\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/bcbdcf37-d103-4029-991d-155267697bed.pdf",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Maria & Robert Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-09T22:04:18.000Z",
-        "updatedTime": "2025-09-10T00:04:45.000Z",
-        "originalIndex": 0,
-        "recordId": "recjxR9ww9iOBk5Z8"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/1a5254dd-4de4-4f32-8f9a-602717d28d28.pdf",
-        "name": "EXP ABA",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/1a5254dd-4de4-4f32-8f9a-602717d28d28.pdf",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"MARIA HUCKELS\",\"SUSAN M PERRY\",\"ROBERT M HUCKELS\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/1a5254dd-4de4-4f32-8f9a-602717d28d28.pdf",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Maria & Robert Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-09T22:04:17.000Z",
-        "updatedTime": "2025-09-10T00:04:45.000Z",
-        "originalIndex": 3,
-        "recordId": "recjxR9ww9iOBk5Z8"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/api/eSignature/Print/7f8b00a8-dcba-452c-9212-ceb0adce4ba3.pdf",
-        "name": "MLS",
-        "driveLink": "https://www.ctmecontracts.com/api/eSignature/Print/7f8b00a8-dcba-452c-9212-ceb0adce4ba3.pdf",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"SUSAN M PERRY\",\"ROBERT M HUCKELS\",\"MARIA HUCKELS\"]",
-        "displayLink": "https://www.ctmecontracts.com/api/eSignature/Print/7f8b00a8-dcba-452c-9212-ceb0adce4ba3.pdf",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Maria & Robert Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-05T12:04:17.000Z",
-        "updatedTime": "2025-09-05T14:04:30.000Z",
-        "originalIndex": 5,
-        "recordId": "recjxR9ww9iOBk5Z8"
-      },
-      {
-        "docId": "https://www.ctmecontracts.com/files/PDFConvert/3878d882-3111-4b92-9a7c-1131001468b1.pdf",
-        "name": "EXCLUSIVE RIGHT-TO-SELL LISTING CONTRACT 4401__Windmill_Creek",
-        "driveLink": "https://drive.google.com/file/d/1FpHVW71C1sf9PrrUxFuULj5aHGNvMXnt/view?usp=drivesdk",
-        "signingLink": "https://www.ctmecontracts.com/files/aspredir/3878d882-3111-4b92-9a7c-11310001468b1.asp",
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "[\"Maria Huckels\",\"Robert M Huckels\",\"Susan M Perry\",\"Marisa Lindsay\"]",
-        "displayLink": "https://drive.google.com/file/d/1FpHVW71C1sf9PrrUxFuULj5aHGNvMXnt/view?usp=drivesdk",
-        "ourClient1Name": "SUSAN M PERRY",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "Maria & Robert Huckels",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-09-05T11:29:25.000Z",
-        "updatedTime": "2025-09-05T11:29:33.000Z",
-        "originalIndex": 2
+        "originalIndex": 9
       },
       {
         "docId": "https://www.ctmecontracts.com/files/PDFConvert/e7e30a3e-11c2-49ec-9ca3-8b620bbb77a2.pdf",
