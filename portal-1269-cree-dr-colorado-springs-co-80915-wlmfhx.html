@@ -333,6 +333,22 @@
     </div>
     
     
+    <button class="client-btn" onclick="openModal('Mauricio Torbay Perez', 1, 0, 0)">
+      <div>
+        <div class="client-name">Mauricio Torbay Perez</div>
+        <div class="client-docs">1 documents • 1 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
+    <button class="client-btn" onclick="openModal('', 1, 0, 0)">
+      <div>
+        <div class="client-name"></div>
+        <div class="client-docs">1 documents • 1 complete</div>
+      </div>
+      <div>→</div>
+    </button>
+  
     <button class="client-btn" onclick="openModal('John Cornelius', 1, 0, 0)">
       <div>
         <div class="client-name">John Cornelius</div>
@@ -409,22 +425,6 @@
       <div>
         <div class="client-name">Mackenzie Reeser Bazan</div>
         <div class="client-docs">1 documents • 1 need signature</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('Mauricio Torbay Perez', 1, 0, 0)">
-      <div>
-        <div class="client-name">Mauricio Torbay Perez</div>
-        <div class="client-docs">1 documents • 1 complete</div>
-      </div>
-      <div>→</div>
-    </button>
-  
-    <button class="client-btn" onclick="openModal('', 1, 0, 0)">
-      <div>
-        <div class="client-name"></div>
-        <div class="client-docs">1 documents • 1 complete</div>
       </div>
       <div>→</div>
     </button>
@@ -586,6 +586,52 @@
   
   <script>
     const clientDocuments = {
+  "Mauricio Torbay Perez": {
+    "clientName": "Mauricio Torbay Perez",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://drive.google.com/file/d/1TySo1rWiQa467Pto6u_8PnUui1_Da3np/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1TySo1rWiQa467Pto6u_8PnUui1_Da3np/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "signed",
+        "completionStatus": "Complete",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1TySo1rWiQa467Pto6u_8PnUui1_Da3np/view?usp=drivesdk",
+        "ourClient1Name": "Mauricio Torbay Perez",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-12-11T17:57:08.000Z",
+        "updatedTime": "2025-12-11T17:57:08.000Z",
+        "originalIndex": 5
+      }
+    ]
+  },
+  "": {
+    "clientName": "",
+    "clientRole": "buyer",
+    "documents": [
+      {
+        "docId": "https://drive.google.com/file/d/1TySo1rWiQa467Pto6u_8PnUui1_Da3np/view?usp=drivesdk",
+        "name": "Purchase Contract",
+        "driveLink": "https://drive.google.com/file/d/1TySo1rWiQa467Pto6u_8PnUui1_Da3np/view?usp=drivesdk",
+        "signingLink": null,
+        "status": "pending",
+        "completionStatus": "Complete",
+        "signedParties": "ALL",
+        "displayLink": "https://drive.google.com/file/d/1TySo1rWiQa467Pto6u_8PnUui1_Da3np/view?usp=drivesdk",
+        "ourClient1Name": "Mauricio Torbay Perez",
+        "ourClient1Status": "Complete",
+        "ourClient2Name": "",
+        "ourClient2Status": "Complete",
+        "createdTime": "2025-12-11T17:57:08.000Z",
+        "updatedTime": "2025-12-11T17:57:08.000Z",
+        "originalIndex": 5
+      }
+    ]
+  },
   "John Cornelius": {
     "clientName": "John Cornelius",
     "clientRole": "buyer",
@@ -788,7 +834,7 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-10-30T18:27:37.000Z",
         "updatedTime": "2025-12-11T13:01:31.000Z",
-        "originalIndex": 5
+        "originalIndex": 6
       }
     ]
   },
@@ -810,53 +856,7 @@
         "ourClient2Status": "Pending",
         "createdTime": "2025-10-30T18:27:37.000Z",
         "updatedTime": "2025-12-11T13:01:31.000Z",
-        "originalIndex": 5
-      }
-    ]
-  },
-  "Mauricio Torbay Perez": {
-    "clientName": "Mauricio Torbay Perez",
-    "clientRole": "buyer",
-    "documents": [
-      {
-        "docId": "https://drive.google.com/file/d/1HOhpw1tTtHB8fIGGu4YURnuwyn7Smr7A/view?usp=drivesdk",
-        "name": "Purchase Contract",
-        "driveLink": "https://drive.google.com/file/d/1HOhpw1tTtHB8fIGGu4YURnuwyn7Smr7A/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "signed",
-        "completionStatus": "Complete",
-        "signedParties": "ALL",
-        "displayLink": "https://drive.google.com/file/d/1HOhpw1tTtHB8fIGGu4YURnuwyn7Smr7A/view?usp=drivesdk",
-        "ourClient1Name": "Mauricio Torbay Perez",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-12-11T13:01:30.000Z",
-        "updatedTime": "2025-12-11T13:01:30.000Z",
-        "originalIndex": 4
-      }
-    ]
-  },
-  "": {
-    "clientName": "",
-    "clientRole": "buyer",
-    "documents": [
-      {
-        "docId": "https://drive.google.com/file/d/1HOhpw1tTtHB8fIGGu4YURnuwyn7Smr7A/view?usp=drivesdk",
-        "name": "Purchase Contract",
-        "driveLink": "https://drive.google.com/file/d/1HOhpw1tTtHB8fIGGu4YURnuwyn7Smr7A/view?usp=drivesdk",
-        "signingLink": null,
-        "status": "pending",
-        "completionStatus": "Complete",
-        "signedParties": "ALL",
-        "displayLink": "https://drive.google.com/file/d/1HOhpw1tTtHB8fIGGu4YURnuwyn7Smr7A/view?usp=drivesdk",
-        "ourClient1Name": "Mauricio Torbay Perez",
-        "ourClient1Status": "Complete",
-        "ourClient2Name": "",
-        "ourClient2Status": "Complete",
-        "createdTime": "2025-12-11T13:01:30.000Z",
-        "updatedTime": "2025-12-11T13:01:30.000Z",
-        "originalIndex": 4
+        "originalIndex": 6
       }
     ]
   }
